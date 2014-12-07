@@ -1,0 +1,51 @@
+;;;; -*- coding: iso-2022-7bit -*-
+
+;;; Mew Easy Settings (generated automatically)
+;; configuration
+(setq mew-config-alist
+      '(
+	("default"
+         ("name"         . "user full name")
+	 ("user"         . "user name of mail address")
+	 ("mail-domain"  . "mail address domain")
+         ;("pop-ssl"      . t)
+         ;("pop-ssl-port" . "110")
+         ("pop-auth"     . pass)
+         ("pop-user"     . "pop accunt user")
+         ("pop-server"   . "pop.example.jp")
+	 ;("ssl-cert-directory" . "/cygdrive/d/home/.certs")
+         ;("ssl-verify-level" . 2)	;0だと鍵のチェックしない
+         ;("smtp-ssl"     . t)
+         ;("smtp-ssl-port" . "25")
+         ("smtp-user"    . "smtp accunt user")
+         ("smtp-server"  . "smtp.example.jp"))
+	("microsoft"
+	 ("content-type"      . "Application/Octet-Stream"))
+	  ))
+;; messageを10日残す
+(setq mew-pop-delete 10)
+
+(setq mew-from-list '("from mail address <sample@mail.jp>"))
+;(setq mew-cc "alway insert Cc:")
+(setq mew-fcc "+send")
+(setq mew-dcc "dcc insert address")
+(setq mew-cite-fields '("From:" "From:" "Subject:" "Date:" "Message-ID:"))
+(setq mew-cite-format "%s <-- From %s <-- From \n%s <-- Subject \n%s <-- Date %s <-- Message-ID\n\n")
+
+; フォルダの明示的推測ルール
+(setq mew-refile-guess-alist
+      '(("From:"
+           ("sample@example.jp" . "+example/sample")
+           ("sample@develop.co.jp" . "+example/develop"))
+	("To:"
+           ("my@mail.jp" . "+me"))
+	("Cc:"
+           ("my@mail.jp" . "+me"))
+	("To:"
+           ("mygroup@mail.jp" . "+organize/mygroup"))
+	("Cc:"
+           ("mygroup@mail.jp" . "+organize/mygroup"))
+;	("Subject:"
+;          ("staff@example.jp" . "+jp/staff")
+;         ("staff@example.net" . "+net/staff"))
+	))

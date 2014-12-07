@@ -1,0 +1,13 @@
+.gitconfig.local
+.DS_Store
+thumbs.db
+*~
+ac-comphist.dat
+.emacs.d/eshell
+.emacs.d/auto-save-list
+tmp
+tramp
+recentf
+*.elc
+*.ncb
+*.user

@@ -1,0 +1,19 @@
+[core]
+	excludesfile = ~/dotfiles/.gitignore
+	compression = -1
+	loosecompression = -1
+	packedGitWindowSize = 1048m
+[include]
+	path = ~/.gitconfig.local
+[pack]
+	threads = 1
+	windowMemory = 5g
+	packSizeLimit = 1g
+	compression = -1
+[push]
+	default = simple
+[alias]
+	svn-diff = "!f() { git svn dcommit -n | grep diff | awk -F'diff-tree' -v opt=$@ '{print \"git diff \"opt\" \"$2}' | sh; }; f"
+[color]
+	ui = true
+	diff = true
