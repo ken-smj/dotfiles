@@ -1,51 +1,51 @@
 [submodule ".emacs.d/elisp/web-mode"]
-        path = .emacs.d/elisp/web-mode
-        url = git@github.com:fxbois/web-mode.git
+	path = .emacs.d/elisp/web-mode
+	url = https://github.com/fxbois/web-mode
 [submodule ".emacs.d/plugins/auto-complete"]
-        path = .emacs.d/plugins/auto-complete
-        url = http://cx4a.org/repo/auto-complete.git
+	path = .emacs.d/plugins/auto-complete
+	url = http://cx4a.org/repo/auto-complete.git
 [submodule ".emacs.d/plugins/blgrep"]
-        path = .emacs.d/plugins/blgrep
-        url = git@github.com:ataka/blgrep.git
+	path = .emacs.d/plugins/blgrep
+	url = https://github.com/ataka/blgrep
 [submodule ".emacs.d/plugins/bookmark-plus"]
-        path = .emacs.d/plugins/bookmark-plus
-        url = git@github.com:emacsmirror/bookmark-plus.git
+	path = .emacs.d/plugins/bookmark-plus
+	url = https://github.com/emacsmirror/bookmark-plus
 [submodule ".emacs.d/plugins/clmemo"]
-        path = .emacs.d/plugins/clmemo
-        url = git@github.com:ataka/clmemo.git
+	path = .emacs.d/plugins/clmemo
+	url = https://github.com/ataka/clmemo
 [submodule ".emacs.d/plugins/exec-path-from-shell"]
-        path = .emacs.d/plugins/exec-path-from-shell
-        url = git@github.com:purcell/exec-path-from-shell.git
+	path = .emacs.d/plugins/exec-path-from-shell
+	url = https://github.com/purcell/exec-path-from-shell
 [submodule ".emacs.d/plugins/yasnippet"]
-        path = .emacs.d/plugins/yasnippet
-        url = git@github.com:capitaomorte/yasnippet.git
+	path = .emacs.d/plugins/yasnippet
+	url = https://github.com/capitaomorte/yasnippet
 [submodule ".emacs.d/lib/yasnippet-snippets"]
-        path = .emacs.d/lib/yasnippet-snippets
-        url = git@github.com:AndreaCrotti/yasnippet-snippets.git
+	path = .emacs.d/lib/yasnippet-snippets
+	url = https://github.com/AndreaCrotti/yasnippet-snippets
 [submodule ".emacs.d/plugins/modeline-git-branch"]
-        path = .emacs.d/plugins/modeline-git-branch
-        url = git@github.com:acple/modeline-git-branch.git
-[submodule ".emacs.d/plugins/popup"]
-        path = .emacs.d/plugins/popup
-        url = https://github.com/auto-complete/popup-el
+	path = .emacs.d/plugins/modeline-git-branch
+	url = https://github.com/acple/modeline-git-branch
+[submodule ".emacs.d/plugins/popup-el"]
+	path = .emacs.d/plugins/popup-el
+	url = https://github.com/auto-complete/popup-el
 [submodule ".emacs.d/plugins/markdown-mode"]
-        path = .emacs.d/plugins/markdown-mode
-        url = git://jblevins.org/git/markdown-mode.git
+	path = .emacs.d/plugins/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
 [submodule ".emacs.d/plugins/japanese-holidays"]
-        path = .emacs.d/plugins/japanese-holidays
-        url = https://github.com/emacs-jp/japanese-holidays
+	path = .emacs.d/plugins/japanese-holidays
+	url = https://github.com/emacs-jp/japanese-holidays
 [submodule ".emacs.d/plugins/rd-mode"]
-        path = .emacs.d/plugins/rd-mode
-        url = https://github.com/emacsmirror/rd-mode
+	path = .emacs.d/plugins/rd-mode
+	url = https://github.com/emacsmirror/rd-mode
 [submodule ".emacs.d/plugins/emacs-calfw"]
-        path = .emacs.d/plugins/emacs-calfw
-        url = https://github.com/kiwanami/emacs-calfw
+	path = .emacs.d/plugins/emacs-calfw
+	url = https://github.com/kiwanami/emacs-calfw
 [submodule ".emacs.d/plugins/migemo"]
-        path = .emacs.d/plugins/migemo
-        url = https://github.com/emacs-jp/migemo
+	path = .emacs.d/plugins/migemo
+	url = https://github.com/emacs-jp/migemo
 [submodule ".emacs.d/plugins/twittering-mode"]
-        path = .emacs.d/plugins/twittering-mode
-        url = https://github.com/hayamiz/twittering-mode
+	path = .emacs.d/plugins/twittering-mode
+	url = https://github.com/hayamiz/twittering-mode
 [submodule ".emacs.d/plugins/ack-el"]
-        path = .emacs.d/plugins/ack-el
-        url = https://github.com/leoliu/ack-el/
+	path = .emacs.d/plugins/ack-el
+	url = https://github.com/leoliu/ack-el
