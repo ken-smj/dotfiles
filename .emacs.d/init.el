@@ -111,7 +111,7 @@
 ;; (load "emacs-w3m-conf")
 ;; ------------------------------------------------------------------------
 ;; @ twitter
-(require 'twittering-mode)
+(load "twittering-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ css-mode
 (load "css-mode-conf")
