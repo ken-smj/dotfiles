@@ -14,8 +14,8 @@
 	    (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" "elisp" "plugins")
 ;; ------------------------------------------------------------------------
-;; $ auto-async-byte-compile
-(load "auto-async-byte-compile")
+;; ;; $ auto-async-byte-compile
+;; (load "auto-async-byte-compile")
 ;; ------------------------------------------------------------------------
 ;; @ exec path
 (load "exec-path-conf")
