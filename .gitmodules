@@ -49,3 +49,12 @@
 [submodule ".emacs.d/plugins/ack-el"]
 	path = .emacs.d/plugins/ack-el
 	url = https://github.com/leoliu/ack-el
+[submodule ".emacs.d/plugins/org2blog"]
+	path = .emacs.d/plugins/org2blog
+	url = git://github.com/punchagan/org2blog.git
+[submodule ".emacs.d/plugins/metaweblog"]
+	path = .emacs.d/plugins/metaweblog
+	url = git://github.com/punchagan/metaweblog.git
+[submodule ".emacs.d/plugins/xml-rpc"]
+	path = .emacs.d/plugins/xml-rpc
+	url = git://github.com/emacsmirror/xml-rpc.git
