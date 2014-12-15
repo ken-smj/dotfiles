@@ -58,3 +58,6 @@
 [submodule ".emacs.d/plugins/xml-rpc"]
 	path = .emacs.d/plugins/xml-rpc
 	url = git://github.com/emacsmirror/xml-rpc.git
+[submodule ".emacs.d/src/the_silver_searcher"]
+	path = .emacs.d/src/the_silver_searcher
+	url = git://github.com/ggreer/the_silver_searcher.git
