@@ -42,3 +42,13 @@
 	  (gobject "libgobject-2.0-0.dll")
 	  (zlib "zlib1.dll"))))
 ;; ------------------------------------------------------------------------
+;; @ windows for 32bit or 64bit
+;; http://d.hatena.ne.jp/pogin/20120227/1330342298
+(defvar run-windows
+  (or (equal system-type 'windows-nt)
+      (equal system-type 'ms-dos))))
+(if run-windows
+    (if (file-exists-p "C:/Program Files (x86)")
+        (defvar run-windows-x64 t)
+      (defvar run-windows-x64 nil)))
+;; ------------------------------------------------------------------------

@@ -6,10 +6,11 @@
 (require 'netrc) ;; or nothing if already in the load-path
 (require 'metaweblog)
 (require 'org2blog-autoloads)
-(let (blog '(netrc-machine (netrc-parse "~/.netrc") "smj" t))
-  (setq org2blog/wp-blog-alist
-	 '(("smjblog"
-	    :url (netrc-get blog "default")
-	    :username (netrc-get blog "login")
-	    :password (netrc-get blog "password")))))
+(let (blog)
+  (progn (setq blog  (netrc-machine (netrc-parse "~/.netrc") "smj"))
+	 (setq org2blog/wp-blog-alist
+	       '(("smjblog"
+		  :url (netrc-get blog "login")
+		  :username (netrc-get blog "password")
+		  :password nil)))))
 ;; ------------------------------------------------------------------------
