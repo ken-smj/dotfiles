@@ -28,25 +28,27 @@
 ;; ;; スタートアップ時のエコー領域メッセージの非表示
 ;; (setq inhibit-startup-echo-area-message nil)
 ;; ------------------------------------------------------------------------
-;; @ image-library
-(when (eq system-type 'windows-nt)
-  (setq image-library-alist
-	'((xpm "libXpm-noX4.dll")
-	  (png "libpng16-16.dll")
-	  (jpeg "libjpeg-8.dll")
-	  (tiff "libtiff-5.dll")
-	  (gif "libgif-7.dll")
-	  (svg "librsvg-2-2.dll")
-	  (gdk-pixbuf "libgdk_pixbuf-2.0-0.dll")
-	  (glib "libglib-2.0-0.dll")
-	  (gobject "libgobject-2.0-0.dll")
-	  (zlib "zlib1.dll"))))
+;; ;; @ dynamic library
+;; (when (eq system-type 'windows-nt)
+;;   (setq image-library-alist
+;; 	'((xpm "libXpm-noX4.dll")
+;; 	  (png "libpng16-16.dll")
+;; 	  (jpeg "libjpeg-8.dll")
+;; 	  (tiff "libtiff-5.dll")
+;; 	  (gif "libgif-7.dll")
+;; 	  (svg "librsvg-2-2.dll")
+;; 	  (gdk-pixbuf "libgdk_pixbuf-2.0-0.dll")
+;; 	  (glib "libglib-2.0-0.dll")
+;; 	  (gobject "libgobject-2.0-0.dll")
+;; 	  (zlib "zlib1.dll")))
+;;   (add-to-list 'dynamic-library-alist
+;; 	       '(libxml2 "libxml2-2.dll" "libxml2.dll")))
 ;; ------------------------------------------------------------------------
 ;; @ windows for 32bit or 64bit
 ;; http://d.hatena.ne.jp/pogin/20120227/1330342298
 (defvar run-windows
   (or (equal system-type 'windows-nt)
-      (equal system-type 'ms-dos))))
+      (equal system-type 'ms-dos)))
 (if run-windows
     (if (file-exists-p "C:/Program Files (x86)")
         (defvar run-windows-x64 t)

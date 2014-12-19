@@ -5,6 +5,7 @@ thumbs.db
 ac-comphist.dat
 .emacs.d/eshell
 .emacs.d/auto-save-list
+.emacs.d/url
 tmp
 tramp
 recentf
