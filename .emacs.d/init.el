@@ -14,8 +14,8 @@
 	    (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" "elisp" "plugins")
 ;; ------------------------------------------------------------------------
-;; $ auto-async-byte-compile
-(load "auto-async-byte-compile")
+;; ;; $ auto-async-byte-compile
+;; (load "auto-async-byte-compile")
 ;; ------------------------------------------------------------------------
 ;; @ exec path
 (load "exec-path-conf")
@@ -111,7 +111,7 @@
 ;; (load "emacs-w3m-conf")
 ;; ------------------------------------------------------------------------
 ;; @ twitter
-(require 'twittering-mode)
+(load "twittering-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ css-mode
 (load "css-mode-conf")
@@ -147,6 +147,12 @@
 ;; ------------------------------------------------------------------------
 ;; @ web-mode
 (load "web-mode-conf")
+;; ------------------------------------------------------------------------
+;; @ org2blog
+(load "org2blog-mode-conf")
+;; ------------------------------------------------------------------------
+;; @ evernote-mode
+(load "evernote-mode-conf")
 ;; ------------------------------------------------------------------------
 
 ;;;
