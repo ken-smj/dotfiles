@@ -45,6 +45,6 @@ export LESSHISTFILE=-
 ### Aliases ###
 ###############
 alias more='less -r'
-alias rm='rm -i'
-alias ls='ls -F --color=auto'
+#alias rm='rm -i'
+alias ls='ls -aF --color=auto'
 alias emacs='emacs -nw'

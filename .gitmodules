@@ -49,9 +49,6 @@
 [submodule ".emacs.d/plugins/ack-el"]
 	path = .emacs.d/plugins/ack-el
 	url = https://github.com/leoliu/ack-el
-[submodule ".emacs.d/lib/the_silver_searcher"]
-	path = .emacs.d/lib/the_silver_searcher
-	url = git://github.com/ggreer/the_silver_searcher.git
 [submodule ".emacs.d/plugins/Emacs-wgrep"]
 	path = .emacs.d/plugins/Emacs-wgrep
 	url = git://github.com/mhayashi1120/Emacs-wgrep.git
@@ -64,3 +61,15 @@
 [submodule ".emacs.d/plugins/s"]
 	path = .emacs.d/plugins/s
 	url = git://github.com/magnars/s.el.git
+[submodule ".emacs.d/plugins/org2blog"]
+	path = .emacs.d/plugins/org2blog
+	url = git://github.com/punchagan/org2blog.git
+[submodule ".emacs.d/plugins/metaweblog"]
+	path = .emacs.d/plugins/metaweblog
+	url = git://github.com/punchagan/metaweblog.git
+[submodule ".emacs.d/plugins/xml-rpc"]
+	path = .emacs.d/plugins/xml-rpc
+	url = git://github.com/emacsmirror/xml-rpc.git
+[submodule ".emacs.d/src/the_silver_searcher"]
+	path = .emacs.d/src/the_silver_searcher
+	url = git://github.com/ggreer/the_silver_searcher.git
