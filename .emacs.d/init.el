@@ -14,11 +14,14 @@
 	    (normal-top-level-add-subdirs-to-load-path))))))
 (add-to-load-path "conf" "elisp" "plugins")
 ;; ------------------------------------------------------------------------
-;; $ auto-async-byte-compile
-(load "auto-async-byte-compile")
+;; ;; $ auto-async-byte-compile
+;; (load "auto-async-byte-compile")
 ;; ------------------------------------------------------------------------
 ;; @ exec path
 (load "exec-path-conf")
+;; ------------------------------------------------------------------------
+;; @ shell
+(load "shell-conf")
 ;; ------------------------------------------------------------------------
 ;; @ coding system
 (load "coding-system")
@@ -74,8 +77,11 @@
 ;; @ line highlight and jump
 (load "bm-mode-conf")
 ;; ------------------------------------------------------------------------
-;; @ ack-mode
-(require 'ack)
+;; ;; @ ack-mode
+;; (require 'ack)
+;; ------------------------------------------------------------------------
+;; @ wgrep-ag
+(load "wgrep-conf")
 ;; ------------------------------------------------------------------------
 ;; @ migemo
 (load "migemo-conf")

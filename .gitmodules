@@ -49,3 +49,18 @@
 [submodule ".emacs.d/plugins/ack-el"]
 	path = .emacs.d/plugins/ack-el
 	url = https://github.com/leoliu/ack-el
+[submodule ".emacs.d/lib/the_silver_searcher"]
+	path = .emacs.d/lib/the_silver_searcher
+	url = git://github.com/ggreer/the_silver_searcher.git
+[submodule ".emacs.d/plugins/Emacs-wgrep"]
+	path = .emacs.d/plugins/Emacs-wgrep
+	url = git://github.com/mhayashi1120/Emacs-wgrep.git
+[submodule ".emacs.d/plugins/ag"]
+	path = .emacs.d/plugins/ag
+	url = git://github.com/Wilfred/ag.el.git
+[submodule ".emacs.d/plugins/dash"]
+	path = .emacs.d/plugins/dash
+	url = git://github.com/magnars/dash.el.git
+[submodule ".emacs.d/plugins/s"]
+	path = .emacs.d/plugins/s
+	url = git://github.com/magnars/s.el.git
