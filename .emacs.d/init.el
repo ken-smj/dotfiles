@@ -98,6 +98,9 @@
 ;; @ C++ style
 (load "cc-mode-style-conf")
 ;; ------------------------------------------------------------------------
+;; @ C# mode
+(load "csharp-mode-conf")
+;; ------------------------------------------------------------------------
 ;; @ Calender,ChengeLog memo and Howm. remark: Do NOT changed load order.
 (load "changelog-memo-conf")
 (load "rd-mode-conf")
