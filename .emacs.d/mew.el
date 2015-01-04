@@ -1,7 +1,7 @@
 ;;;; -*- coding: iso-2022-7bit -*-
 
 ;; 猫アイコンセット
-(setq mew-icon-directory "~/.emacs.d/plugins/mew/etc/")
+(setq mew-icon-directory "~/.emacs.d/plugins/mew-6.6/etc/")
 
 (setq mew-ask-subject nil) 
 (setq mew-pop-size 0)			; Un-limit the receiving POP mail size

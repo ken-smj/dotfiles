@@ -73,3 +73,6 @@
 [submodule ".emacs.d/src/the_silver_searcher"]
 	path = .emacs.d/src/the_silver_searcher
 	url = git://github.com/ggreer/the_silver_searcher.git
+[submodule ".emacs.d/lib/fortunes"]
+	path = .emacs.d/lib/fortunes
+	url = git://github.com/bmc/fortunes.git

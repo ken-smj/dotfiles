@@ -63,6 +63,9 @@
 ;; @ mew
 (load "mew-conf")
 ;; ------------------------------------------------------------------------
+;; @ biff
+(load "biff-conf")
+;; ------------------------------------------------------------------------
 ;; @ auto-complete mode
 (require 'auto-complete)
 (require 'auto-complete-config)    ; 必須ではないですが一応
