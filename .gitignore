@@ -12,3 +12,15 @@ recentf
 *.elc
 *.ncb
 *.user
+*.aps
+*.suo
+**/Win32*/
+**/x64*/
+**/bin*/
+**/Debug*/
+**/Release*/
+**/*.debug/
+GPATH
+GRTAGS
+GTAGS
+!EVInsite/bin.lite/
