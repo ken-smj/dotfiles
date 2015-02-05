@@ -76,3 +76,6 @@
 [submodule ".emacs.d/lib/fortunes"]
 	path = .emacs.d/lib/fortunes
 	url = git://github.com/bmc/fortunes.git
+[submodule ".emacs.d/plugins/elfeed"]
+	path = .emacs.d/plugins/elfeed
+	url = git://github.com/skeeto/elfeed.git
