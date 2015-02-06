@@ -79,3 +79,6 @@
 [submodule ".emacs.d/plugins/elfeed"]
 	path = .emacs.d/plugins/elfeed
 	url = git://github.com/skeeto/elfeed.git
+[submodule ".emacs.d/plugins/org-opml"]
+	path = .emacs.d/plugins/org-opml
+	url = git://github.com/edavis/org-opml.git
