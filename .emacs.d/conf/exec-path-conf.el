@@ -10,10 +10,7 @@
     (when (eq system-type 'windows-nt)
       (setq my-exec-list
 	    (list
-	     (when (string= system-name "SHIMOJOKENICHIR")
-	       (expand-file-name "~/local/msys64/usr/bin"))
-	     (when (string= system-name "RED")
-	       (expand-file-name "~/../../local/msys64/usr/bin"))
+	     (expand-file-name "~/local/msys64/usr/bin")
 	     (expand-file-name "~/.emacs.d/plugins/mew-6.6/bin")
 	     (expand-file-name "~/.emacs.d/libexec/w32")
 	     (expand-file-name "~/.emacs.d/libexec/w32/gzip-1.3.12-1-bin/bin/")
