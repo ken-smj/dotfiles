@@ -67,9 +67,6 @@
 [submodule ".emacs.d/plugins/metaweblog"]
 	path = .emacs.d/plugins/metaweblog
 	url = git://github.com/punchagan/metaweblog.git
-[submodule ".emacs.d/plugins/xml-rpc"]
-	path = .emacs.d/plugins/xml-rpc
-	url = git://github.com/emacsmirror/xml-rpc.git
 [submodule ".emacs.d/src/the_silver_searcher"]
 	path = .emacs.d/src/the_silver_searcher
 	url = git://github.com/ggreer/the_silver_searcher.git
@@ -82,3 +79,9 @@
 [submodule ".emacs.d/plugins/org-opml"]
 	path = .emacs.d/plugins/org-opml
 	url = git://github.com/edavis/org-opml.git
+[submodule ".emacs.d/plugins/xml-rpc"]
+	path = .emacs.d/plugins/xml-rpc
+	url = git://github.com/emacsmirror/xml-rpc.git
+[submodule ".emacs.d/plugins/mew-contrib"]
+	path = .emacs.d/plugins/mew-contrib
+	url = git://github.com/kazu-yamamoto/mew-contrib.git
