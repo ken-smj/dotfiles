@@ -24,4 +24,5 @@ recentf
 GPATH
 GRTAGS
 GTAGS
+!EVInsite/bin/
 !EVInsite/bin.lite/
