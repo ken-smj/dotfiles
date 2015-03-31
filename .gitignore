@@ -3,6 +3,7 @@
 thumbs.db
 *~
 .svn
+.#*
 ac-comphist.dat
 .emacs.d/eshell
 .emacs.d/auto-save-list
