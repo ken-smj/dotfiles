@@ -4,7 +4,7 @@
 ;; @ biff
 (require 'netrc)
 (require 'biff)
-(let ((blog) (parse (netrc-parse "~/GoogleDrive/.netrc")))
+(let ((blog) (parse (netrc-parse "~/common/.netrc")))
   (progn (setq blog  (netrc-machine  parse "gmw"))
 	 (add-to-list 'biff-account-alist
 		      (list "gmw"

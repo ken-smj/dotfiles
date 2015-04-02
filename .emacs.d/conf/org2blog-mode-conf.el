@@ -6,7 +6,7 @@
 (require 'netrc) ;; or nothing if already in the load-path
 (require 'metaweblog)
 (require 'org2blog-autoloads)
-(let ((blog (netrc-machine (netrc-parse "~/GoogleDrive/.netrc") "smj")))
+(let ((blog (netrc-machine (netrc-parse "~/common/.netrc") "smj")))
   (setq org2blog/wp-blog-alist
 	(list (list "wordpress"
 	      :url (netrc-get blog "account")

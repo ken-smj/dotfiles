@@ -10,10 +10,10 @@
 (defvar howm-view-title-header "#")  ; this should be evaluated in advance to handle markdown
 (require 'howm)
 (setq howm-menu-lang 'ja)
-(setq howm-directory "~/GoogleDrive/howm/")
+(setq howm-directory "~/common/howm/")
 (setq howm-file-name-format "%Y-%m/%Y%m%d-%H%M%S.howm")
-(setq howm-keyword-file "~/GoogleDrive/howm/.howm-keys")
-(setq howm-history-file "~/GoogleDrive/howm/.howm-history")
+(setq howm-keyword-file "~/common/howm/.howm-keys")
+(setq howm-history-file "~/common/howm/.howm-history")
 ;; rd-mode.el が読み込まれているという前提で
 ;; (setq howm-view-contents-font-lock-keywords rd-font-lock-keywords)
 ;; (setq howm-template "= %title%cursor\n%date %file\n")
