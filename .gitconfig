@@ -7,7 +7,7 @@
 	path = ~/.gitconfig.local
 [pack]
 	threads = 1
-	windowMemory = 5g
+	windowMemory = 1g
 	packSizeLimit = 1g
 	compression = -1
 [push]
