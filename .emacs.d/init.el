@@ -86,6 +86,12 @@
 ;; @ wgrep-ag
 (load "wgrep-conf")
 ;; ------------------------------------------------------------------------
+;; @ moccur
+(load "moccur-conf")
+;; ------------------------------------------------------------------------
+;; @ ibuffer
+(load "ibuffer-conf")
+;; ------------------------------------------------------------------------
 ;; @ migemo
 (load "migemo-conf")
 ;; ------------------------------------------------------------------------
@@ -170,23 +176,10 @@
 ;; @ elfeed (rss reader)
 (load "elfeed-conf")
 ;; ------------------------------------------------------------------------
+;; @ game sudoku
+(load "sudoku-conf")
+;; ------------------------------------------------------------------------
 
 ;;;
 ;;; end of file
 ;;;
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(elfeed-feeds
-   (quote
-    ("http://www.geocities.jp/ktaro38/rss.xml" "http://magazine.rubyist.net/atom.xml" "http://sourceforge.net/projects/msys2/rss?path=/Base/x86_64" "http://pipes.yahoo.com/pipes/pipe.run?_id=MDQodEaT3RGT7j5gBRNMsA&_render=rss" "http://headlines.yahoo.co.jp/rss/cnippou-c_int.xml" "http://headlines.yahoo.co.jp/rss/san-dom.xml" "http://rss.dailynews.yahoo.co.jp/fc/world/rss.xml" "http://headlines.yahoo.co.jp/rss/yonh-c_int.xml" "http://www3.nhk.or.jp/rss/news/cat0.xml" "http://rss.dailynews.yahoo.co.jp/fc/local/rss.xml" "http://rss.dailynews.yahoo.co.jp/fc/economy/rss.xml" "http://rss.dailynews.yahoo.co.jp/fc/domestic/rss.xml" "http://headlines.yahoo.co.jp/rss/wsj-c_int.xml" "http://headlines.yahoo.co.jp/rss/chosun-c_int.xml" "http://headlines.yahoo.co.jp/rss/ftaiwan-c_int.xml" "http://www.nytimes.com/services/xml/rss/nyt/World.xml" "http://getnews.jp/feed" "http://rss.dailynews.yahoo.co.jp/fc/computer/rss.xml" "http://sankei.jp.msn.com/rss/news/flash.xml" "http://headlines.yahoo.co.jp/rss/san-c_int.xml" "http://feeds.reuters.com/reuters/JPTopNews" "http://itpro.nikkeibp.co.jp/rss/news.rdf" "http://headlines.yahoo.co.jp/rss/scn-c_int.xml" "http://headlines.yahoo.co.jp/rss/hankyoreh-c_int.xml" "http://www.atmarkit.co.jp/rss/rss091.xml" "http://www.lifehacker.jp/index.xml")))
- '(vc-handled-backends nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
