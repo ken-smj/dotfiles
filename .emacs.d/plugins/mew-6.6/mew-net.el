@@ -158,29 +158,11 @@
 (defvar mew-biff-string nil)
 (defvar mew-biff-timer-id nil)
 
-(unless (executable-find "growlnotify")
-  (error "mew-net.el mew-biff-growl requires that you install the `growlnotify' program."))
-
-(defsubst mew-biff-growl-ensure-quoted-string (arg)
-  (shell-quote-argument
-   (cond ((null arg) "")
-         ((stringp arg) arg)
-         (t (format "%s" arg)))))
-
-(defun mew-biff-growl (mew-biff-message mew-biff-subject mew-biff-sticky)
-  "Notify the user of something via Growl."
-  (shell-command
-   (concat "growlnotify /a:Mew /n:Mew"
-           (if mew-biff-sticky " /s:true")
-	   " /t:" (mew-biff-growl-ensure-quoted-string mew-biff-subject)
-           " " (mew-biff-growl-ensure-quoted-string mew-biff-message)
-	   )))
-
 (defun mew-biff-bark (n)
   (if (= n 0)
       (setq mew-biff-string nil)
     (if (and mew-use-biff-bell (eq mew-biff-string nil))
-	(mew-biff-growl (format "You got Mail(%d)!" n) "Mail" nil))
+	(beep))
     (setq mew-biff-string (format "Mail(%d)" n))))
 
 (defun mew-biff-clear ()

@@ -49,15 +49,39 @@
 [submodule ".emacs.d/plugins/ack-el"]
 	path = .emacs.d/plugins/ack-el
 	url = https://github.com/leoliu/ack-el
+[submodule ".emacs.d/plugins/Emacs-wgrep"]
+	path = .emacs.d/plugins/Emacs-wgrep
+	url = git://github.com/mhayashi1120/Emacs-wgrep.git
+[submodule ".emacs.d/plugins/ag"]
+	path = .emacs.d/plugins/ag
+	url = git://github.com/Wilfred/ag.el.git
+[submodule ".emacs.d/plugins/dash"]
+	path = .emacs.d/plugins/dash
+	url = git://github.com/magnars/dash.el.git
+[submodule ".emacs.d/plugins/s"]
+	path = .emacs.d/plugins/s
+	url = git://github.com/magnars/s.el.git
 [submodule ".emacs.d/plugins/org2blog"]
 	path = .emacs.d/plugins/org2blog
 	url = git://github.com/punchagan/org2blog.git
 [submodule ".emacs.d/plugins/metaweblog"]
 	path = .emacs.d/plugins/metaweblog
 	url = git://github.com/punchagan/metaweblog.git
-[submodule ".emacs.d/plugins/xml-rpc"]
-	path = .emacs.d/plugins/xml-rpc
-	url = git://github.com/emacsmirror/xml-rpc.git
 [submodule ".emacs.d/src/the_silver_searcher"]
 	path = .emacs.d/src/the_silver_searcher
 	url = git://github.com/ggreer/the_silver_searcher.git
+[submodule ".emacs.d/lib/fortunes"]
+	path = .emacs.d/lib/fortunes
+	url = git://github.com/bmc/fortunes.git
+[submodule ".emacs.d/plugins/elfeed"]
+	path = .emacs.d/plugins/elfeed
+	url = git://github.com/skeeto/elfeed.git
+[submodule ".emacs.d/plugins/org-opml"]
+	path = .emacs.d/plugins/org-opml
+	url = git://github.com/edavis/org-opml.git
+[submodule ".emacs.d/plugins/xml-rpc"]
+	path = .emacs.d/plugins/xml-rpc
+	url = git://github.com/emacsmirror/xml-rpc.git
+[submodule ".emacs.d/plugins/mew-contrib"]
+	path = .emacs.d/plugins/mew-contrib
+	url = git://github.com/kazu-yamamoto/mew-contrib.git

@@ -14,6 +14,6 @@ With a numeric argument, turn mode on iff ARG is positive."
   (interactive)
   (and buffer-file-name
        (string-match "\\.el$" buffer-file-name)
-       (executable-interpret (format "byte-compile %s" buffer-file-name))))
+       (executable-interpret (format "byte-compile.rb %s" buffer-file-name))))
 (add-hook 'emacs-lisp-mode-hook 'auto-async-byte-compile)
 ;; ------------------------------------------------------------------------
