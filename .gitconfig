@@ -16,6 +16,9 @@
 	default = simple
 [alias]
 	svn-diff = "!f() { git svn dcommit -n | grep diff | awk -F'diff-tree' -v opt=$@ '{print \"git diff \"opt\" \"$2}' | sh; }; f"
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep "^[a-z]"
 [color]
 	ui = true
 	diff = true

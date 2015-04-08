@@ -16,6 +16,7 @@ recentf
 *.user
 *.aps
 *.suo
+*.ilk
 **/Win32*/
 **/x64*/
 **/bin*/
@@ -25,5 +26,8 @@ recentf
 GPATH
 GRTAGS
 GTAGS
-!EVInsite/bin/
 !EVInsite/bin.lite/
+!EVInsite/bin/
+EVInsite/bin/log/
+**/autosave.prs
+**/*local.ini
