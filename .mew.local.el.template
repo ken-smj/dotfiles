@@ -8,6 +8,13 @@
 	 ("user"         . "other user name of mail address")
 	 ("mail-domain"  . "other mail address domain")
 	 ("inbox-folder" . "+inbox-other")
+         ("pop-auth"      . APOP)
+         ("pop-user"      . "pop accunt user")
+         ("pop-server"    . "pop.other.example.jp")
+	 ("pop-port"      . 110)
+         ("smtp-user"    . "smtp accunt user")
+         ("smtp-server"  . "smtp.other.example.jp")
+	 ("smtp-port"     . 587))
 	("default"
          ("name"          . "user full name")
 	 ("user"          . "user name of mail address")
