@@ -31,3 +31,4 @@ GTAGS
 EVInsite/bin/log/
 **/autosave.prs
 **/*local.ini
+.emacs.d/bookmarks

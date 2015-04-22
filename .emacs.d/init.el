@@ -156,6 +156,9 @@
 ;; @ growl
 (autoload 'growl "growl" nil t)
 ;; ------------------------------------------------------------------------
+;; @ org mode
+(load "org-mode-conf")
+;; ------------------------------------------------------------------------
 ;; @ markdown mode
 (load "markdown-mode-conf")
 (setq auto-mode-alist (cons '("\\.md" . gfm-mode) auto-mode-alist))
@@ -183,3 +186,16 @@
 ;;;
 ;;; end of file
 ;;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(vc-handled-backends nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
