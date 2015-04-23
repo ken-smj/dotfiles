@@ -27,7 +27,7 @@
   (add-hook 'python-mode-hook
 	    '(lambda ()
 	       (hs-minor-mode 1)))
-  (define-key hs-minor-mode-map (kbd "\C-ca") 'hs-hide-all)
-  (define-key hs-minor-mode-map (kbd "\C-cv") 'hs-show-all)
-  (define-key hs-minor-mode-map (kbd "\C-ct") 'hs-toggle-hiding))
+  ;; (define-key hs-minor-mode-map (kbd "\C-ca") 'hs-hide-all)
+  ;; (define-key hs-minor-mode-map (kbd "\C-cv") 'hs-show-all)
+  (define-key hs-minor-mode-map (kbd "\C-cht") 'hs-toggle-hiding))
 ;; ------------------------------------------------------------------------
