@@ -64,7 +64,7 @@
       '(("Doing" :foreground "#FF0000")))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory))
-			     ;; "~/common/howm/Diary"))
+(setq org-agenda-include-diary t)
 ;; Doing リストを表示
 (defun my-sparse-doing-tree ()
   (interactive)

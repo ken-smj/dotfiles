@@ -2,9 +2,8 @@
 
 ;; ------------------------------------------------------------------------
 ;; @ calender
-;;diary-file を howm のディレクトリに置く
-(setq diary-file
-      (expand-file-name "Diary" howm-directory))
+;;diary-file を common ディレクトリに置く
+(setq diary-file (expand-file-name "~/common/Diary"))
 (require 'calendar)
 ;; キーの設定
 (define-key calendar-mode-map "f" 'calendar-forward-day)
@@ -20,22 +19,43 @@
 (setq appt-display-format 'window)
 (setq appt-display-duration 180)
 (appt-activate)
+;; 今日をマークする
+(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 ;; 祝日をマークする
 (setq calendar-mark-holidays-flag t)
 (setq number-of-diary-entries 31)
 (setq mark-holidays-in-calendar t)
 (setq calendar-mark-diary-entries-flag t)
+;; org-agenda を取り込む
+(add-hook 'diary-display-hook 'fancy-diary-display)
 ;; (install-elisp "http://www.meadowy.org/meadow/netinstall/export/799/branches/3.00/pkginfo/japanese-holidays/japanese-holidays.el")
-(require 'japanese-holidays)
-(setq calendar-holidays
-      (append japanese-holidays holiday-local-holidays holiday-other-holidays))
-(setq mark-holidays-in-calendar t) ; 祝日をカレンダーに表示
-;; 今日をマークする
-(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-;; 日曜日をマークにする
-(setq calendar-weekend-marker 'diary)
-(add-hook 'today-visible-calendar-hook 'japanese-holiday-mark-weekend)
-(add-hook 'today-invisible-calendar-hook 'japanese-holiday-mark-weekend)
+(eval-after-load "holidays"
+  '(progn
+     (require 'japanese-holidays)
+     ;; Emacs23から関数名が変わったのでエイリアスを設定する
+     (unless (fboundp 'extract-calendar-day)
+       (defalias 'extract-calendar-day (symbol-function 'calendar-extract-day))
+       (defalias 'extract-calendar-month (symbol-function 'calendar-extract-month))
+       (defalias 'extract-calendar-year (symbol-function 'calendar-extract-year)))
+     (setq calendar-holidays ; 他の国の祝日も表示させたい場合は適当に調整
+           (append japanese-holidays holiday-local-holidays holiday-other-holidays))
+     (setq mark-holidays-in-calendar t) ; 祝日をカレンダーに表示
+     ;; 土曜日・日曜日を祝日として表示する場合、以下の設定を追加します。
+     ;; デフォルトで設定済み
+     (setq japanese-holiday-weekend '(0 6)     ; 土日を祝日として表示
+           japanese-holiday-weekend-marker     ; 土曜日を水色で表示
+           '(holiday nil nil nil nil nil japanese-holiday-saturday))
+     (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
+     (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)))
+;; (setq calendar-holidays
+;;       (append japanese-holidays holiday-local-holidays holiday-other-holidays))
+;; (setq mark-holidays-in-calendar t) ; 祝日をカレンダーに表示
+;; ;; 今日をマークする
+;; (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
+;; ;; 日曜日をマークにする
+;; (setq calendar-weekend-marker 'diary)
+;; (add-hook 'today-visible-calendar-hook 'japanese-holiday-mark-weekend)
+;; (add-hook 'today-invisible-calendar-hook 'japanese-holiday-mark-weekend)
 ;;緯度，経度設定　（日の出，日の入り時刻用）
 (setq calendar-latitude 35.7)		; 東大和
 (setq calendar-longitude 139.4)
