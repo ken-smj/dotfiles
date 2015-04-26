@@ -47,15 +47,12 @@
            '(holiday nil nil nil nil nil japanese-holiday-saturday))
      (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
      (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)))
-;; (setq calendar-holidays
-;;       (append japanese-holidays holiday-local-holidays holiday-other-holidays))
-;; (setq mark-holidays-in-calendar t) ; 祝日をカレンダーに表示
-;; ;; 今日をマークする
-;; (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
-;; ;; 日曜日をマークにする
-;; (setq calendar-weekend-marker 'diary)
-;; (add-hook 'today-visible-calendar-hook 'japanese-holiday-mark-weekend)
-;; (add-hook 'today-invisible-calendar-hook 'japanese-holiday-mark-weekend)
+;; Display Diary
+(setq view-diary-entries-initially t
+      mark-diary-entries-in-calendar t
+      number-of-diary-entries 7)
+(add-hook 'diary-display-hook 'fancy-diary-display)
+(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 ;;緯度，経度設定　（日の出，日の入り時刻用）
 (setq calendar-latitude 35.7)		; 東大和
 (setq calendar-longitude 139.4)
@@ -66,29 +63,29 @@
 (setq calendar-time-zone +540)
 (setq calendar-standard-time-zone-name "JST")
 (setq calendar-daylight-time-zone-name "JST")
-;; M-x calendar しといて M-x howm-from-calendar
-;;         → その日付を検索
-(defun howm-from-calendar ()
-  (interactive)
-  (require 'howm-mode)
-  (let* ((mdy (calendar-cursor-to-date t))
-         (m (car mdy))
-         (d (second mdy))
-         (y (third mdy))
-         (key (format-time-string
-               howm-date-format
-               (encode-time 0 0 0 d m y))))
-    (howm-keyword-search key)))
-;;カレンダーの上で D を押すと grep
-(add-hook 'initial-calendar-window-hook
-          '(lambda ()
-             (local-set-key
-              "D" 'howm-from-calendar)))
-;;howm のメニューで d でカレンダー
-(add-hook 'howm-menu-hook
-          '(lambda ()
-             (local-set-key "d" 'calendar)))
-(put 'upcase-region 'disabled nil)
+;; ;; M-x calendar しといて M-x howm-from-calendar
+;; ;;         → その日付を検索
+;; (defun howm-from-calendar ()
+;;   (interactive)
+;;   (require 'howm-mode)
+;;   (let* ((mdy (calendar-cursor-to-date t))
+;;          (m (car mdy))
+;;          (d (second mdy))
+;;          (y (third mdy))
+;;          (key (format-time-string
+;;                howm-date-format
+;;                (encode-time 0 0 0 d m y))))
+;;     (howm-keyword-search key)))
+;; ;;カレンダーの上で D を押すと grep
+;; (add-hook 'initial-calendar-window-hook
+;;           '(lambda ()
+;;              (local-set-key
+;;               "D" 'howm-from-calendar)))
+;; ;;howm のメニューで d でカレンダー
+;; (add-hook 'howm-menu-hook
+;;           '(lambda ()
+;;              (local-set-key "d" 'calendar)))
+;; (put 'upcase-region 'disabled nil)
 ;; ------------------------------------------------------------------------
 ;; @ calfw
 (require 'calfw-cal)

@@ -111,11 +111,11 @@
 ;; @ C# mode
 (load "csharp-mode-conf")
 ;; ------------------------------------------------------------------------
-;; @ Calender,ChengeLog memo and Howm. remark: Do NOT changed load order.
+;; @ Calendar,ChengeLog memo and Howm. remark: Do NOT changed load order.
 (load "changelog-memo-conf")
 (load "rd-mode-conf")
-(load "howm-mode-conf")
-(load "calender-conf")
+;; (load "howm-mode-conf")
+(load "calendar-conf")
 ;; ------------------------------------------------------------------------
 ;; @ Aspell
 (load "ispell-conf")
@@ -182,20 +182,17 @@
 ;; @ game sudoku
 (load "sudoku-conf")
 ;; ------------------------------------------------------------------------
+;; @ boot カレンダーと予定を表示する
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
+(add-hook 'emacs-startup-hook
+	  (lambda ()
+	    (calendar)
+	    (pop-to-buffer "*Fancy Diary Entries*" (get-buffer-window "*scratch*"))
+	    (delete-other-windows)
+	    (calendar)))
+;; ------------------------------------------------------------------------
 
 ;;;
 ;;; end of file
 ;;;
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(vc-handled-backends nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
