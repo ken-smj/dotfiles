@@ -22,6 +22,7 @@
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
 	("t" "Todo" entry (file+headline nil "Inbox") "**TODO  %?\n   %i\n   %a\n   %t")
 	("b" "Bug" entry (file+headline nil "Inbox") "** TODO %?   :bug:\n   %i\n   %a\n   %t")
+	("l" "Log" entry (file+headline nil "Log") "** %? :log:\n   %i\n   %a\n   %t")
 	))
 ;; agendaを使う
 ;; (setq org-agenda-files (list org-directory))
