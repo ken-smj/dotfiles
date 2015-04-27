@@ -187,8 +187,7 @@
 (setq initial-scratch-message nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
-	    (calendar)
-	    (pop-to-buffer "*Fancy Diary Entries*" (get-buffer-window "*scratch*"))
+	    (pop-to-buffer "*scratch*")
 	    (delete-other-windows)
 	    (calendar)))
 ;; ------------------------------------------------------------------------

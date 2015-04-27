@@ -19,16 +19,10 @@
 (setq appt-display-format 'window)
 (setq appt-display-duration 180)
 (appt-activate)
-;; 今日をマークする
-(add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 ;; 祝日をマークする
 (setq calendar-mark-holidays-flag t)
-(setq number-of-diary-entries 31)
 (setq mark-holidays-in-calendar t)
 (setq calendar-mark-diary-entries-flag t)
-;; org-agenda を取り込む
-(add-hook 'diary-display-hook 'fancy-diary-display)
-;; (install-elisp "http://www.meadowy.org/meadow/netinstall/export/799/branches/3.00/pkginfo/japanese-holidays/japanese-holidays.el")
 (eval-after-load "holidays"
   '(progn
      (require 'japanese-holidays)
@@ -48,9 +42,9 @@
      (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
      (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)))
 ;; Display Diary
-(setq view-diary-entries-initially t
-      mark-diary-entries-in-calendar t
-      number-of-diary-entries 7)
+(setq calendar-view-diary-initially-flag t
+      calendar-mark-diary-entries-flag t
+      diary-number-of-entries 7)
 (add-hook 'diary-display-hook 'fancy-diary-display)
 (add-hook 'today-visible-calendar-hook 'calendar-mark-today)
 ;;緯度，経度設定　（日の出，日の入り時刻用）
