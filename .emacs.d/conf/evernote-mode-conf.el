@@ -5,7 +5,7 @@
 (require 'netrc)
 (require 'evernote-mode)
 (let (note)
-  (progn (setq note (netrc-machine (netrc-parse "~/common/.netrc") "note"))
+  (progn (setq note (netrc-machine (netrc-parse "~/Dropbox/.netrc") "note"))
 	 (setq evernote-username (netrc-get note "login")) ; optional: you can use this username as default.
 	 ;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8")) ; optional
 	 (global-set-key "\C-cec" 'evernote-create-note)

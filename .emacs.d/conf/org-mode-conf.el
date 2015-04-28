@@ -12,7 +12,7 @@
 ;; returnでリンクを飛ぶ
 (setq org-return-follows-link t)
 ;; org-modeのルートディレクトリ
-(setq org-directory "~/common/org/")
+(setq org-directory "~/Dropbox/org/")
 ;; org-modeのデフォルトの書き込み先
 (setq org-default-notes-file (concat org-directory "notes.org"))
 ;; org-modeのテンプレート
@@ -20,13 +20,17 @@
       '(
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %T")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
-	("t" "Todo" entry (file+headline nil "Inbox") "**TODO  %?\n   %i\n   %a\n   %t")
+	("t" "Todo" entry (file+headline nil "Inbox") "** TODO  %?\n   %i\n   %a\n   %t")
 	("b" "Bug" entry (file+headline nil "Inbox") "** TODO %?   :bug:\n   %i\n   %a\n   %t")
-	("l" "Log" entry (file+headline nil "Log") "** %? :log:\n   %i\n   %a\n   %t")
+	("l" "Log" entry (file+headline nil "Log") "** %?   :log:\n   %i\n   %a\n   %t")
 	))
 ;; agendaを使う
 ;; (setq org-agenda-files (list org-directory))
-
+;; TODO状態
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "SOMEDAY(s)")))
+;; DONEの時刻を記録
+(setq org-log-done 'time)
 ;; org-capture-memo
 (defun org-capture-memo (n)
   (interactive "p")
@@ -70,7 +74,7 @@
 (defun my-sparse-doing-tree ()
   (interactive)
   (org-tags-view nil "Doing"))
-(define-key org-mode-map (kbd "C-c d") 'my-sparse-doing-tree)
+(global-set-key (kbd "C-c v") 'my-sparse-doing-tree)
 ;; リストの項目を TAB で選択
 (org-defkey org-agenda-mode-map [(tab)]
 	    '(lambda () (interactive)

@@ -2,8 +2,8 @@
 
 ;; ------------------------------------------------------------------------
 ;; @ calender
-;;diary-file を common ディレクトリに置く
-(setq diary-file (expand-file-name "~/common/Diary"))
+;;diary-file を Dropbox ディレクトリに置く
+(setq diary-file (expand-file-name "~/Dropbox/Diary"))
 (require 'calendar)
 ;; キーの設定
 (define-key calendar-mode-map "f" 'calendar-forward-day)

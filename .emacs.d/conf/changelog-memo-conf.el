@@ -17,7 +17,7 @@
 ;; http://0xcc.net/unimag/1/
 (require 'clmemo)
 (define-key ctl-x-map "M" 'clmemo)
-(setq clmemo-file-name "~/common/howm/Log")
+(setq clmemo-file-name "~/Dropbox/howm/Log")
 (setq add-log-mailing-address user-full-name)
 (setq add-log-full-name user-mail-address)
 
