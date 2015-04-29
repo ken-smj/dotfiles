@@ -28,7 +28,8 @@
 ;; (setq org-agenda-files (list org-directory))
 ;; TODO状態
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "SOMEDAY(s)")))
+      '((sequence "TODO(t)" "WAIT(w)" "PENDING(p)" "SOMEDAY(s)" "|" "DONE(d)" "DELEGATED(g)" "CANCELED(c)")
+	(sequence "|" "CANCELED(c)")))
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
 ;; org-capture-memo
