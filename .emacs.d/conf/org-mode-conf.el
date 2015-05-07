@@ -24,12 +24,14 @@
 	("b" "Bug" entry (file+headline nil "Inbox") "** TODO %?   :bug:\n   %i\n   %a\n   %t")
 	("l" "Log" entry (file+headline nil "Log") "** %?   :log:\n   %i\n   %a\n   %t")
 	))
-;; agendaを使う
-;; (setq org-agenda-files (list org-directory))
 ;; TODO状態
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w)" "PENDING(p)" "SOMEDAY(s)" "|" "DONE(d)" "DELEGATED(g)" "CANCELED(c)")
-	(sequence "|" "CANCELED(c)")))
+      '((sequence "TODO(t)" "STARTED(s)" "WAIT(w)" "PENDING(p)" "SOMEDAY(o)" "|" "DONE(d)" "DELEGATED(g)" "CANCELED(c)")))
+;; TODO表示色
+(setq org-todo-keyword-faces
+      '(("TODO" . "red") ("STARTED" . "orange")
+	("WAIT" . "yellow") ("PENDING" . org-warning)
+             ("CANCELED" . (:foreground "cyan" :weight bold))))
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
 ;; org-capture-memo
@@ -67,7 +69,9 @@
 
 ;; Doingリスト
 (setq org-tag-faces
-      '(("Doing" :foreground "#FF0000")))
+      
+      ;; '(("Doing" :foreground "#FF0000")))
+      '(("Doing" org-warning)))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory))
 (setq org-agenda-include-diary t)
