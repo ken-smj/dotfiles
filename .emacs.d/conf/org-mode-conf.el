@@ -20,9 +20,10 @@
       '(
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %T")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
-	("t" "Todo" entry (file+headline nil "Inbox") "** TODO  %?\n   %i\n   %a\n   %t")
-	("b" "Bug" entry (file+headline nil "Inbox") "** TODO %?   :bug:\n   %i\n   %a\n   %t")
-	("l" "Log" entry (file+headline nil "Log") "** %?   :log:\n   %i\n   %a\n   %t")
+	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %a\n   %t")
+	("b" "Bug" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %?   :Bug:\n   %i\n   %a\n   %t")
+	("l" "Log" entry (file+headline (concat org-directory "journal.org") "Log") "* %?   :Log:\nEntered on %U\n   %i\n   %a\n   %t")
+        ("j" "Journal" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n  %i\n  %a")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -69,9 +70,9 @@
 
 ;; Doingリスト
 (setq org-tag-faces
-      
-      ;; '(("Doing" :foreground "#FF0000")))
-      '(("Doing" org-warning)))
+      '(("Doing" :foreground "#00FF00")
+	("Bug" :foreground "#FF0000")
+	))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory))
 (setq org-agenda-include-diary t)
@@ -110,7 +111,7 @@
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cm" 'org-capture-memo)
-(global-set-key "\C-co" 'org-capture)
+(global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cr" 'org-capture-code-reading)

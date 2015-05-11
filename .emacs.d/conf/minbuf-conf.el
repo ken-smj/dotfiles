@@ -3,11 +3,14 @@
 ;; ------------------------------------------------------------------------
 ;; @ minbuf 履歴 と セッションの保存。
 (require 'filecache)
+;; ファイル名だけでbufferを開く
 (file-cache-add-directory-list
  (list "~" ;; ディレクトリを追加
-       "~/.emacs.d/conf/"))
+       "~/.emacs.d/conf/"
+       "~/Dropbox/org/"))
 (file-cache-add-file-list
  (list "~/.emacs.d/init.el" ;; ファイルを追加
+       "~/Dropbox/org/notes.org" "~/Dropbox/org/tasks.org" "~/Dropbox/org/redmine.org"
        ))
 (define-key minibuffer-local-completion-map "\C-c\C-i"
   'file-cache-minibuffer-complete)
