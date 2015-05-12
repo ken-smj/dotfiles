@@ -104,6 +104,9 @@
 ;; @ emacs-nav
 (load "emacs-nav-mode-conf")
 ;; ------------------------------------------------------------------------
+;; @ expand-region
+(load "expand-region-conf")
+;; ------------------------------------------------------------------------
 ;; @ C++ style
 (require 'flymake)
 (load "cc-mode-style-conf")
