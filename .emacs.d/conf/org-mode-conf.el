@@ -90,7 +90,7 @@
 ;; Doingタグ付きの入力用テンプレート
 (add-to-list 'org-capture-templates
 	     '("d" "Doingタグ付きのタスクをInboxに投げる" entry
-	       (file+headline nil "Inbox")
+	       (file+headline (concat org-directory "tasks.org") "Inbox")
 	       "** TODO %? :Doing:\n"))
 ;; Doingタグを簡単に付与する
 (defvar my-doing-tag "Doing")
@@ -106,7 +106,7 @@
             (org-toggle-tag my-doing-tag 'off)
           (org-toggle-tag my-doing-tag 'on))
         (org-reveal)))))
-(global-set-key (kbd "<insert>") 'my-toggle-doing-tag)
+(define-key org-mode-map (kbd "<C-insert>") 'my-toggle-doing-tag)
 
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
