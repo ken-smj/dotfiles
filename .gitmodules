@@ -88,3 +88,6 @@
 [submodule ".emacs.d/plugins/expand-region"]
 	path = .emacs.d/plugins/expand-region
 	url = git://github.com/magnars/expand-region.el.git
+[submodule ".emacs.d/plugins/csharp-mode"]
+	path = .emacs.d/plugins/csharp-mode
+	url = git://github.com/josteink/csharp-mode.git
