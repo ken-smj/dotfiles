@@ -8,6 +8,7 @@
 (global-set-key "\C-ck" 'kill-rectangle)
 (global-set-key "\C-cy" 'yank-rectangle)
 (global-set-key "\C-h"  'backward-delete-char)
+(global-set-key "\C-o"  'other-window)
 (global-set-key (kbd "M-w") 'kill-ring-save)
 (global-set-key "\C-cd"  'calendar)
 (menu-bar-mode -1)

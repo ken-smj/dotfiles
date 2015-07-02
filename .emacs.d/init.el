@@ -206,6 +206,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ag-highlight-search t)
+ '(ag-reuse-buffers (quote nil))
+ '(ag-reuse-window (quote nil))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(vc-handled-backends nil))
 (custom-set-faces
