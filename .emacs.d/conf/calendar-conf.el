@@ -14,10 +14,10 @@
 ;; 日誌記録がない祝祭日も表示する。
 (setq diary-list-include-blanks t)
 ;; アラーム
-(setq appt-audible t)
+(setq appt-audible nil)
 (setq appt-display-mode-line t)
-(setq appt-display-format 'window)
-(setq appt-display-duration 180)
+(setq appt-display-format nil)
+(setq appt-display-duration nil)
 (appt-activate)
 ;; 祝日をマークする
 (setq calendar-mark-holidays-flag t)
