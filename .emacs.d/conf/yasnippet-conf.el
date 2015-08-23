@@ -5,14 +5,13 @@
 (when (require 'yasnippet nil t)
   (setq yas-snippet-dirs
 	'("~/.emacs.d/lib/my-snippets"
-	  "~/.emacs.d/lib/yasnippet-snippets/c++-mode"
-	  "~/.emacs.d/lib/yasnippet-snippets/snippet-mode"
+	  "~/.emacs.d/lib/yasnippet-snippets"
 	  ))
   (yas-global-mode 1)
   ;; 単語展開キーバインド (ver8.0から明記しないと機能しない)
   ;; (setqだとtermなどで干渉問題ありでした)
   ;; もちろんTAB以外でもOK 例えば "C-;"とか
-  (custom-set-variables '(yas-trigger-key "C-'"))
+  (custom-set-variables '(yas-trigger-key "TAB"))
 
   ;; 既存スニペットを挿入する
   (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)

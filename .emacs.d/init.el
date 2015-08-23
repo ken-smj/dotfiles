@@ -69,10 +69,8 @@
 ;; ;; @ biff
 ;; (load "biff-conf")
 ;; ------------------------------------------------------------------------
-;; @ auto-complete mode
-(require 'auto-complete)
-(require 'auto-complete-config)    ; 必須ではないですが一応
-(global-auto-complete-mode t)
+;; ;; @ auto-complete mode
+(load "auto-complete-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ minbuf 履歴 と セッションの保存。
 (load "minbuf-conf")
