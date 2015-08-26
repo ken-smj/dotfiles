@@ -22,8 +22,7 @@
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
 	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %a\n   %t")
 	("b" "Bug" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %?   :Bug:\n   %i\n   %a\n   %t")
-	("l" "Log" entry (file+headline (concat org-directory "journal.org") "Log") "* %?   :Log:\nEntered on %U\n   %i\n   %a\n   %t")
-        ("j" "Journal" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n  %i\n  %a")
+        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n  %i\n  %a\n   %t")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -74,7 +73,8 @@
 	("Bug" :foreground "#FF0000")
 	))
 ;; アジェンダ作成の対象
-(setq org-agenda-files (list org-directory))
+(setq org-agenda-files (list org-directory
+			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
 ;; Doing リストを表示
 (defun my-sparse-doing-tree ()

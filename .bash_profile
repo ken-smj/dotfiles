@@ -35,7 +35,7 @@ if [ $(uname -o) == 'Msys' ]; then
     export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/c\// {next} {print}' | sed 's/:*$//'`
 fi
 
-export PATH=${PATH}:${emacs_dir}/bin:${HOME}/.emacs.d/libexec/w32:${HOME}/.emacs.d/libexec/w32/glo62Bwb/bin
+export PATH=${PATH}:${emacs_dir}/bin:${HOME}/.emacs.d/libexec/w32:${HOME}/.emacs.d/libexec/w32/glo62Bwb/bin:/c/Program\ Files/Java/jre7/bin
 
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
 

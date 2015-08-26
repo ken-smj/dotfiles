@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: header
+# key: head
+# binding: direct-keybinding
+# --
+# -*- coding:${0:utf-8-unix} mode:org -*-
+
