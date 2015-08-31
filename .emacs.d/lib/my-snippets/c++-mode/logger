@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: logger
+# key: logger
+# binding: direct-keybinding
+# --
+if(logger) logger->writeLog(Logger::L_DEBUG, io::str(format("${1:logging message}") % ${2:params}));
+$0

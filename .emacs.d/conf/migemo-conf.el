@@ -16,4 +16,5 @@
 (setq migemo-coding-system 'utf-8-unix)
 (load-library "migemo")
 (migemo-init)
+(migemo-isearch-toggle-migemo)		;; offにしておく
 ;; ------------------------------------------------------------------------

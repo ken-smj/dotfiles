@@ -20,8 +20,7 @@
       '(
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %T")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
-	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %a\n   %t")
-	("b" "Bug" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %?   :Bug:\n   %i\n   %a\n   %t")
+	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %t")
         ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n  %i\n  %a\n   %t")
 	))
 ;; TODO状態
@@ -67,34 +66,53 @@
             )))
     (org-capture nil "c")))
 
-;; Doingリスト
+;; Tagリスト
+(setq org-tag-alist
+      '(("doing" . ?d)
+	("obstruction" . ?o)
+	("bug" . ?b)
+	("tips" . ?t)
+	("remark" . ?m)
+	("windows" . ?w)
+	("evinsite" . ?e)
+	("redmine" . ?r)
+	))
 (setq org-tag-faces
-      '(("Doing" :foreground "#00FF00")
-	("Bug" :foreground "#FF0000")
+      '(("doing" :foreground "#00FF00")
+	("bug" :foreground "#FF0000")
+	("obstruction" :foreground "#FF0000")
 	))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory
 			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
-;; Doing リストを表示
+;; doing リストを表示
 (defun my-sparse-doing-tree ()
   (interactive)
-  (org-tags-view nil "Doing"))
+  (org-tags-view nil "doing"))
 (global-set-key (kbd "C-c v") 'my-sparse-doing-tree)
+;; 障害リストを表示
+(defun my-sparse-obstruction-tree ()
+  (interactive)
+  (org-tags-view nil "obstruction"))
+(global-set-key (kbd "C-c o") 'my-sparse-obstruction-tree)
 ;; リストの項目を TAB で選択
 (org-defkey org-agenda-mode-map [(tab)]
 	    '(lambda () (interactive)
 	       (org-agenda-goto)
 	       (with-current-buffer "*Org Agenda*"
 		 (org-agenda-quit))))
-;; Doingタグ付きの入力用テンプレート
+;; doing、obstructionタグ付きの入力用テンプレート
 (add-to-list 'org-capture-templates
-	     '("d" "Doingタグ付きのタスクをInboxに投げる" entry
+	     '(("d" "doingタグ付きのタスクをInboxに投げる" entry
 	       (file+headline (concat org-directory "tasks.org") "Inbox")
-	       "** TODO %? :Doing:\n"))
-;; Doingタグを簡単に付与する
-(defvar my-doing-tag "Doing")
-;; Doingタグをトグルする
+	       "** TODO %? :doing:\n")
+	       ("o" "obstructionタグ付きのタスクをInboxに投げる" entry
+	       (file+headline (concat org-directory "tasks.org") "Inbox")
+	       "** TODO %? :obstruction:\n")))
+;; doingタグを簡単に付与する
+(defvar my-doing-tag "doing")
+;; doingタグをトグルする
 (defun my-toggle-doing-tag ()
   (interactive)
   (when (eq major-mode 'org-mode)
