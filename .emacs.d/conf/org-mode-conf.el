@@ -18,10 +18,12 @@
 ;; org-modeのテンプレート
 (setq org-capture-templates
       '(
-	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %T")
-	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %a\n   %T")
-	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %t")
-        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n  %i\n  %a\n   %t")
+	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %T")
+	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %T")
+	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %T")
+        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n   %i\n  %a\n   %T")
+	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :doing:\n   %i\n   %T")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :obstruction:\n   %i\n   %t")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -30,7 +32,14 @@
 (setq org-todo-keyword-faces
       '(("TODO" . "red") ("STARTED" . "orange")
 	("WAIT" . "yellow") ("PENDING" . org-warning)
-             ("CANCELED" . (:foreground "cyan" :weight bold))))
+	("CANCELED" . (:foreground "cyan" :weight bold))))
+;; TODOの進捗をすべての階層の結果で表示
+(setq org-hierarchical-todo-statistics nil)
+(defun org-summary-todo (n-done n-not-done)
+  "すべてのサブツリーが終了するとDONE に切り替え、その他の場合は、TODO にする。"
+  (let (org-log-done org-log-states) ; 記録「logging」を終了
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+(add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
 ;; org-capture-memo
@@ -102,14 +111,6 @@
 	       (org-agenda-goto)
 	       (with-current-buffer "*Org Agenda*"
 		 (org-agenda-quit))))
-;; doing、obstructionタグ付きの入力用テンプレート
-(add-to-list 'org-capture-templates
-	     '(("d" "doingタグ付きのタスクをInboxに投げる" entry
-	       (file+headline (concat org-directory "tasks.org") "Inbox")
-	       "** TODO %? :doing:\n")
-	       ("o" "obstructionタグ付きのタスクをInboxに投げる" entry
-	       (file+headline (concat org-directory "tasks.org") "Inbox")
-	       "** TODO %? :obstruction:\n")))
 ;; doingタグを簡単に付与する
 (defvar my-doing-tag "doing")
 ;; doingタグをトグルする

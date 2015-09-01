@@ -2,8 +2,8 @@
 .DS_Store
 thumbs.db
 *~
-.svn
 .#*
+.svn
 ac-comphist.dat
 .emacs.d/eshell
 .emacs.d/auto-save-list
@@ -26,9 +26,6 @@ recentf
 GPATH
 GRTAGS
 GTAGS
-!EVInsite/bin.lite/
-!EVInsite/bin/
-EVInsite/bin/log/
 **/autosave.prs
 **/*local.ini
 .emacs.d/bookmarks
