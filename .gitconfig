@@ -19,6 +19,9 @@
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 	ignored = !git ls-files -v | grep "^[a-z]"
+	ls = !git ls-files -t|perl -pe 's/\\/.*/\\//'|uniq -c
+	ll = !git ls-files -cdmokt|perl -pe 's/\\/.*/\\//'|grep -v '/'
+	la = ls-files -cdmokt
 [color]
 	ui = true
 	diff = true
