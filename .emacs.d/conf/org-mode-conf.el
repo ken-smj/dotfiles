@@ -18,7 +18,7 @@
 ;; org-modeのテンプレート
 (setq org-capture-templates
       '(
-        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "agenda.org"))
+        ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org"))
 	 "* TODO %^{Title} [/] :doing:\n DEADLINE: %^{time limit?}T SCHEDULED: %^{start time?}T\n - [ ] %?\n %i\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %U\n")
