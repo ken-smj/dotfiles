@@ -18,12 +18,14 @@
 ;; org-modeのテンプレート
 (setq org-capture-templates
       '(
-	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %T")
-	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %T")
-	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %T")
-        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n   %i\n  %a\n   %T")
-	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :doing:\n   %i\n   %T")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :obstruction:\n   %i\n   %t")
+        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "agenda.org"))
+	 "* TODO %^{Title} [/] :doing:\n DEADLINE: %^{time limit?}T SCHEDULED: %^{start time?}T\n - [ ] %?\n %i\n")
+	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %U\n")
+	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %U\n")
+	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %T\n")
+        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n   %i\n  %a\n")
+	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :doing:\n   %i\n   %T\n")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :obstruction:\n   %i\n   %T\n")
 	))
 ;; TODO状態
 (setq org-todo-keywords
