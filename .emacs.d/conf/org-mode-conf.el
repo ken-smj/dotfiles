@@ -87,6 +87,7 @@
 	("windows" . ?w)
 	("evinsite" . ?e)
 	("redmine" . ?r)
+	("books" . ?k)
 	))
 (setq org-tag-faces
       '(("doing" :foreground "#00FF00")
