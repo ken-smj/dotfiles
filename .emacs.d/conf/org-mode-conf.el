@@ -18,21 +18,19 @@
 ;; org-modeのテンプレート
 (setq org-capture-templates
       '(
-        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "agenda.org"))
-	 "* TODO %^{Title} [/] :doing:\n DEADLINE: %^{time limit?}T SCHEDULED: %^{start time?}T\n - [ ] %?\n %i\n")
+        ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n - [ ] %?\n %i\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %U\n")
-	("t" "Todo" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO  %?\n   %i\n   %T\n")
         ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n   %i\n  %a\n")
 	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :doing:\n   %i\n   %T\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :obstruction:\n   %i\n   %T\n")
 	))
 ;; TODO状態
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s)" "WAIT(w)" "PENDING(p)" "SOMEDAY(o)" "|" "DONE(d)" "DELEGATED(g)" "CANCELED(c)")))
+      '((sequence "TODO(t)" "STARTED(s!)" "WAIT(w@/!)" "PENDING(p@/!)" "|" "DONE(d!)" "DELEGATED(g@/!)" "CANCELED(c@/!)" "SOMEDAY(o!)")))
 ;; TODO表示色
 (setq org-todo-keyword-faces
-      '(("TODO" . "red") ("STARTED" . "orange")
+      '(("TODO" . "red") ("STARTED" . "green")
 	("WAIT" . "yellow") ("PENDING" . org-warning)
 	("CANCELED" . (:foreground "cyan" :weight bold))))
 ;; TODOの進捗をすべての階層の結果で表示
@@ -50,7 +48,9 @@
   (case n
     (4 (org-capture nil "M"))
     (t (org-capture nil "m"))))
-
+;; スケジュールされてないagendaを表示する。
+(setq org-agenda-custom-commands
+      '(("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil)))
 ;; code-reading
 (defvar org-code-reading-software-name nil)
 ;; ~/memo/code-reading.org に記録する
