@@ -29,6 +29,7 @@
 	    (list
 	     "/usr/local/bin"
 	     (expand-file-name "~/.emacs.d/libexec/debian/bin"))))
+    (add-to-list 'my-exec-list (expand-file-name "~/.emacs.d/libexec/scripts"))
     (dolist (dir my-exec-list)
       ;; PATH と exec-path に同じ物を追加します
       (when (and dir (file-exists-p dir) (not (member dir exec-path)))
