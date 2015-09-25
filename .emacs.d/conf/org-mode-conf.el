@@ -12,7 +12,7 @@
 ;; returnでリンクを飛ぶ
 (setq org-return-follows-link t)
 ;; org-modeのルートディレクトリ
-(setq org-directory "~/iCloudDrive/M6HJR9W95L~com~textasticapp~textastic/org/")
+(setq org-directory "~/Dropbox/org/")
 ;; org-modeのデフォルトの書き込み先
 (setq org-default-notes-file (concat org-directory "notes.org"))
 ;; org-modeのテンプレート
@@ -97,8 +97,7 @@
 	))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory
-			     (concat org-directory "current/")
-			     "~/Dropbox/org/"))
+			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
 ;; doing リストを表示
 (defun my-sparse-doing-tree ()
