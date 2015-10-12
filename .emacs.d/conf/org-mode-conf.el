@@ -19,12 +19,12 @@
 (setq org-capture-templates
       '(
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
-        ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :doing:\n SCHEDULED: %T\n %i\n")
-	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n   %U\n")
-	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %a\n   %U\n")
-        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\nEntered on %U\n   %i\n  %a\n")
-	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :doing:\n   %i\n   %T\n")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :obstruction:\n   %i\n   %T\n")
+        ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
+	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %U\n")
+	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %a\n   %U\n")
+        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\n Entered on %U\n   %i\n  %a\n")
+	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :inbox:\n   %i\n   %T\n")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :inbox:obstruction:\n   %i\n   %T\n")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -49,6 +49,10 @@
   (case n
     (4 (org-capture nil "M"))
     (t (org-capture nil "m"))))
+;; org-capture-log
+(defun org-capture-log ()
+  (interactive)
+  (org-capture nil "l"))
 ;; スケジュールされてないagendaを表示する。
 (setq org-agenda-custom-commands
       '(("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil)))
@@ -80,8 +84,7 @@
 
 ;; Tagリスト
 (setq org-tag-alist
-      '(("doing" . ?d)
-	("obstruction" . ?o)
+      '(("obstruction" . ?o)
 	("bug" . ?b)
 	("tips" . ?t)
 	("remark" . ?m)
@@ -91,7 +94,9 @@
 	("books" . ?k)
 	))
 (setq org-tag-faces
-      '(("doing" :foreground "#00FF00")
+      '(("inbox" :foreground "#FFFF00")
+	("doing" :foreground "#00F0FF")
+	("next" :foreground "#00FF00")
 	("bug" :foreground "#FF0000")
 	("obstruction" :foreground "#FF0000")
 	))
@@ -99,11 +104,11 @@
 (setq org-agenda-files (list org-directory
 			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
-;; doing リストを表示
-(defun my-sparse-doing-tree ()
+;; inbox リストを表示
+(defun my-sparse-inbox-tree ()
   (interactive)
-  (org-tags-view nil "doing"))
-(global-set-key (kbd "C-c v") 'my-sparse-doing-tree)
+  (org-tags-view nil "inbox"))
+(global-set-key (kbd "C-c v") 'my-sparse-inbox-tree)
 ;; 障害リストを表示
 (defun my-sparse-obstruction-tree ()
   (interactive)
@@ -115,24 +120,25 @@
 	       (org-agenda-goto)
 	       (with-current-buffer "*Org Agenda*"
 		 (org-agenda-quit))))
-;; doingタグを簡単に付与する
-(defvar my-doing-tag "doing")
-;; doingタグをトグルする
-(defun my-toggle-doing-tag ()
+;; inboxタグを簡単に付与する
+(defvar my-inbox-tag "inbox")
+;; inboxタグをトグルする
+(defun my-toggle-inbox-tag ()
   (interactive)
   (when (eq major-mode 'org-mode)
     (save-excursion
       (save-restriction
         (unless (org-at-heading-p)
           (outline-previous-heading))
-        (if (string-match (concat ":" my-doing-tag ":") (org-get-tags-string))
-            (org-toggle-tag my-doing-tag 'off)
-          (org-toggle-tag my-doing-tag 'on))
+        (if (string-match (concat ":" my-inbox-tag ":") (org-get-tags-string))
+            (org-toggle-tag my-inbox-tag 'off)
+          (org-toggle-tag my-inbox-tag 'on))
         (org-reveal)))))
-(define-key org-mode-map (kbd "<C-insert>") 'my-toggle-doing-tag)
+(define-key org-mode-map (kbd "<C-insert>") 'my-toggle-inbox-tag)
 
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-c'" 'org-capture-log)
 (global-set-key "\C-cm" 'org-capture-memo)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
