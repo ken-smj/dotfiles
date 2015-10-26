@@ -1,7 +1,7 @@
 ;;;; -*- coding: iso-2022-7bit -*-
 
 ;; 猫アイコンセット
-(setq mew-icon-directory "~/.emacs.d/plugins/mew-6.6/etc/")
+(setq mew-icon-directory "~/.emacs.d/plugins/mew-6.7/etc/")
 
 (setq mew-ask-subject nil) 
 (setq mew-pop-size 0)			; Un-limit the receiving POP mail size
@@ -55,8 +55,10 @@
 (setq mew-use-biff-bell t)
 
 ;; 検索設定
-(setq mew-prog-vgrep "mg")
-(setq mew-prog-vgrep-opts '("-j" "jis" "-l" "-e" "-x" "&mime"))
+;; (setq mew-prog-vgrep "mg")
+;; (setq mew-prog-vgrep-opts '("-j" "jis" "-l" "-e" "-x" "&mime"))
+(setq mew-use-suffix t)
+(setq mew-search-method 'est)
 
 (setq mew-prog-image/*-ext "display")
 

@@ -91,3 +91,6 @@
 [submodule ".emacs.d/plugins/csharp-mode"]
 	path = .emacs.d/plugins/csharp-mode
 	url = git://github.com/josteink/csharp-mode.git
+[submodule ".emacs.d/plugins/evernote-mode"]
+	path = .emacs.d/plugins/evernote-mode
+	url = git://github.com/pymander/evernote-mode.git
