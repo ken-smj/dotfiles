@@ -1,16 +1,24 @@
-REM dotfiles link
-REM require administrator
-RMDIR .emacs.d
-DEL .bash_profile
-DEL .gitconfig
-DEL .inputrc
-DEL .mew.el
-DEL .minttyrc
-DEL .vimrc
-MKLINK /D .emacs.d %HOME%\dotfiles\.emacs.d
-MKLINK .bash_profile %HOME%\dotfiles\.bash_profile
-MKLINK .gitconfig %HOME%\dotfiles\.gitconfig
-MKLINK .inputrc %HOME%\dotfiles\.inputrc
-MKLINK .mew.el %HOME%\dotfiles\.mew.el
-MKLINK .minttyrc %HOME%\dotfiles\.minttyrc
-MKLINK .vimrc %HOME%\dotfiles\.vimrc
+@REM dotfiles link
+@REM require administrator
+@ECHO OFF
+CD %HOME%
+SET mklinks=.emacs.d .bash_profile .gitconfig .inputrc .mew.el .minttyrc .vimrc
+FOR %%i IN (%mklinks%) DO (
+    ECHO check %%i ...
+    IF EXIST %%i\nul (
+       RMDIR %%i
+       ECHO delete %%i directory.
+    ) ELSE (
+    IF EXIST .\%%i (
+       DEL %%i
+       ECHO delete %%i file.
+    ))
+    IF EXIST %HOME%\dotfiles\%%i\nul (
+       MKLINK /D %%i %HOME%\dotfiles\%%i
+       IF NOT "%ERRORLEVEL%" == "0" EXIT 1
+    ) ELSE (
+    IF EXIST %HOME%\dotfiles\%%i (
+       MKLINK %%i %HOME%\dotfiles\%%i
+       IF NOT "%ERRORLEVEL%" == "0" EXIT 1
+    ))
+)
