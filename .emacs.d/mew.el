@@ -55,10 +55,10 @@
 (setq mew-use-biff-bell t)
 
 ;; 検索設定
-(setq mew-prog-grep "ag")
-;; (setq mew-prog-grep-opts '("-j" "jis" "-l" "-e" "-x" "&mime"))
+(setq mew-prog-grep "mg")
+(setq mew-prog-grep-opts '("-j" "jis" "-l" "-e" "-x" "&mime"))
 (setq mew-use-suffix t)
-;; (setq mew-search-method 'est)
+(setq mew-search-method 'wds)
 
 (setq mew-prog-image/*-ext "display")
 
