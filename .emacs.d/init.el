@@ -163,6 +163,9 @@
 ;; @ org mode
 (load "org-mode-conf")
 ;; ------------------------------------------------------------------------
+;; @ eww mode
+(load "eww-conf")
+;; ------------------------------------------------------------------------
 ;; @ markdown mode
 (load "markdown-mode-conf")
 (setq auto-mode-alist (cons '("\\.md" . gfm-mode) auto-mode-alist))

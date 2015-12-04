@@ -8,13 +8,14 @@
  (list "~" ;; ディレクトリを追加
        "~/.emacs.d/conf/"
        "~/Dropbox/org/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVInsite/EVImage/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVInsite/EVClient/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/data/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/image/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/util/"
-       "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/dcm/"
+       "/DEVELOP/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVInsite/EVImage/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVInsite/EVClient/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/data/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/client/image/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/util/"
+       ;; "/DEVELOP/working.r.3.1.1.current.svn.project/EVlib/include/dcm/"
        ))
 (file-cache-add-file-list
  (list "~/.emacs.d/init.el" ;; ファイルを追加

@@ -1,5 +1,5 @@
 ;;;; -*- coding: iso-2022-7bit -*-
-
+;; (require 'mew-w3m)
 ;; 猫アイコンセット
 (setq mew-icon-directory "~/.emacs.d/plugins/mew-6.7/etc/")
 
@@ -67,3 +67,11 @@
 ;	  (function (lambda ()
 ;		      (define-key mew-draft-mode-map "\C-ci" 'insert-signature-eref)))) 
 
+;; htmlメールをewwで開く
+;; http://suzuki.tdiary.net/20140813.html#c04
+(when (and (fboundp 'shr-render-region)
+           ;; \\[shr-render-region] requires Emacs to be compiled with libxml2.
+           (fboundp 'libxml-parse-html-region))
+  (setq mew-prog-text/html 'shr-render-region)) ;; 'mew-mime-text/html-w3m
+;; (defadvice mew-summary-display (after mew-auto-analize-again activate)
+;;   (mew-summary-analyze-again))
