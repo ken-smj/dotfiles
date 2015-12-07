@@ -23,7 +23,8 @@
 	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %a\n   %U\n")
         ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\n Entered on %U\n   %i\n  %a\n")
-	("d" "with doing tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :inbox:\n   %i\n   %T\n")
+	("d" "Daily report 【今日やったこと】" entry (file+datetree (concat org-directory "daily-report.org"))
+	 "** 【今日やったこと】\n*** %? \n   %a\n    Entered on %U\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :inbox:obstruction:\n   %i\n   %T\n")
 	))
 ;; TODO状態
