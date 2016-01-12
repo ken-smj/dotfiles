@@ -59,6 +59,43 @@
 (setq mew-prog-grep-opts '("-j" "jis" "-l" "-e" "-x" "&mime"))
 (setq mew-use-suffix t)
 (setq mew-search-method 'wds)
+(with-eval-after-load "mew"
+  (defun mew-search-wds (pattern path)
+    (setq pattern (mew-cs-encode-string pattern default-file-name-coding-system))
+    (let* ((ent (mew-search-get-ent mew-search-method))
+	   (prog (mew-search-get-prog ent)))
+      (mew-plet
+       (mew-alet
+	(call-process prog nil t nil "-e" mew-suffix "-p2" path "-s"
+		      (encode-coding-string pattern 'shift_jis))))))
+  (defun mew-search-virtual-with-wds (pattern flds &optional dummy)
+    (let* ((path (mew-expand-folder mew-folder-local))
+	   (mail-regex (regexp-quote (file-name-as-directory path)))
+	   (regex (concat "^" mail-regex "\\(.*\\)/" "\\([0-9]+\\)"))
+	   (file (mew-make-temp-name))
+	   (prev "") (rttl 0)
+	   crnt
+	   (fld (car flds))
+	   (folder (if (not (null fld))
+		       (replace-regexp-in-string "^+" "" fld))))
+      (if folder
+	  (mew-search-wds pattern (concat path "/" folder))
+	(mew-search-wds pattern path))
+      (goto-char (point-min))
+      (while (not (eobp))
+	(when (looking-at regex)
+	  (setq rttl (1+ rttl))
+	  (setq crnt (match-string 1))
+	  (delete-region (match-beginning 0) (match-beginning 2))
+	  (when (not (string= crnt prev))
+	    (beginning-of-line)
+	    (insert "CD:" mew-folder-local crnt "\n"))
+	  (setq prev crnt))
+	(forward-line))
+      (mew-frwlet mew-cs-text-for-read mew-cs-text-for-write
+	(write-region (point-min) (point-max) file nil 'no-msg))
+      (list file rttl)))
+  )
 
 (setq mew-prog-image/*-ext "display")
 
