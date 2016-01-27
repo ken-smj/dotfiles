@@ -35,7 +35,8 @@
 	))
 ;; TODO状態
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s!)" "WAIT(w@/!)" "PENDING(p@/!)" "|" "DONE(d!)" "DELEGATED(g@/!)" "CANCELED(c@/!)" "SOMEDAY(o!)")))
+      '((sequence "TODO(t)" "STARTED(s!)" "WAIT(w@/!)" "PENDING(p@/!)"
+		  "|" "DONE(d!)" "DELEGATED(g@/!)" "ANSWERED(a@/!)" "CANCELED(c@/!)" "SOMEDAY(o!)")))
 ;; TODO表示色
 (setq org-todo-keyword-faces
       '(("TODO" . "red") ("STARTED" . "green")
@@ -50,6 +51,11 @@
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 ;; DONEの時刻を記録
 (setq org-log-done 'time)
+;; 詳細が未決定のプロジェクト
+(setq org-stuck-projects
+      ;; org-stuck-projects
+      ;; ("+LEVEL=2/-DONE" ("TODO" "NEXT" "NEXTACTION") nil "")
+      '("+inbox|+TODO/-DONE-DELEGATED" ("next" "TODO") nil "\\<SCHEDULED:\\>"))
 ;; org-capture-memo
 (defun org-capture-memo (n)
   (interactive "p")
@@ -104,6 +110,7 @@
       '(("inbox" :foreground "#FFFF00")
 	("doing" :foreground "#00F0FF")
 	("next" :foreground "#00FF00")
+	("log" :foreground "#FFFF00")
 	("bug" :foreground "#FF0000")
 	("obstruction" :foreground "#FF0000")
 	))
@@ -127,21 +134,26 @@
 	       (org-agenda-goto)
 	       (with-current-buffer "*Org Agenda*"
 		 (org-agenda-quit))))
-;; inboxタグを簡単に付与する
-(defvar my-inbox-tag "inbox")
-;; inboxタグをトグルする
+;; inbox,nextタグを簡単に付与する
 (defun my-toggle-inbox-tag ()
   (interactive)
+  (my-toggle-tag "inbox"))
+(defun my-toggle-next-tag ()
+  (interactive)
+  (my-toggle-tag "next"))
+;; inboxタグをトグルする
+(defun my-toggle-tag (my-toggle-tag)
   (when (eq major-mode 'org-mode)
     (save-excursion
       (save-restriction
         (unless (org-at-heading-p)
           (outline-previous-heading))
-        (if (string-match (concat ":" my-inbox-tag ":") (org-get-tags-string))
-            (org-toggle-tag my-inbox-tag 'off)
-          (org-toggle-tag my-inbox-tag 'on))
+        (if (string-match (concat ":" my-toggle-tag ":") (org-get-tags-string))
+            (org-toggle-tag my-toggle-tag 'off)
+          (org-toggle-tag my-toggle-tag 'on))
         (org-reveal)))))
 (define-key org-mode-map (kbd "<C-insert>") 'my-toggle-inbox-tag)
+(define-key org-mode-map (kbd "<M-insert>") 'my-toggle-next-tag)
 
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)

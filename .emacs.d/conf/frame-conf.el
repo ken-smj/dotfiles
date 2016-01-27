@@ -5,7 +5,8 @@
 ;; フレームタイトルの設定
 (setq frame-title-format "%f")
 ;; windows psp
-(when (string= system-name "SHIMOJOKENICHIR")
+(when (or (string= system-name "SHIMOJOKENICHIR")
+	  (string= system-name "GAZOU3G-PC"))
   (setq default-frame-alist
 	(append (list '(foreground-color . "light gray")
 		      '(background-color . "black")

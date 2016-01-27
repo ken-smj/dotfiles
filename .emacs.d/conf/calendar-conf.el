@@ -50,7 +50,8 @@
 ;;緯度，経度設定　（日の出，日の入り時刻用）
 (setq calendar-latitude 35.7)		; 東大和
 (setq calendar-longitude 139.4)
-(when (string= system-name "SHIMOJOKENICHIR")
+(when (or (string= system-name "SHIMOJOKENICHIR")
+	  (string= system-name "GAZOU3G-PC"))
   (setq calendar-latitude 35.7)		; 西麻布
   (setq calendar-longitude 139.7))
 (setq calendar-location-name "Tokyo, JAPAN")
