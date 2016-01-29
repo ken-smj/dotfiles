@@ -16,6 +16,11 @@
 ;; org-modeのデフォルトの書き込み先
 (setq org-default-notes-file (concat org-directory "notes.org"))
 ;; org-modeのテンプレート
+;; (setq org-capture-templates
+;;       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+;; 	 "* TODO %?\n  %i\n  %a")
+;;         ("j" "Journal" entry (file+datetree "~/org/journal.org")
+;; 	 "* %?\nEntered on %U\n  %i\n  %a")))
 (setq org-capture-templates
       '(
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
@@ -23,7 +28,7 @@
 	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %a\n   %U\n")
         ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\n Entered on %U\n   %i\n  %a\n")
-	("d" "Daily report 【今日やったこと】" entry (file+datetree (concat org-directory "daily-report.org")))
+	("d" "Daily report 【今日やったこと】" entry (file+datetree (concat org-directory "daily-report.org")) "** %?")
 	 ;; (concat "** 【今日の予定と進捗率】"
 	 ;; 	 "** 【今日やったこと】*** %? "
 	 ;; 	 "** 【本日受けた問い合わせ】"
