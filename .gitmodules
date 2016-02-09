@@ -49,9 +49,6 @@
 [submodule ".emacs.d/plugins/Emacs-wgrep"]
 	path = .emacs.d/plugins/Emacs-wgrep
 	url = git://github.com/mhayashi1120/Emacs-wgrep.git
-[submodule ".emacs.d/plugins/ag"]
-	path = .emacs.d/plugins/ag
-	url = git://github.com/Wilfred/ag.el.git
 [submodule ".emacs.d/plugins/dash"]
 	path = .emacs.d/plugins/dash
 	url = git://github.com/magnars/dash.el.git

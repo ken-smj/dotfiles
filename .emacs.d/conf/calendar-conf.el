@@ -14,7 +14,7 @@
 ;; 日誌記録がない祝祭日も表示する。
 (setq diary-list-include-blanks t)
 ;; アラーム
-(setq appt-audible nil)
+(setq appt-audible t)
 (setq appt-display-mode-line t)
 (setq appt-display-format nil)
 (setq appt-display-duration nil)

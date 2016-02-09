@@ -11,7 +11,7 @@
   ;; 単語展開キーバインド (ver8.0から明記しないと機能しない)
   ;; (setqだとtermなどで干渉問題ありでした)
   ;; もちろんTAB以外でもOK 例えば "C-;"とか
-  (custom-set-variables '(yas-trigger-key "TAB"))
+  (custom-set-variables '(yas-trigger-key (kbd "<backtab>")))
 
   ;; 既存スニペットを挿入する
   (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)

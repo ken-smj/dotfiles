@@ -3,5 +3,5 @@
 # key: logger
 # binding: direct-keybinding
 # --
-if(logger) logger->writeLog(Logger::L_DEBUG, io::str(format("${1:logging message}") % ${2:params}));
+if(logger) logger->writeLog(Logger::L_DEBUG, io::str(format("%s(%d) ${1:logging message}") % __FUNCTION__ % __LINE__ % ${2:params}));
 $0

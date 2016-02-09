@@ -8,6 +8,10 @@
 ;; ag.elとwgrep-ag.elをlist-packageでMelpaなどからインストールしておく
 (require 'ag)
 (custom-set-variables
+ '(ag-executable "pt")
+ '(ag-ignore-list (list "/Win32/.+" "/x64/.+" "/bin.*/.+" "GRTAGS$" "GPATH$" "GTAGS$" "\\.xls.*$" "\\.ilk$" "\\.ncb$"
+			"\\.pch$" "\\.pdb$" "\\.aps$" "\\.map$"))
+ '(ag-arguments (list "--smart-case" "--nogroup" "--column" "--"))
  '(ag-highlight-search t)  ; 検索結果の中の検索語をハイライトする
  '(ag-reuse-window 'nil)   ; 現在のウィンドウを検索結果表示に使う
  '(ag-reuse-buffers 'nil)) ; 現在のバッファを検索結果表示に使う
