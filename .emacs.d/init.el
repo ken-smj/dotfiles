@@ -210,7 +210,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ag-arguments (list "--smart-case" "--nogroup" "--column" "--"))
+ '(ag-executable "pt")
  '(ag-highlight-search t)
+ '(ag-ignore-list
+   (list "/Win32/.+" "/x64/.+" "/bin.*/.+" "GRTAGS$" "GPATH$" "GTAGS$" "\\.xls.*$" "\\.ilk$" "\\.ncb$" "\\.pch$" "\\.pdb$" "\\.aps$" "\\.map$"))
  '(ag-reuse-buffers (quote nil))
  '(ag-reuse-window (quote nil))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")

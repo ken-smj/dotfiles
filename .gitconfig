@@ -22,6 +22,7 @@
 	ls = !git ls-files -t|perl -pe 's/\\/.*/\\//'|uniq -c
 	ll = !git ls-files -cdmokt|perl -pe 's/\\/.*/\\//'|grep -v '/'
 	la = ls-files -cdmokt
+	conflicts = !git ls-files -u | cut -f 2 | sort -u
 [color]
 	ui = true
 	diff = true
