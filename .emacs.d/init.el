@@ -56,6 +56,9 @@
 ;; @ backup
 (load "backup-conf")
 ;; ------------------------------------------------------------------------
+;; @ isearch
+(load "isearch-conf")
+;; ------------------------------------------------------------------------
 ;; @ auto save
 ;; (require 'auto-save-buffers)
 ;; (run-with-idle-timer 0.5 t 'auto-save-buffers ""   "\\.howm$") 
