@@ -8,12 +8,9 @@
 (when (or (string= system-name "SHIMOJOKENICHIR")
 	  (string= system-name "GAZOU3G-PC"))
   (setq default-frame-alist
-	(append (list '(foreground-color . "light gray")
-		      '(background-color . "black")
-		      '(alpha . 85)
+	(append (list '(alpha . 85)
 		      '(border-color . "gray")
 		      '(mouse-color . "white")
-		      '(cursor-color . "yellow")
 		      '(width . 156)
 		      '(height . 58)
 		      '(top . 0)
@@ -23,12 +20,9 @@
 ;; windows RED
 (when (string= system-name "RED")
   (setq default-frame-alist
-	(append (list '(foreground-color . "light gray")
-		      '(background-color . "black")
-		      '(alpha . 85)
+	(append (list '(alpha . 85)
 		      '(border-color . "gray")
 		      '(mouse-color . "white")
-		      '(cursor-color . "yellow")
 		      '(width . 156)	; windows RED
 		      '(height . 60)
 		      '(top . 10)
@@ -38,12 +32,9 @@
 ;; osx
 (when (string= system-name "silver.local")
   (setq default-frame-alist
-	(append (list '(foreground-color . "light gray")
-		      '(background-color . "black")
-		      '(alpha . 85)
+	(append (list '(alpha . 85)
 		      '(border-color . "gray")
 		      '(mouse-color . "white")
-		      '(cursor-color . "yellow")
 		      '(width . 156)	; mac mini
 		      '(height . 63)
 		      '(top . 10)

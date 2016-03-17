@@ -2,6 +2,18 @@
 
 ;; ------------------------------------------------------------------------
 ;; @ 基本設定
+(custom-set-faces
+ '(default ((t
+             (:background "black" :foreground "light gray")
+             )))
+ '(cursor ((((class color)
+             (background dark))
+            (:background "yellow"))
+           (((class color)
+             (background light))
+            (:background "yellow"))
+           (t ())
+           )))
 (setq next-line-add-newlines nil)
 (setq-default scroll-step 1)
 (line-number-mode t)
