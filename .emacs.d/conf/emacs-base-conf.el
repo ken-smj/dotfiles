@@ -30,8 +30,13 @@
 ;; 画像ファイルを表示
 (auto-image-file-mode t)
 ;; for ChangeLog.
-(setq user-full-name (getenv "USER_FULL_NAME"))
-(setq user-mail-address (getenv "USER_MAIL_ADDRESS"))
+(setq add-log-full-name (getenv "USER_FULL_NAME"))
+(setq add-log-mailing-address (getenv "USER_MAIL_ADDRESS"))
+(setq auto-mode-alist
+      (append
+       '(("\\$changelog\\$\\.txt" . change-log-mode))
+	 auto-mode-alist))
+
 ;; for conf
 (require 'generic-x)
 (custom-set-variables

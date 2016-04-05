@@ -119,7 +119,7 @@
 (load "csharp-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ Calendar,ChengeLog memo and Howm. remark: Do NOT changed load order.
-(load "changelog-memo-conf")
+;; (load "changelog-memo-conf")
 (load "rd-mode-conf")
 ;; (load "howm-mode-conf")
 (load "calendar-conf")
