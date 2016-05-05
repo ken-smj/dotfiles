@@ -198,6 +198,9 @@
 ;; @ game sudoku
 (load "sudoku-conf")
 ;; ------------------------------------------------------------------------
+;; @ navi2ch
+(load "navi2ch-conf")
+;; ------------------------------------------------------------------------
 ;; @ boot カレンダーと予定を表示する
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)

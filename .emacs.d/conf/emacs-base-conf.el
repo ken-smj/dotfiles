@@ -80,3 +80,21 @@
         (defvar run-windows-x64 t)
       (defvar run-windows-x64 nil)))
 ;; ------------------------------------------------------------------------
+;; navi2ch proxy
+(cond
+ ((or (eq window-system 'ns) (eq window-system 'mac))
+  (add-hook 'after-init-hook
+            (lambda()
+              (save-window-excursion
+                (async-shell-command "~/.emacs.d/libexec/scripts/2chproxy.pl")
+		)
+              )))
+ ((eq system-type 'gnu/linux)
+  (add-hook 'after-init-hook
+            (lambda()
+              (save-window-excursion
+                (async-shell-command "~/.emacs.d/libexec/scripts/2chproxy.pl")
+		)
+              )))
+ )
+;; ------------------------------------------------------------------------

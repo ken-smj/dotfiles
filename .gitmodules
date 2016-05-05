@@ -91,3 +91,6 @@
 [submodule ".emacs.d/plugins/auto-complete"]
 	path = .emacs.d/plugins/auto-complete
 	url = git://github.com/auto-complete/auto-complete.git
+[submodule ".emacs.d/plugins/navi2ch"]
+	path = .emacs.d/plugins/navi2ch
+	url = git://navi2ch.git.sourceforge.net/gitroot/navi2ch/navi2ch
