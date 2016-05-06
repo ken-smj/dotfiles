@@ -31,7 +31,7 @@ export COLS=125
 # Remove '/c/*' from PATH if running under Msys to avoid possible 
 # interference from programs already installed on system. Removal 
 # with awk is copied from http://stackoverflow.com/a/370192.
-if [ $(uname -o) == 'Msys' ]; then
+if [ $(uname -s) == 'Msys' ]; then
     export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/c\// {next} {print}' | sed 's/:*$//'`
 fi
 
@@ -46,5 +46,5 @@ export LESSHISTFILE=-
 ###############
 alias more='less -r'
 #alias rm='rm -i'
-alias ls='ls -aF --color=auto'
+alias ls='ls -aFG'
 alias emacs='emacs -nw'
