@@ -37,6 +37,14 @@
        '(("\\$changelog\\$\\.txt" . change-log-mode))
 	 auto-mode-alist))
 
+;; for osx
+(when (eq system-type 'darwin)
+  (setq mac-option-key-is-meta t)
+  (setq mac-command-key-is-meta nil)
+  (setq mac-command-modifier nil)
+  (setq mac-option-modifier 'meta)
+  )
+
 ;; for conf
 (require 'generic-x)
 (custom-set-variables
