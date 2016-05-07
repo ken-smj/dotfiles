@@ -90,12 +90,12 @@
 ;; ------------------------------------------------------------------------
 ;; navi2ch proxy
 (cond
- ((or (eq window-system 'ns) (eq window-system 'mac))
+ ((or (eq window-system 'w32) (eq window-system 'ns) (eq window-system 'mac))
   (add-hook 'after-init-hook
             (lambda()
               (save-window-excursion
                 (async-shell-command "~/.emacs.d/libexec/scripts/2chproxy.pl")
-		)
+ 		)
               )))
  ((eq system-type 'gnu/linux)
   (add-hook 'after-init-hook
