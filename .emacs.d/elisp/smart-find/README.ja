@@ -1,0 +1,207 @@
+DESCRIPTION
+===========
+    おこがましくも super- の名を冠するこのプログラムは、Mule 2.x,
+    Emacs 20.x または XEmacs 2[01].x 上で、あらかじめ設定された複数
+    のディレクトリの下に存在するファイルを、ディレクトリ名の指定を
+    必要とせずに completion 機能を併用して読み込むことができるよう
+    にするための、find-file 系の関数に smart-find の機能を付加する
+    ためのプログラムです。
+    これを使うためには smart-find.el が必要です。
+
+    Emacs ver.18 でも曲がりなりに使えますが、いろいろと問題があり
+    ます。
+
+HOW TO USE
+==========
+    このファイルと smart-find.el を load-path のディレクトリの下に
+    コピーして byte-compile-file して下さい。そして ~/.emacs に
+
+(require 'super-smart-find)
+(define-key global-map "\C-x\C-f" 'super-smart-find-file)
+(define-key global-map "\C-x4f"   'super-smart-find-file-other-window)
+(define-key global-map "\C-xi"    'super-smart-find-insert-file)
+(define-key global-map "\C-x\C-w" 'super-smart-find-write-file)
+(define-key global-map "\C-x5f"   'super-smart-find-file-other-frame)
+(define-key global-map "\C-x4l"   'super-smart-find-load-file)
+(add-hook 'mime/editor-mode-hook
+	  '(lambda ()
+	     (define-key (current-local-map)
+	       "\C-c\C-x\C-i" 'super-smart-find-mime-editor/insert-file)
+	     (if (string-match "^19\\." emacs-version)
+		 (define-key (current-local-map) [menu-bar mime-edit file]
+		   '("Insert File" . super-smart-find-mime-editor/insert-file))
+	       )) t)
+
+    と書いておくことによって、find-file, file-other-window, および
+    find-file-other-frame など、それぞれのコマンドを従来通り使うこ
+    とができることに加えて、最初に `=' をタイプすることによって
+    smart-find の機能に切り換わります。(Emacs ver.18 では add-hook
+    を定義するか、別の方法で設定して下さい。)
+
+    tm ではなく SEMI を使っている場合はこのように書くとうまく行き
+    ます。
+
+(add-hook 'mime-edit-load-hook
+	  (lambda ()
+	    (define-key mime-edit-mode-map "\C-c\C-x\C-i"
+	      'super-smart-find-mime-edit-insert-file)
+	    (put-alist
+	     'file
+	     '("Insert File" super-smart-find-mime-edit-insert-file)
+	     mime-edit-menu-list)
+	    ) t)
+
+    smart-find でファイルをサーチするパスは smart-find-file-path
+    という変数で設定できますので、あなたが頻繁にアクセスするファイ
+    ルを置いてあるディレクトリを ~/.emacs の中に
+
+(setq smart-find-file-path
+      '(
+	"~"
+	"~/elisp"
+	"/usr/local/mule/site-lisp"
+	"/usr/local/mule/lisp"
+	))
+
+    などと書いておくと良いでしょう。
+
+    このプログラムは最初に押されたキーが何かの self-insert-command
+    かどうかの判定をしています。デフォルトでは apropos を使って存
+    在するすべての self-insert-command を検出するようになっていま
+    すが、あらかじめわかっている場合には
+
+(setq super-smart-find-self-insert-command-list
+      '(canna-self-insert-command
+	egg-self-insert-command
+	self-insert-command
+	tcode-self-insert-command-maybe))
+
+    などと設定しておくことによって、apropos を実行するための遅れを
+    回避することができます。
+
+HISTORY
+=======
+v1.86  2000.04.07
+    ・新規に作成するファイルを find-file したときも、coding system
+      が指定されていたら、正しく設定するようにした。
+
+v1.85  2000.01.31
+    ・関数 find-coding-system の引数に symbol 以外の値を与えないよ
+      うにした。XEmacs 21.2.27+ 対策。
+
+v1.84    99.04.07
+    ・すでに visit している file の buffer に、coding-system を指定
+      して同じ file を insert しようとしたときに起きるバグを修正。
+
+v1.83    99.02.02
+    ・すでに visit している file でも file の modtime が新しかった
+      ら user-coding-system を問う。
+
+v1.82    99.01.22
+    ・すでに visit している file に対しては user-coding-system を
+      問わないようにした。
+
+v1.81    98.12.17
+    ・super-smart-find-file-other-frame が arg を無視するバグを修
+      正した。
+
+v1.80    98.06.15
+    ・再び塚本さんのご指摘により、XEmacs で最初のキーが self-insert
+      command として認識されないバグを修正した。
+
+v1.79    98.06.12
+    ・塚本さん <czkmt@remus.dti.ne.jp> のご指摘により、XEmacs で
+      [backspace] と C-h を別のキーとして扱うようにした。
+
+v1.78    98.04.10
+    ・ファイル名の入力時に cursor を minibuffer に移すのを忘れてい
+      たので直した。(これも小関さんのご指摘)
+
+v1.77    98.04.10
+    ・XEmacs 以外の Emacsen において、lookup-key() が返す integer
+      を無視するようにした。
+
+v1.76    98.04.10
+    ・enbug に次ぐ enbug を修正。(^^;;)
+
+v1.75    98.04.10
+    ・XEmacs で最初の event key で起るエラーを回避。(enbug 修正)
+
+v1.74    98.04.09
+    ・Mule 2.3 と XEmacs で最初の M-p などの event で起るエラーを
+      回避。
+
+v1.73    98.04.07
+    ・Emacs 20.2 で最初の M-p などの event で起るエラーを回避。
+      (小関さん <kose@wizard.tamra.co.jp> のご指摘により)
+
+v1.72    97.12.08
+    ・XEmacs で最初の C-g が無視されてしまうバグを修正。
+
+v1.71    97.07.24
+    ・find-file などが第２引数 USER-CODING-SYSTEM を受け付けるかど
+      うかの判別を universal-coding-system-argument() の有無で行う
+      ようにした。
+
+v1.70    97.07.18
+    ・Emacs 20.0.9 に対応。第２引数 USER-CODING-SYSTEM を受け付け
+      ない find-file, find-file-other-frame, find-file-other-window,
+      insert-file, write-file でも使えるようにした。
+
+v1.63    97.04.28
+    ・command-history に実コマンド (super-smart-find-file -> find-file)
+      を登録。
+    ・SEMI-0.75 の mime-edit-insert-file に対応。
+
+v1.62    97.02.19
+    ・XEmacs 20.1 に対応。
+
+v1.61    96.12.25
+    ・tm7.99 の mime-editor/insert-file に対応。
+      tm-edit.el の改造は不要。
+
+(番外)   96.12.24
+    ・tm7.98 の mime-editor/insert-file に対応。
+      tm-edit.el の改造が必要。
+
+v1.60    96.12.10
+    ・Coding system の指定に対応。(C-u C-x C-f)
+    ・tm7.95 の mime-editor/insert-file に対応。
+
+v1.50    96.07.30
+    ・-nw で Sony NEWS の key pad に対応。
+    ・tm7.74 の mime-editor/insert-file に対応。
+      (単に変わっていないことを確認しただけ ^^;;)
+
+v1.40    96.03.15
+    ・塩野さん <jun@fs.fujitsu.co.jp> のご提供により、存在しない
+      ディレクトリを smart-find-file-path から削除する関数、
+      super-smart-find-file-path-check を追加。
+      また、変数 super-smart-find-do-file-path-check を Non-nil に
+      しておくと、super-smart-find を load したときに実行する。
+    ・file-name-history に real-name を登録。 (19.29 以上で有効)
+    ・tm7.48 の mime-editor/insert-file に対応。
+      (単にコピーしただけ ^^;;)
+
+v1.31    96.01.05
+    ・tm7.39 の mime-editor/insert-file に対応。
+
+v1.30    95.10.30
+    ・tm の mime-editor/insert-file に対応。
+
+v1.20    95.06.07
+    ・佐久間さん <KHB10110@niftyserve.or.jp> のご指摘により、
+      変数 super-smart-find-self-insert-command-list を新設し、
+      nil だったら apropos で *-self-insert-command を自動抽出、
+      既知の *-self-insert-command のリストだった場合にはそれを
+      参照するように変更。
+    ・元の minibuffer-setup-hook の値を壊さないように変更。
+
+v1.10    95.05.12
+    ・塩野さん <jun@fs.fujitsu.co.jp> のご提言により、
+      canna-self-insert-command を追加。
+    ・関数 super-smart-find-load-file を追加。
+    ・関数 super-smart-find-mime-insert-file を追加。
+      (tm-ML の末席を汚してる者としては、これは入れとかねば :-)
+
+v1.00    95.05.09

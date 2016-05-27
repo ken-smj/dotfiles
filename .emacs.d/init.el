@@ -59,6 +59,9 @@
 ;; @ isearch
 (load "isearch-conf")
 ;; ------------------------------------------------------------------------
+;; @ super-smart-find
+(load "smart-find-conf")
+;; ------------------------------------------------------------------------
 ;; @ auto save
 ;; (require 'auto-save-buffers)
 ;; (run-with-idle-timer 0.5 t 'auto-save-buffers ""   "\\.howm$") 
