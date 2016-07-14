@@ -16,13 +16,13 @@
 (setq twittering-url-show-status t)  
 ;; 全てのアイコンを保存するか
 (setq twittering-icon-storage-limit t)
-;; 最初に開くタイムラインを設定する
-(setq twittering-initial-timeline-spec-string
-      '(":home"
-	;; ":mentions"
-        ;; ":favorites"
-        ;; ":retweets_of_me"
-	))
+;; ;; 最初に開くタイムラインを設定する
+;; (setq twittering-initial-timeline-spec-string
+;;       '(":home"
+;; 	;; ":mentions"
+;;         ;; ":favorites"
+;;         ;; ":retweets_of_me"
+;; 	))
 ;; ツイート取得数
 (setq twittering-number-of-tweets-on-retrieval 50)
 ;; 表示する書式
@@ -36,11 +36,14 @@
 ;;                  (twittering-goto-next-uri)
 ;;                  (execute-kbd-macro (kbd "C-m"))
 ;;                  ))))
-(defun my-eww-goto-url-new-session ()
-  (interactive)
-  (let ((uri (get-text-property (point) 'uri)))
-    (if uri
-	(eww uri))))
-(define-key twittering-mode-map (kbd "C-m")
-  'my-eww-goto-url-new-session)
+;; (defun my-eww-goto-url-new-session ()
+;;   (interactive)
+;;   (let ((uri (get-text-property (point) 'uri)))
+;;     (if uri
+;; 	(eww uri))))
+;; (define-key twittering-mode-map (kbd "C-m")
+;;   'my-eww-goto-url-new-session)
+;; 個人設定
+(if (file-exists-p "~/Dropbox/.twittering-mode-conf-local.el")
+    (load "~/Dropbox/.twittering-mode-conf-local.el"))
 ;; ------------------------------------------------------------------------
