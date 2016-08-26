@@ -27,6 +27,7 @@ export COLS=125
 ############
 ### PATH ###
 ############
+export emacs_dir=${HOME}/local/emacs64stable
 
 # Remove '/c/*' from PATH if running under Msys to avoid possible 
 # interference from programs already installed on system. Removal 
@@ -35,7 +36,7 @@ if [ $(uname -s) == 'Msys' ]; then
     export PATH=`echo ${PATH} | awk -v RS=: -v ORS=: '/c\// {next} {print}' | sed 's/:*$//'`
 fi
 
-export PATH=${PATH}:${emacs_dir}/bin:${HOME}/.emacs.d/libexec/w32:${HOME}/.emacs.d/libexec/w32/glo62Bwb/bin:/c/Program\ Files/Java/jre7/bin
+export PATH=${PATH}:${emacs_dir}/bin:${HOME}/.emacs.d/libexec/w32:${HOME}/.emacs.d/libexec/w32/glo62Bwb/bin
 
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/lib/pkgconfig
 

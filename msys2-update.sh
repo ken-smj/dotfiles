@@ -4,7 +4,8 @@
 
 home="C:\\Users"
 modules="base base-devel mingw-w64-x86_64 mingw-w64-x86_64-toolchain development git subversion \
-       mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ruby lftp mingw-w64-x86_64-ag"
+       mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ruby lftp mingw-w64-x86_64-ag mingw-w64-x86_64-libxml2 mingw-w64-x86_64-librsvg \
+       mingw-w64-x86_64-python2-setuptools mingw-w64-x86_64-python2-pip"
 gems="gemcutter ruby_gntp rubyzip RubyInline ocra oga"
 
 echo "This is msys2 setup scripts. version 2015.12.03."

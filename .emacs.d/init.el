@@ -1,6 +1,11 @@
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 ;; ------------------------------------------------------------------------
+;; @ server start for emacs-client
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+;; ------------------------------------------------------------------------
 ;; @ load path
 (when (< emacs-major-version 23)
   (defver user-emacs-directory "~/.emacs.d"))
@@ -192,8 +197,8 @@
 ;; @ org2opml,opml2org
 (load "org2opml-conf")
 ;; ------------------------------------------------------------------------
-;; @ evernote-mode
-(load "evernote-mode-conf")
+;; ;; @ evernote-mode
+;; (load "evernote-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ elfeed (rss reader)
 (load "elfeed-conf")
