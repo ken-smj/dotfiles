@@ -22,9 +22,6 @@
 [submodule ".emacs.d/plugins/modeline-git-branch"]
 	path = .emacs.d/plugins/modeline-git-branch
 	url = https://github.com/acple/modeline-git-branch
-[submodule ".emacs.d/plugins/popup-el"]
-	path = .emacs.d/plugins/popup-el
-	url = https://github.com/auto-complete/popup-el
 [submodule ".emacs.d/plugins/markdown-mode"]
 	path = .emacs.d/plugins/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
