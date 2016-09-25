@@ -17,6 +17,9 @@
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVlib/include")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVInsite/EVImage")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVInsite/EVClient")
+  (add-to-list 'smart-find-file-path "e:/DEVELOP/debugging.r.3.x.current.svn.project/EVlib/include")
+  (add-to-list 'smart-find-file-path "e:/DEVELOP/debugging.r.3.x.current.svn.project/EVInsite/EVImage")
+  (add-to-list 'smart-find-file-path "e:/DEVELOP/debugging.r.3.x.current.svn.project/EVInsite/EVClient")
   )
 
 ;; (define-key global-map "\C-x\C-f" 'super-smart-find-file)
