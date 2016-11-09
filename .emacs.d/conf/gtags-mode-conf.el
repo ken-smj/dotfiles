@@ -7,8 +7,9 @@
 (setq gtags-mode-hook
       '(lambda ()
          (setq gtags-select-buffer-single nil)
+	 (setq gtags-pop-delete t)
 	 ;; (setq gtags-select-mode-hook '(kill-buffer (current-buffer)))
-         (local-set-key [?\M-.] 'gtags-find-tag-other-window)
+         (local-set-key [?\M-.] 'gtags-find-tag)
          (local-set-key "\M-r" 'gtags-find-rtag)
          (local-set-key "\M-s" 'gtags-find-symbol)
          (local-set-key [?\C-.] 'gtags-pop-stack)))

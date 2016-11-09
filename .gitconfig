@@ -26,3 +26,12 @@
 [color]
 	ui = true
 	diff = true
+[diff]
+    tool = WinMerge
+[difftool "WinMerge"]
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -ub -dl \"$LOCAL\" -dr \"$REMOTE\" \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = WinMerge
+[mergetool "WinMerge"]
+    cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" //e //u //wl //wr \"$BASE\" \"$LOCAL\" \"$REMOTE\" //o \"$MERGED\"
+    trustExitCode = true
