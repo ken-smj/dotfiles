@@ -2,15 +2,17 @@
 	excludesfile = ~/dotfiles/.gitignore
 	compression = -1
 	loosecompression = -1
-	packedGitWindowSize = 64m
+	packedGitWindowSize = 128m
+        packedGitLimit = 128m
 	autocrlf = false
 	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 [include]
 	path = ~/.gitconfig.local
 [pack]
-	threads = 1
-	windowMemory = 64m
-	packSizeLimit = 64m
+        windowMemory = 128m
+        threads = 2
+        deltaCacheSize = 128m
+        packSizeLimit = 128m
 	compression = -1
 [push]
 	default = simple
