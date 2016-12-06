@@ -23,13 +23,22 @@
 ;; 	 "* %?\nEntered on %U\n  %i\n  %a")))
 (setq org-capture-templates
       '(
+	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
-        ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
-	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %U\n")
-	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %a\n   %U\n")
-        ("l" "Log" entry (file+datetree (concat org-directory "journal.org") "Log") "* %?\n Entered on %U\n   %i\n  %a\n")
-	("d" "Daily report" entry (file+datetree (concat org-directory "daily-report.org")) "*** %U %?\n   %a")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox") "** TODO %? :inbox:obstruction:\n   %i\n   %T\n")
+        ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
+	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
+	 "* %?  :%^{redmine?}:\n   %i\n  %A\n  Entered on %U\n" :clock-in t :clock-keep t)
+	("i" "Interrupt Log" entry (file+datetree (concat org-directory "daily-journal.org"))
+	 "* %?\n   %i\n  %A\n  Entered on %U\n" :clock-in t :clock-resume t)
+	("l" "Log" entry (file+datetree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  %A\n  Entered on %U\n")
+	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n  Entered on %U\n")
+	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %A\n  Entered on %U\n")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	 "** TODO %? :%^{redmine?}:inbox:obstruction:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Projects")
+	 "** %? :%^{redmine?}:inbox:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	 "** TODO %? :inbox:\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -53,7 +62,7 @@
 (setq org-stuck-projects
       ;; org-stuck-projects
       ;; ("+LEVEL=2/-DONE" ("TODO" "NEXT" "NEXTACTION") nil "")
-      '("+inbox|+TODO/-DONE-DELEGATED" ("next" "TODO") nil "\\<SCHEDULED:\\>"))
+      '("+Inbox|+TODO/-DONE-DELEGATED" ("next" "TODO") nil "\\<SCHEDULED:\\>"))
 ;; org-capture-memo
 (defun org-capture-memo (n)
   (interactive "p")
@@ -67,6 +76,9 @@
 ;; スケジュールされてないagendaを表示する。
 (setq org-agenda-custom-commands
       '(("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil)))
+;; 計時設定
+(setq org-clock-persist t)		; emacs外で作業前提。
+(setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
 ;; code-reading
 (defvar org-code-reading-software-name nil)
 ;; ~/memo/code-reading.org に記録する
@@ -95,7 +107,8 @@
 
 ;; Tagリスト
 (setq org-tag-alist
-      '(("obstruction" . ?o)
+      '(("#odw" . ?#)
+	("obstruction" . ?o)
 	("bug" . ?b)
 	("tips" . ?t)
 	("remark" . ?m)
@@ -105,12 +118,15 @@
 	("books" . ?k)
 	))
 (setq org-tag-faces
-      '(("inbox" :foreground "#FFFF00")
-	("doing" :foreground "#00F0FF")
-	("next" :foreground "#00FF00")
-	("log" :foreground "#FFFF00")
-	("bug" :foreground "#FF0000")
-	("obstruction" :foreground "#FF0000")
+      '(("#[0-9]+" . (:foreground "#FF00FF"))
+	("H#[0-9]+" . (:foreground "#FF00FF"))
+	("#odw" . (:foreground "#FF00FF"))
+	("inbox" . (:foreground "#FFFF00"))
+	("doing" . (:foreground "#00F0FF"))
+	("next" . (:foreground "#00FF00"))
+	("log" . (:foreground "#FFFF00"))
+	("bug" . (:foreground "#FF0000"))
+	("obstruction" . (:foreground "#FF0000"))
 	))
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory
@@ -120,12 +136,12 @@
 (defun my-sparse-inbox-tree ()
   (interactive)
   (org-tags-view nil "inbox"))
-(global-set-key (kbd "C-c v") 'my-sparse-inbox-tree)
-;; 障害リストを表示
-(defun my-sparse-obstruction-tree ()
+(global-set-key (kbd "C-c <insert>") 'my-sparse-inbox-tree)
+;; next リストを表示
+(defun my-sparse-next-tree ()
   (interactive)
-  (org-tags-view nil "obstruction"))
-(global-set-key (kbd "C-c o") 'my-sparse-obstruction-tree)
+  (org-tags-view nil "next"))
+(global-set-key (kbd "C-c v") 'my-sparse-next-tree)
 ;; リストの項目を TAB で選択
 (org-defkey org-agenda-mode-map [(tab)]
 	    '(lambda () (interactive)
@@ -155,7 +171,7 @@
 
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-c'" 'org-capture-log)
+(global-set-key "\C-c`" 'org-capture-log)
 (global-set-key "\C-cm" 'org-capture-memo)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)

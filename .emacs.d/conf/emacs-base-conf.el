@@ -2,6 +2,7 @@
 
 ;; ------------------------------------------------------------------------
 ;; @ 基本設定
+(setq system-time-locale "ja_JP")
 (custom-set-faces
  '(default ((t
              (:background "black" :foreground "light gray")
