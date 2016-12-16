@@ -8,6 +8,8 @@ ac-comphist.dat
 .emacs.d/eshell
 .emacs.d/auto-save-list
 .emacs.d/url
+.emacs.d/bookmarks
+.emacs.d/.org-id-locations
 tmp
 tramp
 recentf
@@ -34,4 +36,3 @@ GRTAGS
 GTAGS
 **/autosave.prs
 **/*local.ini
-.emacs.d/bookmarks

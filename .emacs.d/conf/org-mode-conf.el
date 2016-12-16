@@ -118,9 +118,9 @@
 	("books" . ?k)
 	))
 (setq org-tag-faces
-      '(("#[0-9]+" . (:foreground "#FF00FF"))
-	("H#[0-9]+" . (:foreground "#FF00FF"))
-	("#odw" . (:foreground "#FF00FF"))
+      '(("#[0-9]+" . (:foreground "#00FFFF"))
+	("H#[0-9]+" . (:foreground "#00FFFF"))
+	("#odw" . (:foreground "#00FFFF"))
 	("inbox" . (:foreground "#FFFF00"))
 	("doing" . (:foreground "#00F0FF"))
 	("next" . (:foreground "#00FF00"))
@@ -177,4 +177,22 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cr" 'org-capture-code-reading)
+
+;; face
+(set-face-foreground 'org-date "orange")
+(set-face-underline-p 'org-date t)
+(set-face-foreground 'outline-1 "aquamarine")
+(set-face-foreground 'outline-2 "deep sky blue")
+(set-face-foreground 'outline-3 "pale green")
+(set-face-foreground 'outline-4 "pale goldenrod")
+(set-face-foreground 'outline-5 "light steel blue")
+(set-face-foreground 'outline-6 "dodger blue")
+(set-face-foreground 'outline-7 "medium turquoise")
+(set-face-foreground 'outline-8 "cornflower blue")
+
+;; (set-face-foreground 'face "color")
+;; (set-face-background 'face "color")
+;; (set-face-underline-p 'face t)
+;; (set-face-bold-p 'face t)
+;; (set-face-italic-p 'face nil)
 ;; ------------------------------------------------------------------------
