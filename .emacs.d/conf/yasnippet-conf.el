@@ -8,10 +8,9 @@
 	  "~/.emacs.d/lib/yasnippet-snippets"
 	  ))
   (yas-global-mode 1)
-  ;; 単語展開キーバインド (ver8.0から明記しないと機能しない)
-  ;; (setqだとtermなどで干渉問題ありでした)
-  ;; もちろんTAB以外でもOK 例えば "C-;"とか
-  (custom-set-variables '(yas-trigger-key (kbd "<backtab>")))
+  ;;トリガーキーをTABからSPCに変更
+  (define-key yas-minor-mode-map (kbd "M-SPC") 'yas/expand)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
 
   ;; 既存スニペットを挿入する
   (define-key yas-minor-mode-map (kbd "C-x i i") 'yas-insert-snippet)

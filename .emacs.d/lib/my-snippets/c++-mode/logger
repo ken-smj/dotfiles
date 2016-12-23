@@ -1,7 +1,8 @@
 # -*- mode: snippet; require-final-newline: nil -*-
 # name: logger
-# key: logger
+# key: log
 # binding: direct-keybinding
 # --
-if(logger) logger->writeLog(Logger::L_DEBUG, io::str(format("%s(%d) ${1:logging message}") % __FUNCTION__ % __LINE__ % ${2:params}));
-$0
+#ifdef DEBUGLOG_OUTPUT
+if(dbgLogger) dbgLogger->writeLog(Logger::L_DEBUG, io::str(format("%s(%d) $0") % __FUNCTION__ % __LINE__));
+#endif

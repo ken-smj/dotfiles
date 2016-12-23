@@ -218,7 +218,6 @@
 	    (delete-other-windows)
 	    (calendar)))
 ;; ------------------------------------------------------------------------
-
 ;;;
 ;;; end of file
 ;;;
@@ -243,13 +242,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:background "black" :foreground "light gray"))))
- '(cursor ((((class color) (background dark)) (:background "yellow")) (((class color) (background light)) (:background "yellow")) (t nil)))
- '(org-date ((t (:foreground "orange" :underline t))))
- '(outline-1 ((t (:foreground "orchid"))))
- '(outline-2 ((t (:foreground "deep sky blue"))))
- '(outline-3 ((t (:foreground "medium spring green"))))
- '(outline-4 ((t (:foreground "pale goldenrod"))))
- '(outline-5 ((t (:foreground "light slate blue"))))
- '(outline-6 ((t (:foreground "light goldenrod"))))
- '(outline-7 ((t (:foreground "tomato"))))
- '(outline-8 ((t (:foreground "forest green")))))
+ '(cursor ((((class color) (background dark)) (:background "yellow")) (((class color) (background light)) (:background "yellow")) (t nil))))
