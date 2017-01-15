@@ -26,10 +26,13 @@
 ;(setq mew-opt-highlight-header nil)
 (setq mew-use-highlight-header nil)
 
+;; ;; color
+;; (setq mew-theme-file "~/.emacs.d/mew-theme.el")
+
 ;; summary mode
 (setq mew-summary-form '(type (5 date) " " (14 from) " " t (80 subj) "|" (0 body)))
-;; (add-hook 'mew-init-hook (lambda () (require 'mew-fancy-summary)))
-;; (require 'font-lock)
+(add-hook 'mew-init-hook (lambda () (require 'mew-fancy-summary)))
+(require 'font-lock)
 
 ;; フォルダの自動推測ルール
 (defvar mew-refile-guess-control
