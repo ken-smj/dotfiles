@@ -24,6 +24,7 @@ recentf
 *.ilk
 *.sdf
 *.opensdf
+*.opendb
 **/Win32*/
 **/x64*/
 **/bin*/

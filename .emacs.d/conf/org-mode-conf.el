@@ -79,6 +79,8 @@
 ;; 計時設定
 (setq org-clock-persist t)		; emacs外で作業前提。
 (setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
+;; クロックテーブルのデフォルト値
+(setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags "#odw"))
 ;; code-reading
 (defvar org-code-reading-software-name nil)
 ;; ~/memo/code-reading.org に記録する
