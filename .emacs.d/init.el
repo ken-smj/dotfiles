@@ -49,8 +49,8 @@
 ;; @ custom face
 (load "emacs-faces-conf")
 ;; ------------------------------------------------------------------------
-;; @ fringe
-(load "fringe-conf")
+;; ;; @ fringe => it's too heavy.
+;; (load "fringe-conf")
 ;; ------------------------------------------------------------------------
 ;; @ modeline
 (load "modeline-conf")
@@ -234,8 +234,7 @@
  '(ag-reuse-buffers (quote nil))
  '(ag-reuse-window (quote nil))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(vc-handled-backends nil)
- '(yas-trigger-key (kbd "<backtab>")))
+ '(vc-handled-backends nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
