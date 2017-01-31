@@ -192,6 +192,11 @@
 (set-face-foreground 'outline-7 "medium turquoise")
 (set-face-foreground 'outline-8 "cornflower blue")
 
+;; latex
+(require 'ox)
+(setq org-latex-create-formula-image-program 'dvipng) 
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
 ;; (set-face-foreground 'face "color")
 ;; (set-face-background 'face "color")
 ;; (set-face-underline-p 'face t)

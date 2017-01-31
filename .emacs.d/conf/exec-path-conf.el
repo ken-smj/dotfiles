@@ -12,6 +12,7 @@
 	    (list
 	     (expand-file-name "~/local/msys64/mingw64/bin/")
 	     (expand-file-name "~/local/msys64/usr/bin/")
+	     (expand-file-name "~/Dropbox/texlive/bin/win32/")
 	     (expand-file-name "~/.emacs.d/plugins/mew-6.7/bin/")
 	     (expand-file-name "~/.emacs.d/libexec/w32/")
 	     (expand-file-name "~/.emacs.d/libexec/w32/gzip-1.3.12-1-bin/bin/")

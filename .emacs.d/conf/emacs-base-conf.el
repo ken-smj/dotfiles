@@ -28,6 +28,7 @@
 (tool-bar-mode -1)
 (set-scroll-bar-mode nil)
 (global-set-key [f10] 'tmm-menubar)
+(setq temporary-file-directory "~/.emacs.d/tmp/")
 ;; 画像ファイルを表示
 (auto-image-file-mode t)
 ;; for ChangeLog.
