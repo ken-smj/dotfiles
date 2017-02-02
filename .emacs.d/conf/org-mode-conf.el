@@ -197,6 +197,16 @@
 (setq org-latex-create-formula-image-program 'dvipng) 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
+;; MobileOrg
+(setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
+(setq org-mobile-files
+      (list "~/Dropbox/org/notes.org"
+            "~/Dropbox/org/tasks.org"
+            "~/Dropbox/org/daily-journal.org"
+            "~/Dropbox/org/iphone.org"
+            ))
+(setq org-mobile-inbox-for-pull "~/Dropbox/org/iphone.org")
+
 ;; (set-face-foreground 'face "color")
 ;; (set-face-background 'face "color")
 ;; (set-face-underline-p 'face t)

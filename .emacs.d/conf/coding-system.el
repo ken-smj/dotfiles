@@ -15,4 +15,6 @@
   ;; swap meta-key bitween command and option key.
   (setq ns-command-modifier (quote meta))
   (setq ns-alternate-modifier (quote super)))
+;; for OrgMode
+(modify-coding-system-alist 'file "\\.org\\'" 'utf-8)
 ;; ------------------------------------------------------------------------
