@@ -31,9 +31,6 @@
 [submodule ".emacs.d/plugins/rd-mode"]
 	path = .emacs.d/plugins/rd-mode
 	url = https://github.com/emacsmirror/rd-mode
-[submodule ".emacs.d/plugins/emacs-calfw"]
-	path = .emacs.d/plugins/emacs-calfw
-	url = https://github.com/kiwanami/emacs-calfw
 [submodule ".emacs.d/plugins/migemo"]
 	path = .emacs.d/plugins/migemo
 	url = https://github.com/emacs-jp/migemo
