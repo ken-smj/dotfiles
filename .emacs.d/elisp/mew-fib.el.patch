@@ -1,0 +1,59 @@
+--- mew-fib.el.orig	Fri Feb 19 18:14:41 1999
++++ mew-fib.el	Fri Feb 19 22:10:09 1999
+@@ -11,7 +11,6 @@
+ (require 'mew-func)
+ 
+ (defvar mew-fib-item-file "~/.mew-fib")
+-(defvar mew-fib-item-alist nil)
+ 
+ (defun mew-fib-split (str)
+   (let (ret match)
+@@ -28,7 +27,6 @@
+   (save-excursion
+     (let ((fib-file (expand-file-name mew-fib-item-file))
+ 	  item val ret tmp-val)
+-      (setq mew-fib-item-alist nil)
+       (mew-set-buffer-tmp)
+       (if (file-exists-p fib-file)
+ 	  (insert-file-contents fib-file))
+@@ -43,12 +41,11 @@
+ 			       (mew-fib-split item)))))
+       ret)))
+ 
+-(defun mew-fib-fill-default ()
+-  "Fill |>item<| from .mew-fib."
++(defun mew-fib-fill-by-alist (alist)
++  "Fill |>item<| by alist."
+   (interactive)
+   (save-excursion
+     (let (begin end str)
+-      (setq mew-fib-item-alist (mew-fib-make-alist))
+       (goto-char (point-min))
+       (while (re-search-forward "|>\\([^<]+\\)<|" nil t)
+ 	(setq begin (match-beginning 1)
+@@ -56,8 +53,23 @@
+ 	      str (buffer-substring begin end))
+ 	(delete-region begin end)
+ 	(backward-char 2)
+-	(insert (or (cdr (assoc (downcase str) mew-fib-item-alist)) str)))
+-    )))
++	(insert (let ((obj (cdr (assoc str alist))))
++                  (cond
++		   ((null obj) str)
++		   ((stringp obj) obj)
++		   ((functionp obj) (funcall obj))
++		   ((symbolp obj)
++		    (if (fboundp obj) (funcall obj)
++		      (if (and (boundp obj)
++			       (stringp (symbol-value obj)))
++			  (symbol-value obj))))
++                   (t str)))))
++      )))
++
++(defun mew-fib-fill-default ()
++  "Fill |>item<| from .mew-fib."
++  (interactive)
++  (mew-fib-fill-by-alist (mew-fib-make-alist)))
+ 
+ (defun mew-fib-delete-frame ()
+   "Delete all quotations, i.e. |> <|."
