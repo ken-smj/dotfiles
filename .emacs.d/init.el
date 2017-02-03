@@ -159,9 +159,6 @@
 ;; @ vbnet mode
 (load "vbnet-mode-conf")
 ;; ------------------------------------------------------------------------
-;; @ yasnippet
-(load "yasnippet-conf")
-;; ------------------------------------------------------------------------
 ;; @ byte-compile
 (defun byte-compile-this-file ()
   "Compile current-buffer-file of Lisp into a file of byte code."
@@ -209,14 +206,24 @@
 ;; @ navi2ch
 (load "navi2ch-conf")
 ;; ------------------------------------------------------------------------
-;; @ boot カレンダーと予定を表示する
+;; @ yasnippet
+(load "yasnippet-conf")
+;; ------------------------------------------------------------------------
+;; @ boot カレンダーと予定を表示する、MobileOrgの読込み。
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
+	    (org-mobile-pull)			; 起動時に読み取り
 	    (pop-to-buffer "*scratch*")
 	    (delete-other-windows)
 	    (calendar)))
+;; ------------------------------------------------------------------------
+;; @ emacs終了時のhook
+(add-hook 'kill-emacs-hook
+	  (lambda ()
+	    (org-mobile-push)
+	    (org2opml)))
 ;; ------------------------------------------------------------------------
 ;;;
 ;;; end of file

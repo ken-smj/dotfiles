@@ -39,6 +39,7 @@
 	 "** %? :%^{redmine?}:inbox:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? :inbox:\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
+	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -63,6 +64,7 @@
       ;; org-stuck-projects
       ;; ("+LEVEL=2/-DONE" ("TODO" "NEXT" "NEXTACTION") nil "")
       '("+Inbox|+TODO/-DONE-DELEGATED" ("next" "TODO") nil "\\<SCHEDULED:\\>"))
+
 ;; org-capture-memo
 (defun org-capture-memo (n)
   (interactive "p")
@@ -73,14 +75,27 @@
 (defun org-capture-log ()
   (interactive)
   (org-capture nil "l"))
-;; スケジュールされてないagendaを表示する。
+
+;; agenda表示のカスタマイズ。
 (setq org-agenda-custom-commands
-      '(("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil)))
+      '(("n" "Next Action List" tags-todo "next" ((org-agenda-prefix-format " %6e "))) ; nextタグを表示する。
+	("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil))) ; スケジュールされてないagendaを表示する。
+
 ;; 計時設定
 (setq org-clock-persist t)		; emacs外で作業前提。
 (setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
 ;; クロックテーブルのデフォルト値
-(setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags "#odw"))
+(setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
+
+;; ;; カラムビュー
+;; ;; global Effort estimate values
+;; (setq org-global-properties (quote (( "Effort_ALL" . "00:05 00:10 00:15 00:30 01:00 01:30 02:00 02:30 03:00"))))
+;; ;; カラムビューで表示する項目
+;; ;; Column の書式は以下.
+;; ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
+;; (setq org-columns-default-format "%50ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM_T(Clock)")
+;; (setq org-agenda-columns-add-appointments-to-effort-sum t)
+
 ;; code-reading
 (defvar org-code-reading-software-name nil)
 ;; ~/memo/code-reading.org に記録する
@@ -206,6 +221,7 @@
             "~/Dropbox/org/iphone.org"
             ))
 (setq org-mobile-inbox-for-pull "~/Dropbox/org/iphone.org")
+;; (org-mobile-pull)			; 起動時に読み取り -> init.el
 
 ;; (set-face-foreground 'face "color")
 ;; (set-face-background 'face "color")
