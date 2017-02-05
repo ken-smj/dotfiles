@@ -26,6 +26,7 @@
 	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
+	("c" "add to an agenda" entry (file+headline (concat org-directory "org-ical.org") "Schedule") "** TODO %?\n\t")))
 	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
 	("i" "Interrupt Log" entry (file+datetree (concat org-directory "daily-journal.org"))
@@ -40,6 +41,7 @@
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? :inbox:\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
 	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
+	;; org-captureで予定を格納する。
 	))
 ;; TODO状態
 (setq org-todo-keywords
@@ -211,6 +213,37 @@
 (require 'ox)
 (setq org-latex-create-formula-image-program 'dvipng) 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+;; calfw連携。
+;; 予定専用orgファイルを開く。
+(defun show-org-buffer (file)
+  "Show an org-file on the current buffer"
+  (interactive)
+  (if (get-buffer file)
+      (let ((buffer (get-buffer file)))
+	(switch-to-buffer buffer)
+	(message "%s" file))
+    (find-file (concat "~/Dropbox/org/" file))))
+(global-set-key (kbd "C-M-c")
+		'(lambda ()
+		   (interactive)
+		   (show-org-buffer "org-ical.org")))
+;; create ical file
+(require 'org-icalendar)
+(defun my-org-export-icalendar ()
+  (interactive)
+  (org-export-icalendar nil (concat org-directory "org-ical.org")))
+(define-key org-mode-map (kbd "C-c 1") 'my-org-export-icalendar)
+;; iCal の説明文
+(setq org-icalendar-combined-description "OrgModeのスケジュール出力")
+;; カレンダーに適切なタイムゾーンを設定する(google 用には nil が必要)
+(setq org-icalendar-timezone "Asia/Tokyo")
+;; DONE になった TODO は出力対象から除外する
+(setq org-icalendar-include-todo t)
+;; (通常は，<>--<> で区間付き予定をつくる．非改行入力で日付がNoteに入らない)
+(setq org-icalendar-use-scheduled '(event-if-todo))
+;; DL 付きで終日予定にする：締め切り日(スタンプで時間を指定しないこと)
+(setq org-icalendar-use-deadline '(event-if-todo))
 
 ;; MobileOrg
 (setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
