@@ -26,7 +26,7 @@
 	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
-	("c" "add to an agenda" entry (file+headline (concat org-directory "org-ical.org") "Schedule") "** TODO %?\n\t")))
+	("c" "add to an agenda" entry (file+headline (concat org-directory "org-ical.org") "Schedule") "** TODO %?\n\t")
 	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
 	("i" "Interrupt Log" entry (file+datetree (concat org-directory "daily-journal.org"))
@@ -229,7 +229,7 @@
 		   (interactive)
 		   (show-org-buffer "org-ical.org")))
 ;; create ical file
-(require 'org-icalendar)
+;; (require 'org-icalendar)
 (defun my-org-export-icalendar ()
   (interactive)
   (org-export-icalendar nil (concat org-directory "org-ical.org")))

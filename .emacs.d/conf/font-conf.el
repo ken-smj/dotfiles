@@ -4,11 +4,25 @@
 ;; @ font
 (when (eq system-type 'windows-nt)
   ;; 標準フォントの設定
-  (set-face-attribute 'default nil
-		      :family "MeiryoKe_Gothic"
-		      :height 115)
-  (set-fontset-font nil 'japanese-jisx0208
-		    (font-spec :family "MeiryoKe_Gothic"))
+  (set-default-font "MeiryoKe_Console 12")
+  (set-fontset-font (frame-parameter nil 'font)
+  		    'japanese-jisx0208
+		    ;; '("MeiryoKe_Console" . "unicode-bmp")
+  		    '("Ricty Diminished" . "unicode-bmp")
+  		    )
+
+  (set-fontset-font (frame-parameter nil 'font)
+  		    'katakana-jisx0201
+		    ;; '("MeiryoKe_Console" . "unicode-bmp")
+  		    '("Ricty Diminished" . "unicode-bmp")
+  		    )
+  ;; (set-face-attribute 'default nil
+  ;; 		      :family "Ricty Diminished"
+  ;; 		      :height 115)
+  ;; (set-fontset-font nil 'japanese-jisx0208
+  ;; 		    (font-spec :family "Ricty Diminished"))
+  ;; (set-fontset-font nil 'katakana-jisx0201
+  ;; 		    (font-spec :family "Ricty Diminished"))
   ;; (setq face-font-rescale-alist
   ;; 	'((".*Inconsolata*" . 1.0)
   ;; 	  (".*MeiryoKe_Gothic*" . 1.2)))
