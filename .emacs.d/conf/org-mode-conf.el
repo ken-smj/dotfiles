@@ -25,7 +25,7 @@
       '(
 	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
-        ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %? :inbox:\n SCHEDULED: %T\n %i\n")
+        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "daily-journal.org")) "* TODO %? :next:\n %i\n")
 	("c" "add to an agenda" entry (file+headline (concat org-directory "org-ical.org") "Schedule") "** TODO %?\n\t")
 	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
