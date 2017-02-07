@@ -15,18 +15,11 @@
 (setq org-directory "~/Dropbox/org/")
 ;; org-modeのデフォルトの書き込み先
 (setq org-default-notes-file (concat org-directory "notes.org"))
-;; org-modeのテンプレート
-;; (setq org-capture-templates
-;;       '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
-;; 	 "* TODO %?\n  %i\n  %a")
-;;         ("j" "Journal" entry (file+datetree "~/org/journal.org")
-;; 	 "* %?\nEntered on %U\n  %i\n  %a")))
+;; captureテンプレート
 (setq org-capture-templates
       '(
 	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
-        ;; ("a" "Agenda" entry (file+datetree (concat org-directory "agenda.org")) "* TODO %^{Title} [/] :doing:\n SCHEDULED: %T\n - [ ] %?\n %i\n")
-        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "daily-journal.org")) "* TODO %? :next:\n %i\n")
-	("c" "add to an agenda" entry (file+headline (concat org-directory "org-ical.org") "Schedule") "** TODO %?\n\t")
+        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n %i\n  Entered on %U\n")
 	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
 	("i" "Interrupt Log" entry (file+datetree (concat org-directory "daily-journal.org"))
@@ -89,14 +82,17 @@
 ;; クロックテーブルのデフォルト値
 (setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
 
-;; ;; カラムビュー
-;; ;; global Effort estimate values
-;; (setq org-global-properties (quote (( "Effort_ALL" . "00:05 00:10 00:15 00:30 01:00 01:30 02:00 02:30 03:00"))))
-;; ;; カラムビューで表示する項目
-;; ;; Column の書式は以下.
-;; ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
-;; (setq org-columns-default-format "%50ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM_T(Clock)")
-;; (setq org-agenda-columns-add-appointments-to-effort-sum t)
+;; カラムビュー
+;; global Effort estimate values
+(setq org-global-properties (quote (("Effort_ALL" . "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00"))))
+;; カラムビューで表示する項目
+;; Column の書式は以下.
+;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
+(setq org-columns-default-format "%50ITEM(Task) %PRIORITY(TimeBand) %10Effort(Effort){:} %10CLOCKSUM_T(Clock)")
+(setq org-agenda-columns-add-appointments-to-effort-sum t)
+(setq org-highest-priority ?A)
+(setq org-lowest-priority ?E)
+(setq org-default-priority ?E)
 
 ;; code-reading
 (defvar org-code-reading-software-name nil)
@@ -122,7 +118,7 @@
           '(("c" "Code Reading" entry (file+headline (concat org-directory org-code-reading-file) "Code Readings")
 	     "** %(identity prefix) %?\n   %a\n   %T")
             )))
-    (org-capture nil "c")))
+    (Org-capture nil "c")))
 
 ;; Tagリスト
 (setq org-tag-alist
@@ -223,16 +219,16 @@
       (let ((buffer (get-buffer file)))
 	(switch-to-buffer buffer)
 	(message "%s" file))
-    (find-file (concat "~/Dropbox/org/" file))))
-(global-set-key (kbd "C-M-c")
+    (find-file (concat org-directory file))))
+(global-set-key (kbd "C-?")
 		'(lambda ()
 		   (interactive)
-		   (show-org-buffer "org-ical.org")))
+		   (show-org-buffer "daily-journal.org")))
 ;; create ical file
 ;; (require 'org-icalendar)
 (defun my-org-export-icalendar ()
   (interactive)
-  (org-export-icalendar nil (concat org-directory "org-ical.org")))
+  (org-export-icalendar nil (concat org-directory "daily-journal.org")))
 (define-key org-mode-map (kbd "C-c 1") 'my-org-export-icalendar)
 ;; iCal の説明文
 (setq org-icalendar-combined-description "OrgModeのスケジュール出力")
