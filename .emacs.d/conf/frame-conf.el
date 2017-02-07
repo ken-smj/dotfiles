@@ -13,7 +13,7 @@
 		      '(mouse-color . "white")
 		      '(width . 156)
 		      '(height . 58)
-		      '(top . 0)
+		      '(top .  0)
 		      '(left . 0)
 		      '(line-spacing . 0))
 		default-frame-alist)))
