@@ -15,16 +15,18 @@
 (setq org-directory "~/Dropbox/org/")
 ;; org-modeのデフォルトの書き込み先
 (setq org-default-notes-file (concat org-directory "notes.org"))
+;; agendaのスタートを日曜日にする。
+(setq org-agenda-start-on-weekday 0)
 ;; captureテンプレート
 (setq org-capture-templates
       '(
 	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
-        ("a" "Agenda" entry (file+datetree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n %i\n  Entered on %U\n")
-	("e" "Entry Log" entry (file+datetree (concat org-directory "daily-journal.org"))
+        ("a" "Agenda" entry (file+weektree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n %i\n  SCHEDULED: %T\n")
+	("e" "Entry Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
-	("i" "Interrupt Log" entry (file+datetree (concat org-directory "daily-journal.org"))
+	("i" "Interrupt Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?\n   %i\n  Entered on %U\n" :clock-in t :clock-resume t)
-	("l" "Log" entry (file+datetree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
+	("l" "Log" entry (file+weektree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n  Entered on %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %A\n  Entered on %U\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
@@ -80,11 +82,11 @@
 (setq org-clock-persist t)		; emacs外で作業前提。
 (setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
 ;; クロックテーブルのデフォルト値
-(setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
+;; (setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
 
 ;; カラムビュー
 ;; global Effort estimate values
-(setq org-global-properties (quote (("Effort_ALL" . "0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00"))))
+;; (setq org-global-properties (quote (("Effort_ALL" . "00:05 00:10 00:15 00:30 01:00 01:30 02:00 02:30 03:00"))))
 ;; カラムビューで表示する項目
 ;; Column の書式は以下.
 ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
@@ -123,14 +125,16 @@
 ;; Tagリスト
 (setq org-tag-alist
       '(("#odw" . ?#)
-	("obstruction" . ?o)
 	("bug" . ?b)
-	("tips" . ?t)
-	("remark" . ?m)
-	("windows" . ?w)
 	("evinsite" . ?e)
-	("redmine" . ?r)
+	("git" . ?g)
 	("books" . ?k)
+	("remark" . ?m)
+	("next" . ?n)
+	("obstruction" . ?o)
+	("redmine" . ?r)
+	("tips" . ?t)
+	("windows" . ?w)
 	))
 (setq org-tag-faces
       '(("#[0-9]+" . (:foreground "#00FFFF"))
@@ -147,6 +151,11 @@
 (setq org-agenda-files (list org-directory
 			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
+;; agendaファイルへの転送設定
+(setq org-refile-targets
+      '((nil :maxlevel . 3)
+        ("tasks.org" :level . 1)
+	("daily-journal.org" :maxlevel . 3)))
 ;; inbox リストを表示
 (defun my-sparse-inbox-tree ()
   (interactive)
