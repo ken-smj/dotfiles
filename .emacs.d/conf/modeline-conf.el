@@ -11,7 +11,7 @@
 (setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
 (setq display-time-string-forms
-      '(dayname "," monthname "." day "," year " at " 24-hours ":" minutes " (" time-zone ")"))
+      '(dayname "," monthname "." day " at " 24-hours ":" minutes " "))
 (display-time-mode t)
 ;; cp932エンコード時の表示を「P」とする
 (coding-system-put 'cp932 :mnemonic ?P)
