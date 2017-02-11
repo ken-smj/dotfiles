@@ -34,7 +34,7 @@
 	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Projects")
 	 "** %? :%^{redmine?}:inbox:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
-	 "** TODO %? :inbox:\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
+	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
 	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
 	))
