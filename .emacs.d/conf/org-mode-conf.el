@@ -1,4 +1,4 @@
-; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
+; -*- Mode: Emacs-Lisp ; Coding: utf-8-unix -*-
 
 ;; ------------------------------------------------------------------------
 ;; @ org mode
@@ -27,12 +27,12 @@
 	("i" "Interrupt Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?\n   %i\n  Entered on %U\n" :clock-in t :clock-resume t)
 	("l" "Log" entry (file+weektree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
-	("m" "Memo" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n  Entered on %U\n")
-	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %? :inbox:\n   %i\n   %A\n  Entered on %U\n")
+	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n  Entered on %U\n")
+	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
-	 "** TODO %? :%^{redmine?}:inbox:obstruction:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	 "** TODO %? :%^{redmine?}:obstruction:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
 	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Projects")
-	 "** %? :%^{redmine?}:inbox:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	 "** %? :%^{redmine?}:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
 	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
@@ -84,17 +84,28 @@
 ;; クロックテーブルのデフォルト値
 ;; (setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
 
-;; カラムビュー
-;; global Effort estimate values
-;; (setq org-global-properties (quote (("Effort_ALL" . "00:05 00:10 00:15 00:30 01:00 01:30 02:00 02:30 03:00"))))
+;; 良く使用するプロパティの追加
+(setq org-global-properties
+      '(("WhenDo_ALL" . "this-week next-week a-couple-weeks this-month next-month someday")
+	("WhenDo")
+	("TotalEffort")
+	("Place")
+	("Members")))
+
 ;; カラムビューで表示する項目
 ;; Column の書式は以下.
 ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
-(setq org-columns-default-format "%50ITEM(Task) %PRIORITY(TimeBand) %10Effort(Effort){:} %10CLOCKSUM_T(Clock)")
+(setq org-columns-default-format
+      "%50ITEM(Task) %2PRIORITY(TB) %10WhenDo %18DEADLINE %18SCHEDULED %5TotalEffort(Total Effort){:} %5Effort(Effort){:} %10CLOCKSUM_T(Clock)")
 (setq org-agenda-columns-add-appointments-to-effort-sum t)
 (setq org-highest-priority ?A)
 (setq org-lowest-priority ?E)
 (setq org-default-priority ?E)
+
+;; 全見積時間
+(define-key org-mode-map (kbd "C-c C-x M-e") (lambda ()(interactive)(org-set-property "TotalEffor" nil)))
+;; いつやるか?
+(define-key org-mode-map (kbd "C-c C-x w") (lambda ()(interactive)(org-set-property "WhenDo" nil)))
 
 ;; code-reading
 (defvar org-code-reading-software-name nil)
@@ -125,12 +136,12 @@
 ;; Tagリスト
 (setq org-tag-alist
       '(("#odw" . ?#)
-	("bug" . ?b)
-	("evinsite" . ?e)
+	("books" . ?b)
+	("dicom" . ?d)
+	("emacs" . ?e)
 	("git" . ?g)
-	("books" . ?k)
+	("evinsite" . ?i)
 	("remark" . ?m)
-	("next" . ?n)
 	("obstruction" . ?o)
 	("redmine" . ?r)
 	("tips" . ?t)
@@ -156,42 +167,47 @@
       '((nil :maxlevel . 3)
         ("tasks.org" :level . 1)
 	("daily-journal.org" :maxlevel . 3)))
-;; inbox リストを表示
-(defun my-sparse-inbox-tree ()
-  (interactive)
-  (org-tags-view nil "inbox"))
-(global-set-key (kbd "C-c <insert>") 'my-sparse-inbox-tree)
-;; next リストを表示
-(defun my-sparse-next-tree ()
-  (interactive)
-  (org-tags-view nil "next"))
-(global-set-key (kbd "C-c v") 'my-sparse-next-tree)
+;; ;; inbox リストを表示
+;; (defun my-sparse-inbox-tree ()
+;;   (interactive)
+;;   (org-tags-view nil "inbox"))
+;; (global-set-key (kbd "C-c <insert>") 'my-sparse-inbox-tree)
+;; ;; next リストを表示
+;; (defun my-sparse-next-tree ()
+;;   (interactive)
+;;   (org-tags-view nil "next"))
+;; (global-set-key (kbd "C-c v") 'my-sparse-next-tree)
 ;; リストの項目を TAB で選択
 (org-defkey org-agenda-mode-map [(tab)]
 	    '(lambda () (interactive)
 	       (org-agenda-goto)
 	       (with-current-buffer "*Org Agenda*"
 		 (org-agenda-quit))))
-;; inbox,nextタグを簡単に付与する
-(defun my-toggle-inbox-tag ()
-  (interactive)
-  (my-toggle-tag "inbox"))
-(defun my-toggle-next-tag ()
-  (interactive)
-  (my-toggle-tag "next"))
-;; inboxタグをトグルする
-(defun my-toggle-tag (my-toggle-tag)
-  (when (eq major-mode 'org-mode)
-    (save-excursion
-      (save-restriction
-        (unless (org-at-heading-p)
-          (outline-previous-heading))
-        (if (string-match (concat ":" my-toggle-tag ":") (org-get-tags-string))
-            (org-toggle-tag my-toggle-tag 'off)
-          (org-toggle-tag my-toggle-tag 'on))
-        (org-reveal)))))
-(define-key org-mode-map (kbd "<C-insert>") 'my-toggle-inbox-tag)
-(define-key org-mode-map (kbd "<M-insert>") 'my-toggle-next-tag)
+;; ;; inbox,nextタグを簡単に付与する
+;; (defun my-toggle-inbox-tag ()
+;;   (interactive)
+;;   (my-toggle-tag "inbox"))
+;; (defun my-toggle-next-tag ()
+;;   (interactive)
+;;   (my-toggle-tag "next"))
+;; ;; inboxタグをトグルする
+;; (defun my-toggle-tag (my-toggle-tag)
+;;   (when (eq major-mode 'org-mode)
+;;     (save-excursion
+;;       (save-restriction
+;;         (unless (org-at-heading-p)
+;;           (outline-previous-heading))
+;;         (if (string-match (concat ":" my-toggle-tag ":") (org-get-tags-string))
+;;             (org-toggle-tag my-toggle-tag 'off)
+;;           (org-toggle-tag my-toggle-tag 'on))
+;;         (org-reveal)))))
+;; (define-key org-mode-map (kbd "<C-insert>") 'my-toggle-inbox-tag)
+;; (define-key org-mode-map (kbd "<M-insert>") 'my-toggle-next-tag)
+
+;; 見出し間を移動
+(define-key org-mode-map (kbd "M-n") 'org-forward-heading-same-level)
+(define-key org-mode-map (kbd "M-p") 'org-backward-heading-same-level)
+(define-key org-mode-map (kbd "M-u") 'outline-up-heading)
 
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
@@ -229,10 +245,21 @@
 	(switch-to-buffer buffer)
 	(message "%s" file))
     (find-file (concat org-directory file))))
+(defun my-show-org-today-buffer (file)
+  "Show an org-file today's index on the current buffer."
+  (interactive)
+  (if (get-buffer file)
+      (let ((buffer (get-buffer file))
+	    (index (format-time-string "%Y-%m-%d %A")))
+	(switch-to-buffer buffer)
+	(goto-char 0)
+	(search-forward index nil t)
+	;; (message "%s:%s" file index))
+        (find-file (concat org-directory file)))))
 (global-set-key (kbd "C-?")
 		'(lambda ()
 		   (interactive)
-		   (show-org-buffer "daily-journal.org")))
+		   (my-show-org-today-buffer "daily-journal.org")))
 ;; create ical file
 ;; (require 'org-icalendar)
 (defun my-org-export-icalendar ()
