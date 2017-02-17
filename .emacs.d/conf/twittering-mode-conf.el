@@ -3,6 +3,41 @@
 ;; ------------------------------------------------------------------------
 ;; @ twitter
 (require 'twittering-mode)
+;;; 新たなタイムラインを表示する前に，現在のタイムラインのバッファを消去
+(defadvice twittering-visit-timeline (before kill-buffer-before-visit-timeline activate)
+  "Kill TL buffer before visit new TL."
+  (twittering-kill-buffer))
+;;; f / g キーでアクセスするタイムラインリスト
+(setq twittering-initial-timeline-spec-string
+      '(":mentions"
+        ":home"))
+;;; 次のタイムラインリストを表示
+(defun twittering-kill-and-switch-to-next-timeline ()
+  (interactive)
+  (when (twittering-buffer-p)
+    (let* ((buffer-list twittering-initial-timeline-spec-string)
+           (following-buffers (cdr (member (buffer-name (current-buffer)) buffer-list)))
+           (next (if following-buffers
+                     (car following-buffers)
+                   (car buffer-list))))
+      (unless (eq (current-buffer) next)
+        (twittering-visit-timeline next)))))
+;;; 前のタイムラインリストを表示
+(defun twittering-kill-and-switch-to-previous-timeline ()
+  (interactive)
+  (when (twittering-buffer-p)
+    (let* ((buffer-list (reverse twittering-initial-timeline-spec-string))
+           (preceding-buffers (cdr (member (buffer-name (current-buffer)) buffer-list)))
+           (previous (if preceding-buffers
+                         (car preceding-buffers)
+                       (car buffer-list))))
+      (unless (eq (current-buffer) previous)
+        (twittering-visit-timeline previous)))))
+;;; キーの設定
+(defun twittering-mode-hooks ()
+  (define-key twittering-mode-map (kbd "f") 'twittering-kill-and-switch-to-next-timeline)
+  (define-key twittering-mode-map (kbd "b") 'twittering-kill-and-switch-to-previous-timeline))
+(add-hook 'twittering-mode-hook 'twittering-mode-hooks)
 ;; 証明書を検証しない
 (setq twittering-allow-insecure-server-cert nil)
 ;; 認証済みaccess tokenをGnuPGで暗号化して保存する
