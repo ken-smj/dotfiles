@@ -20,7 +20,7 @@
 ;; captureテンプレート
 (setq org-capture-templates
       '(
-	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
+	("+" "Add Log Item" entry (clock (concat org-directory "tasks.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ("a" "Agenda" entry (file+weektree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n %i\n  SCHEDULED: %T\n")
 	("e" "Entry Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
@@ -83,6 +83,9 @@
 (setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
 ;; クロックテーブルのデフォルト値
 ;; (setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
+;; clock table
+(setq org-time-clocksum-format
+      '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 ;; 良く使用するプロパティの追加
 (setq org-global-properties
@@ -90,7 +93,8 @@
 	("WhenDo")
 	("TotalEffort")
 	("Place")
-	("Members")))
+	("Members")
+	("Telephone")))
 
 ;; カラムビューで表示する項目
 ;; Column の書式は以下.
@@ -204,6 +208,7 @@
 ;; (define-key org-mode-map (kbd "<C-insert>") 'my-toggle-inbox-tag)
 ;; (define-key org-mode-map (kbd "<M-insert>") 'my-toggle-next-tag)
 
+
 ;; 見出し間を移動
 (define-key org-mode-map (kbd "M-n") 'org-forward-heading-same-level)
 (define-key org-mode-map (kbd "M-p") 'org-backward-heading-same-level)
@@ -217,6 +222,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-set-key "\C-cr" 'org-capture-code-reading)
+(global-set-key "\C-c\C-x\C-j" 'org-clock-goto)
 
 ;; face
 (set-face-foreground 'org-date "orange")
