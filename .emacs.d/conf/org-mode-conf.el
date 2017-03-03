@@ -75,8 +75,9 @@
 
 ;; agenda表示のカスタマイズ。
 (setq org-agenda-custom-commands
-      '(("n" "Next Action List" tags-todo "next" ((org-agenda-prefix-format " %6e "))) ; nextタグを表示する。
-	("x" "Unscheduled TODO" tags-todo "-SCHEDULED>=\"<now>\"" nil))) ; スケジュールされてないagendaを表示する。
+      '(("c" "Current Week Action List" tags-todo "WhenDo=\"this-week\"" ((org-agenda-prefix-format " %6e ")))
+	("n" "Next Week Action List" tags-todo "WhenDo=\"next-week\"" ((org-agenda-prefix-format " %6e ")))
+	("x" "Unscheduled TODO" tags-todo "WhenDo=\"\"" ((org-agenda-prefix-format " %6e "))))) ; スケジュールされてないagendaを表示する。
 
 ;; 計時設定
 (setq org-clock-persist t)		; emacs外で作業前提。
@@ -102,9 +103,9 @@
 (setq org-columns-default-format
       "%50ITEM(Task) %2PRIORITY(TB) %10WhenDo %18DEADLINE %18SCHEDULED %5TotalEffort(Total Effort){:} %5Effort(Effort){:} %10CLOCKSUM_T(Clock)")
 (setq org-agenda-columns-add-appointments-to-effort-sum t)
-(setq org-highest-priority ?A)
-(setq org-lowest-priority ?E)
-(setq org-default-priority ?E)
+(setq org-highest-priority ?1)
+(setq org-lowest-priority ?9)
+(setq org-default-priority ?8)
 
 ;; 全見積時間
 (define-key org-mode-map (kbd "C-c C-x M-e") (lambda ()(interactive)(org-set-property "TotalEffor" nil)))
