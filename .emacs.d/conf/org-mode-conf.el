@@ -95,6 +95,7 @@
 	("TotalEffort")
 	("Place")
 	("Members")
+	("Presenter")
 	("Telephone")))
 
 ;; カラムビューで表示する項目
