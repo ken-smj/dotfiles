@@ -104,12 +104,12 @@
 (setq org-columns-default-format
       "%50ITEM(Task) %2PRIORITY(TB) %10WhenDo %18DEADLINE %18SCHEDULED %5TotalEffort(Total Effort){:} %5Effort(Effort){:} %10CLOCKSUM_T(Clock)")
 (setq org-agenda-columns-add-appointments-to-effort-sum t)
-(setq org-highest-priority ?1)
-(setq org-lowest-priority ?9)
-(setq org-default-priority ?8)
+(setq org-highest-priority ?A)
+(setq org-lowest-priority ?D)
+(setq org-default-priority ?C)
 
 ;; 全見積時間
-(define-key org-mode-map (kbd "C-c C-x M-e") (lambda ()(interactive)(org-set-property "TotalEffor" nil)))
+(define-key org-mode-map (kbd "C-c C-x M-e") (lambda ()(interactive)(org-set-property "TotalEffort" nil)))
 ;; いつやるか?
 (define-key org-mode-map (kbd "C-c C-x w") (lambda ()(interactive)(org-set-property "WhenDo" nil)))
 
