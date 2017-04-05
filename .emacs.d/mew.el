@@ -34,6 +34,10 @@
 (add-hook 'mew-init-hook (lambda () (require 'mew-fancy-summary)))
 (require 'font-lock)
 
+;; Apple-mail
+(setq mew-disable-alternative-regex-list '("Apple Mail"))
+(setq mew-mime-multipart-alternative-list '("Multipart/.*" "Text/Plain" "Text/Html" ".*"))
+
 ;; フォルダの自動推測ルール
 (defvar mew-refile-guess-control
   '(mew-refile-guess-by-alist
