@@ -97,7 +97,8 @@
 	("Place")
 	("Members")
 	("Presenter")
-	("Telephone")))
+	("Telephone")
+	("Price")))
 
 ;; カラムビューで表示する項目
 ;; Column の書式は以下.
