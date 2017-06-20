@@ -21,7 +21,7 @@
 (setq org-capture-templates
       '(
 	("+" "Add Log Item" entry (clock (concat org-directory "tasks.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
-        ("a" "Agenda" entry (file+weektree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n %i\n  SCHEDULED: %T\n")
+        ("a" "Agenda" entry (file+weektree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n  SCHEDULED: %T\n %i\n")
 	("e" "Entry Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
 	("i" "Interrupt Log" entry (file+weektree (concat org-directory "daily-journal.org"))
@@ -30,12 +30,12 @@
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n  Entered on %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
-	 "** TODO %? :%^{redmine?}:obstruction:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	 "** TODO %? :%^{redmine?}:obstruction:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Projects")
-	 "** %? :%^{redmine?}:\n   %i\n SCHEDULED: %^{Schedule?}T\n  Entered on %U\n")
+	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("r" "Rest Log Item" entry (clock (concat org-directory "tasks.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
-	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n   %i\n  DEADLINE: %^{Deadline?}T\n  Entered on %U\n")
+	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n  DEADLINE: %^{Deadline?}T\n   %i\n  Entered on %U\n")
 	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
 	))
