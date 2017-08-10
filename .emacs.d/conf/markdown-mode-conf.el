@@ -3,6 +3,8 @@
 ;; ------------------------------------------------------------------------
 ;; @ markdown GFM (GitHub Flavored Markdown) Mode
 (load "markdown-mode")
+;; markdownのコマンドのパス追加
+(setq markdown-command "perl ~/.emacs.d/libexec/scripts/Markdown_1.0.1/Markdown.pl")
 (add-hook 'markdown-mode-hook
 	  '(lambda ()
 	     (custom-set-faces

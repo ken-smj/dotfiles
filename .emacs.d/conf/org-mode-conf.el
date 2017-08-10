@@ -145,6 +145,7 @@
 (setq org-tag-alist
       '(("#odw" . ?#)
 	("books" . ?b)
+	("code" . ?c)
 	("dicom" . ?d)
 	("emacs" . ?e)
 	("git" . ?g)
@@ -159,6 +160,7 @@
       '(("#[0-9]+" . (:foreground "#00FFFF"))
 	("H#[0-9]+" . (:foreground "#00FFFF"))
 	("#odw" . (:foreground "#00FFFF"))
+	("rest" . (:foreground "#F00000"))
 	("inbox" . (:foreground "#FFFF00"))
 	("doing" . (:foreground "#00F0FF"))
 	("next" . (:foreground "#00FF00"))

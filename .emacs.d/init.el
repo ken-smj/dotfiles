@@ -136,10 +136,10 @@
 (load "ispell-conf")
 ;; ------------------------------------------------------------------------
 ;; @ modeline-git-branch
-(load "modeline-git-branch-conf")
+;; (load "modeline-git-branch-conf")
 ;; ------------------------------------------------------------------------
 ;; @ yatex
-(load "yatex-mode-conf")
+;; (load "yatex-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; ;; @ emacs w3m
 ;; (load "emacs-w3m-conf")
