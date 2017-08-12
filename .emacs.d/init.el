@@ -203,8 +203,8 @@
 ;; @ game sudoku
 (load "sudoku-conf")
 ;; ------------------------------------------------------------------------
-;; @ navi2ch
-(load "navi2ch-conf")
+;; ;; @ navi2ch
+;; (load "navi2ch-conf")
 ;; ------------------------------------------------------------------------
 ;; @ yasnippet
 (load "yasnippet-conf")

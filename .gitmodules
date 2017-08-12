@@ -70,9 +70,6 @@
 [submodule ".emacs.d/plugins/xml-rpc"]
 	path = .emacs.d/plugins/xml-rpc
 	url = git://github.com/emacsmirror/xml-rpc.git
-[submodule ".emacs.d/plugins/mew-contrib"]
-	path = .emacs.d/plugins/mew-contrib
-	url = git://github.com/kazu-yamamoto/mew-contrib.git
 [submodule ".emacs.d/plugins/expand-region"]
 	path = .emacs.d/plugins/expand-region
 	url = git://github.com/magnars/expand-region.el.git
