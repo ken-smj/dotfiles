@@ -1,6 +1,9 @@
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 ;; ------------------------------------------------------------------------
+;; @ find-file-at-point
+(ffap-bindings)
+;; ------------------------------------------------------------------------
 ;; @ super-smart-find
 ;; C-xC-fの置き換え
 ;; http://howm.osdn.jp/a/smart-find/
