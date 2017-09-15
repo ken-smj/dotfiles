@@ -20,7 +20,7 @@
 ;; captureテンプレート
 (setq org-capture-templates
       '(
-	("+" "Add Log Item" entry (clock (concat org-directory "tasks.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
+	("+" "Add Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %?\n   %i\n  %A\n  Entered on %U\n")
         ("a" "Agenda" entry (file+weektree+prompt (concat org-directory "daily-journal.org")) "* TODO %?\n  SCHEDULED: %T\n %i\n")
 	("e" "Entry Log" entry (file+weektree (concat org-directory "daily-journal.org"))
 	 "* %?  :%^{redmine?}:\n   %i\n  Entered on %U\n" :clock-in t :clock-keep t)
@@ -29,14 +29,14 @@
 	("l" "Log" entry (file+weektree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n  Entered on %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
 	 "** TODO %? :%^{redmine?}:obstruction:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
-	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Projects")
+	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "Projects")
 	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
-	("r" "Rest Log Item" entry (clock (concat org-directory "tasks.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
-	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	("r" "Rest Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
+	("t" "todo task" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
 	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n  DEADLINE: %^{Deadline?}T\n   %i\n  Entered on %U\n")
-	("v" "private task" entry (file+headline (concat org-directory "tasks.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
+	("v" "private task" entry (file+headline (concat org-directory "daily-journal.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
 	))
 ;; TODO状態
@@ -175,7 +175,7 @@
 ;; agendaファイルへの転送設定
 (setq org-refile-targets
       '((nil :maxlevel . 3)
-        ("tasks.org" :level . 1)
+        ;; ("tasks.org" :level . 1)
 	("daily-journal.org" :maxlevel . 3)))
 ;; ;; inbox リストを表示
 ;; (defun my-sparse-inbox-tree ()
@@ -294,7 +294,7 @@
 (setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
 (setq org-mobile-files
       (list "~/Dropbox/org/notes.org"
-            "~/Dropbox/org/tasks.org"
+            ;; "~/Dropbox/org/tasks.org"
             "~/Dropbox/org/daily-journal.org"
             "~/Dropbox/org/iphone.org"
             ))
