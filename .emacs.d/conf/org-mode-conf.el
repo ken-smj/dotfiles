@@ -31,7 +31,7 @@
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
 	("o" "with obstruction tag" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
 	 "** TODO %? :%^{redmine?}:obstruction:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
-	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "Projects")
+	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
 	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("r" "Rest Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
 	("t" "todo task" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
