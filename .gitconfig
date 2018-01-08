@@ -37,3 +37,5 @@
 [mergetool "WinMerge"]
     cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" //e //u //wl //wr \"$BASE\" \"$LOCAL\" \"$REMOTE\" //o \"$MERGED\"
     trustExitCode = true
+[winUpdater]
+	recentlySeenVersion = 2.15.1.windows.2
