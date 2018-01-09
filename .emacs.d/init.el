@@ -244,6 +244,8 @@
  '(ag-reuse-buffers (quote nil))
  '(ag-reuse-window (quote nil))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(user-full-name (getenv "USER_FULL_NAME"))
+ '(user-mail-address (getenv "USER_MAIL_ADDRESS"))
  '(vc-handled-backends nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
