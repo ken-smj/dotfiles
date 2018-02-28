@@ -29,12 +29,12 @@
 	("l" "Log" entry (file+weektree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n  Entered on %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? :%^{redmine?}:obstruction:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
-	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
+	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("r" "Rest Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
-	("t" "todo task" entry (file+headline (concat org-directory "daily-journal.org") "Inbox")
+	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n  DEADLINE: %^{Deadline?}T\n   %i\n  Entered on %U\n")
 	("v" "private task" entry (file+headline (concat org-directory "daily-journal.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
@@ -104,7 +104,7 @@
 ;; Column の書式は以下.
 ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
 (setq org-columns-default-format
-      "%50ITEM(Task) %2PRIORITY(TB) %10WhenDo %18DEADLINE %18SCHEDULED %5TotalEffort(Total Effort){:} %5Effort(Effort){:} %10CLOCKSUM_T(Clock)")
+      "%50ITEM(Task) %2PRIORITY(TB) %10WhenDo %18DEADLINE %18SCHEDULED %7TotalEffort(Total Effort){:} %7Effort(Effort){:} %7CLOCKSUM(Clock)")
 (setq org-agenda-columns-add-appointments-to-effort-sum t)
 (setq org-highest-priority ?A)
 (setq org-lowest-priority ?D)
