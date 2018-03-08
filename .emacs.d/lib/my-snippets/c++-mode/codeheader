@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: codeheader
+# key: codeheader
+# binding: direct-keybinding
+# --
+// -*- coding:japanese-cp932-dos -*-
