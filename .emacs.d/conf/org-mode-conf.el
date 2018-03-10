@@ -293,8 +293,7 @@
 ;; MobileOrg
 (setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
 (setq org-mobile-files
-      (list "~/Dropbox/org/notes.org"
-            ;; "~/Dropbox/org/tasks.org"
+      (list "~/Dropbox/org/tasks.org"
             "~/Dropbox/org/daily-journal.org"
             "~/Dropbox/org/iphone.org"
             ))
