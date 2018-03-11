@@ -119,3 +119,7 @@
   (setq mew-prog-text/html 'shr-render-region)) ;; 'mew-mime-text/html-w3m
 ;; (defadvice mew-summary-display (after mew-auto-analize-again activate)
 ;;   (mew-summary-analyze-again))
+
+;; ;; fiber.exeの代わり。
+;; (setq mew-w32-exec "~/local/msys64/usr/bin/start")
+;; (setq mew-prog-text/html-ext "~/local/msys64/usr/bin/start")

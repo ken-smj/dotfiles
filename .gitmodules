@@ -34,9 +34,6 @@
 [submodule ".emacs.d/plugins/migemo"]
 	path = .emacs.d/plugins/migemo
 	url = https://github.com/emacs-jp/migemo
-[submodule ".emacs.d/plugins/twittering-mode"]
-	path = .emacs.d/plugins/twittering-mode
-	url = https://github.com/hayamiz/twittering-mode
 [submodule ".emacs.d/plugins/ack-el"]
 	path = .emacs.d/plugins/ack-el
 	url = https://github.com/leoliu/ack-el
