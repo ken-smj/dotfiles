@@ -74,21 +74,110 @@
   (interactive)
   (org-capture nil "l"))
 
+;; ------------------------------------------------------------------------
 ;; agenda表示のカスタマイズ。
 (setq org-agenda-custom-commands
       '(("c" "Current Week Action List" tags-todo "WhenDo=\"this-week\"" ((org-agenda-prefix-format " %6e ")))
 	("n" "Next Week Action List" tags-todo "WhenDo=\"next-week\"" ((org-agenda-prefix-format " %6e ")))
 	("x" "Unscheduled TODO" tags-todo "WhenDo=\"\"" ((org-agenda-prefix-format " %6e "))))) ; スケジュールされてないagendaを表示する。
 
+;; ------------------------------------------------------------------------
 ;; 計時設定
 (setq org-clock-persist t)		; emacs外で作業前提。
 (setq org-clock-idle-time 15)		; 15分以上経過で空き時間の確認。
+(setq org-clock-out-remove-zero-time-clocks t) ; 1分未満を記録しない
 ;; クロックテーブルのデフォルト値
 ;; (setq org-clocktable-defaults '(:maxlevel 4 :scope subtree :tags . "#odw"))
 ;; clock table
 (setq org-time-clocksum-format
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
+;; org-tree-slide-mode
+(require 'org-tree-slide)
+(with-eval-after-load "org-tree-slide"
+  (org-tree-slide-narrowing-control-profile)       ;; ナローイング用基本設定の適用
+  (setq org-tree-slide-modeline-display 'outside)  ;; 高速動作用（推奨）
+  (setq org-tree-slide-skip-done nil)              ;; DONEなタスクも表示する
+  (define-key org-tree-slide-mode-map (kbd "<prior>")
+    'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "<next>")
+    'org-tree-slide-move-next-tree)
+  )
+(global-set-key (kbd "<home>") 'org-tree-slide-mode)
+
+;; ;; ナローイングで時間計測を自動化するための設定
+;; ;; https://qiita.com/takaxp/items/6b2d1e05e7ce4517274d
+;; (with-eval-after-load "org-tree-slide"
+;;   (when (require 'org-clock nil t)
+
+;;     ;; org-clock-in を拡張
+;;     ;; 発動条件1）タスクが DONE になっていないこと（変更可）
+;;     ;; 発動条件2）アウトラインレベルが4まで．それ以上に深いレベルでは計測しない（変更可）
+;;     (defun my:org-clock-in ()
+;;       (setq vc-display-status nil) ;; モードライン節約
+;;       (when (and (looking-at (concat "^\\*+ " org-not-done-regexp))
+;;                  (memq (org-outline-level) '(1 2 3 4)))
+;;         (org-clock-in)))
+
+;;     ;; org-clock-out を拡張
+;;     (defun my:org-clock-out ()
+;;       (setq vc-display-status t) ;; モードライン節約解除
+;;       (when (org-clocking-p)
+;;         (org-clock-out)))
+
+;;     ;; org-clock-in をナローイング時に呼び出す．
+;;     (add-hook 'org-tree-slide-after-narrow-hook #'my:org-clock-in)
+
+;;     ;; org-clock-out を適切なタイミングで呼び出す．
+;;     (add-hook 'org-tree-slide-before-move-next-hook #'my:org-clock-out)
+;;     (add-hook 'org-tree-slide-before-move-previous-hook #'my:org-clock-out)
+;;     (add-hook 'org-tree-slide-mode-stop-hook #'my:org-clock-out)
+
+;;     ;; 一時的にナローイングを解く時にも計測を止めたい人向け
+;;     (add-hook 'org-tree-slide-before-content-view-hook #'my:org-clock-out)))
+
+;; ;; Emacs終了時に，org-clock-outし忘れのタスクの時計を止めます．
+;; (defun my:org-clock-out-and-save-when-exit ()
+;;       "Save buffers and stop clocking when kill emacs."
+;;       (when (org-clocking-p)
+;;         (org-clock-out)
+;;         (save-some-buffers t)))
+;; (add-hook 'kill-emacs-hook #'my:org-clock-out-and-save-when-exit)
+
+;; ;; 記録中のタスク名を表示する場所をモードラインからフレームタイトルに変更．
+;; (setq org-clock-clocked-in-display 'frame-title)
+
+(require 'org-clock-today)
+(with-eval-after-load "org-clock-today"
+  (defun advice:org-clock-today-update-mode-line ()
+    "Calculate the total clocked time of today and update the mode line."
+    (setq org-clock-today-string
+          (if (org-clock-is-active)
+              (save-excursion
+                (save-restriction
+                  (with-current-buffer (org-clock-is-active)
+                    (widen)
+                    (let* ((current-sum (org-clock-sum-today))
+                           (open-time-difference (time-subtract
+                                                  (float-time)
+                                                  (float-time org-clock-start-time)))
+                           (open-seconds (time-to-seconds open-time-difference))
+                           (open-minutes (/ open-seconds 60))
+                           (total-minutes (+ current-sum
+                                             open-minutes)))
+                      (concat " " (org-minutes-to-clocksum-string total-minutes))))))
+            ""))
+    (force-mode-line-update))
+  (advice-add 'org-clock-today-update-mode-line :override
+              #'advice:org-clock-today-update-mode-line)
+
+  (defun advice:org-clock-sum-today (&optional headline-filter)
+    "Sum the times for each subtree for today."
+    (let ((range (org-clock-special-range 'today nil t)))
+      (org-clock-sum (car range) (cadr range)
+                         headline-filter :org-clock-minutes-today)))
+  (advice-add 'org-clock-sum-today :override #'advice:org-clock-sum-today))
+;; ------------------------------------------------------------------------
 ;; 良く使用するプロパティの追加
 (setq org-global-properties
       '(("WhenDo_ALL" . "this-week next-week a-couple-weeks this-month next-month someday")
@@ -100,6 +189,7 @@
 	("Telephone")
 	("Price")))
 
+;; ------------------------------------------------------------------------
 ;; カラムビューで表示する項目
 ;; Column の書式は以下.
 ;; [http://orgmode.org/manual/Column-attributes.html#Column-attributes
@@ -115,6 +205,7 @@
 ;; いつやるか?
 (define-key org-mode-map (kbd "C-c C-x w") (lambda ()(interactive)(org-set-property "WhenDo" nil)))
 
+;; ------------------------------------------------------------------------
 ;; code-reading
 (defvar org-code-reading-software-name nil)
 ;; ~/memo/code-reading.org に記録する
@@ -141,6 +232,7 @@
             )))
     (Org-capture nil "c")))
 
+;; ------------------------------------------------------------------------
 ;; Tagリスト
 (setq org-tag-alist
       '(("#odw" . ?#)
@@ -168,9 +260,11 @@
 	("bug" . (:foreground "#FF0000"))
 	("obstruction" . (:foreground "#FF0000"))
 	))
+;; ------------------------------------------------------------------------
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory
-			     (concat org-directory "current/")))
+			     (concat org-directory "current/")
+			     (concat org-directory "past-journal/")))
 (setq org-agenda-include-diary t)
 ;; agendaファイルへの転送設定
 (setq org-refile-targets
@@ -215,11 +309,13 @@
 ;; (define-key org-mode-map (kbd "<M-insert>") 'my-toggle-next-tag)
 
 
+;; ------------------------------------------------------------------------
 ;; 見出し間を移動
 (define-key org-mode-map (kbd "M-n") 'org-forward-heading-same-level)
 (define-key org-mode-map (kbd "M-p") 'org-backward-heading-same-level)
 (define-key org-mode-map (kbd "M-u") 'outline-up-heading)
 
+;; ------------------------------------------------------------------------
 ;; ショートカットキー
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-c`" 'org-capture-log)
@@ -231,6 +327,7 @@
 (global-set-key "\C-c\C-x\C-j" 'org-clock-goto)
 (global-set-key "\C-c\C-x\C-e" 'org-clock-modify-effort-estimate)
 
+;; ------------------------------------------------------------------------
 ;; face
 (set-face-foreground 'org-date "orange")
 (set-face-underline-p 'org-date t)
@@ -243,11 +340,13 @@
 (set-face-foreground 'outline-7 "medium turquoise")
 (set-face-foreground 'outline-8 "cornflower blue")
 
+;; ------------------------------------------------------------------------
 ;; latex
 (require 'ox)
 (setq org-latex-create-formula-image-program 'dvipng) 
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
+;; ------------------------------------------------------------------------
 ;; calfw連携。
 ;; 予定専用orgファイルを開く。
 (defun show-org-buffer (file)
@@ -290,6 +389,8 @@
 ;; DL 付きで終日予定にする：締め切り日(スタンプで時間を指定しないこと)
 (setq org-icalendar-use-deadline '(event-if-todo))
 
+
+;; ------------------------------------------------------------------------
 ;; MobileOrg
 (setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
 (setq org-mobile-files
@@ -298,6 +399,7 @@
             "~/Dropbox/org/iphone.org"
             ))
 (setq org-mobile-inbox-for-pull "~/Dropbox/org/iphone.org")
+
 ;; (org-mobile-pull)			; 起動時に読み取り -> init.el
 
 ;; (set-face-foreground 'face "color")
