@@ -93,17 +93,19 @@
       '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))
 
 ;; org-tree-slide-mode
-(require 'org-tree-slide)
-(with-eval-after-load "org-tree-slide"
-  (org-tree-slide-narrowing-control-profile)       ;; ナローイング用基本設定の適用
-  (setq org-tree-slide-modeline-display 'outside)  ;; 高速動作用（推奨）
-  (setq org-tree-slide-skip-done nil)              ;; DONEなタスクも表示する
+(when (require 'org-tree-slide nil t)
+  (global-set-key (kbd "<home>") 'org-tree-slide-mode)
+  (global-set-key (kbd "S-<home>") 'org-tree-slide-skip-done-toggle)
   (define-key org-tree-slide-mode-map (kbd "<prior>")
     'org-tree-slide-move-previous-tree)
   (define-key org-tree-slide-mode-map (kbd "<next>")
     'org-tree-slide-move-next-tree)
-  )
-(global-set-key (kbd "<home>") 'org-tree-slide-mode)
+  (define-key org-tree-slide-mode-map (kbd "<end>")
+    'org-tree-slide-content)
+  (setq org-tree-slide-skip-outline-level 4)
+  (org-tree-slide-narrowing-control-profile)       ;; ナローイング用基本設定の適用
+  (setq org-tree-slide-modeline-display 'outside)  ;; 高速動作用（推奨）
+  (setq org-tree-slide-skip-done nil))              ;; DONEなタスクも表示する
 
 ;; ;; ナローイングで時間計測を自動化するための設定
 ;; ;; https://qiita.com/takaxp/items/6b2d1e05e7ce4517274d
