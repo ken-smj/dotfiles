@@ -102,7 +102,7 @@
     'org-tree-slide-move-next-tree)
   (define-key org-tree-slide-mode-map (kbd "<end>")
     'org-tree-slide-content)
-  (setq org-tree-slide-skip-outline-level 4)
+  (setq org-tree-slide-skip-outline-level 3)
   (org-tree-slide-narrowing-control-profile)       ;; ナローイング用基本設定の適用
   (setq org-tree-slide-modeline-display 'outside)  ;; 高速動作用（推奨）
   (setq org-tree-slide-skip-done nil))              ;; DONEなタスクも表示する
