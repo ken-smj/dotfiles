@@ -203,6 +203,9 @@
 ;; @ elfeed (rss reader)
 (load "elfeed-conf")
 ;; ------------------------------------------------------------------------
+;; @ openwith
+(load "openwith-mode-conf")
+;; ------------------------------------------------------------------------
 ;; @ game sudoku
 (load "sudoku-conf")
 ;; ------------------------------------------------------------------------
@@ -260,3 +263,4 @@
  '(markdown-header-face-4 ((t (:inherit outline-4 markdown-header-face))))
  '(markdown-header-face-5 ((t (:inherit outline-5 markdown-header-face))))
  '(markdown-header-face-6 ((t (:inherit outline-6 markdown-header-face)))))
+(put 'upcase-region 'disabled nil)

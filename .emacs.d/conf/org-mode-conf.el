@@ -349,6 +349,20 @@
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
 ;; ------------------------------------------------------------------------
+;; hyper-link用 for MS-OFFICE
+(add-to-list 'org-file-apps '(
+			      ("\\.xls\\'"  . default)
+			      ("\\.xlsx\\'" . default)
+			      ("\\.xlsm\\'" . default)
+			      ("\\.doc\\'" . default)
+			      ("\\.docx\\'" . default)
+			      ("\\.docm\\'" . default)
+			      ("\\.ppt\\'" . default)
+			      ("\\.pptx\\'" . default)
+			      ("\\.pptm\\'" . default)
+			      ))
+
+;; ------------------------------------------------------------------------
 ;; calfw連携。
 ;; 予定専用orgファイルを開く。
 (defun show-org-buffer (file)
