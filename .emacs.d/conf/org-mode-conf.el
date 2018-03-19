@@ -75,6 +75,16 @@
   (org-capture nil "l"))
 
 ;; ------------------------------------------------------------------------
+;; sparse-tree で indirect-buffer を用いる
+;; http://emacs.rubikitch.com/org-sparse-tree-indirect-buffer/
+(defun org-sparse-tree-indirect-buffer (arg)
+  (interactive "P")
+  (let ((ibuf (switch-to-buffer (org-get-indirect-buffer))))
+    (condition-case _
+        (org-sparse-tree arg)
+      (quit (kill-buffer ibuf)))))
+(define-key org-mode-map (kbd "C-c /") 'org-sparse-tree-indirect-buffer)
+;; ------------------------------------------------------------------------
 ;; agenda表示のカスタマイズ。
 (setq org-agenda-custom-commands
       '(("c" "Current Week Action List" tags-todo "WhenDo=\"this-week\"" ((org-agenda-prefix-format " %6e ")))
