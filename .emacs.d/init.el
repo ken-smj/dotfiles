@@ -155,8 +155,8 @@
 ;; @ twitter
 (load "twittering-mode-conf")
 ;; ------------------------------------------------------------------------
-;; @ facebook
-(load "facebook-conf")
+;; ;; @ facebook
+;; (load "facebook-conf")
 ;; ------------------------------------------------------------------------
 ;; @ css-mode
 (load "css-mode-conf")
