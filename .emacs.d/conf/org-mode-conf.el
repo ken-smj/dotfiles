@@ -275,8 +275,7 @@
 ;; ------------------------------------------------------------------------
 ;; アジェンダ作成の対象
 (setq org-agenda-files (list org-directory
-			     (concat org-directory "current/")
-			     (concat org-directory "past-journal/")))
+			     (concat org-directory "current/")))
 (setq org-agenda-include-diary t)
 ;; agendaファイルへの転送設定
 (setq org-refile-targets
