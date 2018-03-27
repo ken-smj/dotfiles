@@ -433,3 +433,13 @@
 ;; (set-face-bold-p 'face t)
 ;; (set-face-italic-p 'face nil)
 ;; ------------------------------------------------------------------------
+;; My Functions
+(defun my:org-insert-uid-tag ()
+  "Set the tags of the current entry to unique id.
+一意なIDのタグを追加します。"
+  (interactive)
+  (let ((tags))
+    (setq tags (org-get-tags-at nil t))
+    (add-to-list 'tags (format-time-string "%%%Y%m%d%H%M%S"))
+    (org-set-tags-to tags)))
+;; ------------------------------------------------------------------------
