@@ -26,6 +26,11 @@
 ;(setq mew-opt-highlight-header nil)
 (setq mew-use-highlight-header nil)
 
+;; Windows機種依存文字表示
+(require 'cp5022x)
+(define-coding-system-alias 'iso-2022-jp 'cp50220)
+;; (define-coding-system-alias 'euc-jp 'cp51932)
+
 ;; ;; color
 ;; (setq mew-theme-file "~/.emacs.d/mew-theme.el")
 
