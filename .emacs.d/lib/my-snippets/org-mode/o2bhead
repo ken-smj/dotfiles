@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: o2bhead
+# key: o2bhead
+# binding: direct-keybinding
+# --
+# -*- coding:utf-8-unix mode:org mode:org2blog/wp -*-
