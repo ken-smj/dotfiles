@@ -19,6 +19,6 @@
               (vc-status 16 16 :left)
               " "
               filename-and-process)))
-;; (setq ibuffer-never-show-regexps '("*\\*" "messages"))
+(setq ibuffer-never-show-regexps '("*\\*" "messages"))
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; ------------------------------------------------------------------------
