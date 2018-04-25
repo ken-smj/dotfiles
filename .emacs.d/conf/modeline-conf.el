@@ -6,7 +6,9 @@
 (line-number-mode t)
 ;; 列番号の表示
 (column-number-mode nil)
-;; 時刻の表示
+;; buffer名を非表示
+;; (setq mode-line-buffer-identification nil)   ;; <= うまくいかない。
+;; 時刻の表示 sky-color-clock入れたのでやめ。
 ;; (require 'time)
 ;; (setq display-time-day-and-date t)
 ;; (setq display-time-24hr-format t)
