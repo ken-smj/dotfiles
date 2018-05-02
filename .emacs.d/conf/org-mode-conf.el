@@ -274,9 +274,16 @@
 	))
 ;; ------------------------------------------------------------------------
 ;; アジェンダ作成の対象
-(setq org-agenda-files (list org-directory
-			     (concat org-directory "current/")))
-(setq org-agenda-include-diary t)
+;; (setq org-agenda-files (list org-directory
+;; 			     (concat org-directory "current/")))
+(setq org-agenda-files
+      (mapcar (lambda (basename)
+                (concat org-directory (symbol-name basename) ".org"))
+	      ;; agendaファイル名の指定と読み込む順番
+              '(tasks
+		daily-journal
+		iphone)))
+(setq org-agenda-include-diary nil)
 ;; agendaファイルへの転送設定
 (setq org-refile-targets
       '((nil :maxlevel . 3)
