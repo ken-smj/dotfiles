@@ -1,6 +1,16 @@
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 
 ;; ------------------------------------------------------------------------
+;; 起動時間計時用
+(defadvice load (around require-benchmark activate)
+  (let* ((before (current-time))
+         (result ad-do-it)
+         (after  (current-time))
+         (time (+ (* (- (nth 1 after) (nth 1 before)) 1000)
+                  (/ (- (nth 2 after) (nth 2 before)) 1000))))
+    (when (> time 50)
+      (message "%s: %d msec" (ad-get-arg 0) time))))
+;; ------------------------------------------------------------------------
 ;; @ server start for emacs-client
 (require 'server)
 (unless (server-running-p)
@@ -243,7 +253,8 @@
 (add-hook 'kill-emacs-hook
 	  (lambda ()
 	    (org-mobile-push)
-	    (org2opml)))
+	    ;; (org2opml)
+	    ))
 ;; ------------------------------------------------------------------------
 ;;;
 ;;; end of file
