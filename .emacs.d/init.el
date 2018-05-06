@@ -12,9 +12,9 @@
       (message "%s: %d msec" (ad-get-arg 0) time))))
 ;; ------------------------------------------------------------------------
 ;; @ server start for emacs-client
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;; (require 'server)
+;; (unless (server-running-p)
+;;   (server-start))
 ;; ------------------------------------------------------------------------
 ;; @ load path
 (when (< emacs-major-version 23)
