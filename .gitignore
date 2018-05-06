@@ -10,6 +10,7 @@ ac-comphist.dat
 .emacs.d/url
 .emacs.d/bookmarks
 .emacs.d/.org-id-locations
+.emacs.d/server
 tmp
 tramp
 recentf
