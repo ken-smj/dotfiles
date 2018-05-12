@@ -18,7 +18,7 @@
 		      '(line-spacing . 0))
 		default-frame-alist)))
 ;; windows vostro
-(when (string= system-name "VOSTRO")
+(when (string= system-name "vostro")
   (setq default-frame-alist
 	(append (list '(alpha . 85)
 		      '(border-color . "gray")
