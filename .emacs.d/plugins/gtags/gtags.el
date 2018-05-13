@@ -685,7 +685,7 @@
   "Select a tag in [GTAGS SELECT MODE] and move there."
   (interactive)
   (gtags-push-context)
-  (gtags-select-it nil other-win))
+  (gtags-select-it t other-win))	; original code is (gtags-select-it nil other-win). modified by ken@smj.to at May. 13, 2018.
 
 (defun gtags-select-tag-other-window ()
   "Select a tag in [GTAGS SELECT MODE] and move there in other window."
