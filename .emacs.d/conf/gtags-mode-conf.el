@@ -13,6 +13,14 @@
          (local-set-key "\M-r" 'gtags-find-rtag)
          (local-set-key "\M-s" 'gtags-find-symbol)
          (local-set-key [?\C-.] 'gtags-pop-stack)))
+(defun my:delete-select-mode-gtags-select-tag (&optional other-win)
+  "Select a tag in [GTAGS SELECT MODE] and move there."
+  (interactive)
+  (gtags-push-context)
+  (gtags-select-it t other-win))
+(define-key gtags-select-mode-map "\C-m" 'my:delete-select-mode-gtags-select-tag)
+(define-key gtags-select-mode-map "\e." 'my:delete-select-mode-gtags-select-tag)
+
 ;; (defun gtags-goto-tag (tagname flag)
 ;;   (let (save prefix buffer lines)
 ;;     (setq save (current-buffer))
