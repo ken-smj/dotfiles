@@ -1,4 +1,4 @@
-;;; dicom-tagview.el --- Major mode for viewing DICOM tag.  -*- coding: utf-8 lexical-binding: t -*-
+;;; dicom-tagview.el --- Major mode for viewing DICOM tag.  -*- coding: utf-8-unix ; lexical-binding: t -*-
 
 ;; Copyright (C) 2018 Ken-ichiro Shimojyo
 
@@ -37,35 +37,35 @@
 
 (require 'hexl)
 
-;; ;;;###autoload
-;; (defun hexlify-buffer ()
-;;   "Convert a binary buffer to hexl format.
-;; This discards the buffer's undo information."
-;;   (interactive)
-;;   (and (consp buffer-undo-list)
-;;        (or (y-or-n-p "Converting to hexl format discards undo info; ok? ")
-;; 	   (error "Aborted"))
-;;        (setq buffer-undo-list nil))
-;;   ;; Don't decode text in the ASCII part of `hexl' program output.
-;;   (let ((coding-system-for-read 'raw-text)
-;; 	(coding-system-for-write buffer-file-coding-system)
-;; 	(buffer-undo-list t))
-;;     (apply 'call-process-region (point-min) (point-max)
-;; 	   (expand-file-name hexl-program exec-directory)
-;; 	   t t nil
-;;            ;; Manually encode the args, otherwise they're encoded using
-;;            ;; coding-system-for-write (i.e. buffer-file-coding-system) which
-;;            ;; may not be what we want (e.g. utf-16 on a non-utf-16 system).
-;;            (mapcar (lambda (s)
-;;                      (if (not (multibyte-string-p s)) s
-;;                        (encode-coding-string s locale-coding-system)))
-;;                    (split-string (hexl-options))))
-;;     (if (> (point) (hexl-address-to-marker hexl-max-address))
-;; 	(hexl-goto-address hexl-max-address))))
+;;;###autoload
+(defun dicom-tagview-open-buffer ()
+  "Convert a binary buffer to hexl format.
+This discards the buffer's undo information."
+  (interactive)
+  (and (consp buffer-undo-list)
+       (or (y-or-n-p "Converting to hexl format discards undo info; ok? ")
+	   (error "Aborted"))
+       (setq buffer-undo-list nil))
+  ;; Don't decode text in the ASCII part of `hexl' program output.
+  (let ((coding-system-for-read 'raw-text)
+	(coding-system-for-write buffer-file-coding-system)
+	(buffer-undo-list t))
+    (apply 'call-process-region (point-min) (point-max)
+	   (expand-file-name hexl-program exec-directory)
+	   t t nil
+           ;; Manually encode the args, otherwise they're encoded using
+           ;; coding-system-for-write (i.e. buffer-file-coding-system) which
+           ;; may not be what we want (e.g. utf-16 on a non-utf-16 system).
+           (mapcar (lambda (s)
+                     (if (not (multibyte-string-p s)) s
+                       (encode-coding-string s locale-coding-system)))
+                   (split-string (hexl-options))))
+    (if (> (point) (hexl-address-to-marker hexl-max-address))
+	(hexl-goto-address hexl-max-address))))
 
 (defvar dicom-tagview-mode-map
   (let ((map (make-keymap)))
-    (define-key map "d c m" 'hexlify-buffer)
+    (define-key map "dcm" 'dicom-tagview-open-buffer)
     map))
 
 (defun dicom-tagview-mode ()

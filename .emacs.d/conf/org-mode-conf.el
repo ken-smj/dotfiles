@@ -282,6 +282,7 @@
 	      ;; agendaファイル名の指定と読み込む順番
               '(tasks
 		daily-journal
+		notes
 		iphone)))
 (setq org-agenda-include-diary nil)
 ;; agendaファイルへの転送設定

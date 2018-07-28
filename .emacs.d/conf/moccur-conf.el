@@ -12,7 +12,7 @@
 ;;ディレクトリ検索するときの除外ファイル
 (setq dmoccur-exclusion-mask
       (append '("/Win32/.+" "/x64/.+" "/bin.*/.+" "GRTAGS$" "GPATH$" "GTAGS$" "\\.xls.*$" "\\.ilk$" "\\.ncb$"
-		"\\.pch$" "\\.pdb$" "\\.aps$" "\\.map$")
+		"\\.pch$" "\\.pdb$" "\\.aps$" "\\.map$" "\\.cod$")
 	      dmoccur-exclusion-mask))
 ;; ;;Migemoを利用できる環境であればMigemoを使う
 ;; (when (and (executable-find "/usr/local/bin/cmigemo") ;;このパスも、自分の環境に合わせて変更してください

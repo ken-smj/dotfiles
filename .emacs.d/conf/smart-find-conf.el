@@ -15,14 +15,14 @@
 	"~/.emacs.d/conf"
 	"~/Dropbox/org"
 	))
-(when (string= system-name "SHIMOJOKENICHIR")
+(when (string= (upcase system-name) "SHIMOJOKENICHIR")
   (add-to-list 'smart-find-file-path "e:/DEVELOP")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVlib/include")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVInsite")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVInsite/EVImage")
   (add-to-list 'smart-find-file-path "e:/DEVELOP/working.r.3.x.current.svn.project/EVInsite/EVClient")
   )
-(when (or (string= system-name "RED") (string= (upcase system-name) "VOSTRO"))
+(when (or (string= (upcase system-name) "RED") (string= (upcase system-name) "VOSTRO"))
   (add-to-list 'smart-find-file-path "c:/DEVELOP")
   (add-to-list 'smart-find-file-path "c:/DEVELOP/working.r.3.x.current.git.project/EVlib/include")
   (add-to-list 'smart-find-file-path "c:/DEVELOP/working.r.3.x.current.git.project/EVInsite")
