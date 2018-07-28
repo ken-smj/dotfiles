@@ -13,6 +13,12 @@
          (local-set-key "\M-r" 'gtags-find-rtag)
          (local-set-key "\M-s" 'gtags-find-symbol)
          (local-set-key [?\C-.] 'gtags-pop-stack)))
+(defun gtags-select-tag (&optional other-win)
+  "Select a tag in [GTAGS SELECT MODE] and move there."
+  (interactive)
+  (gtags-push-context)
+  (gtags-select-it t other-win))	; original code is (gtags-select-it nil other-win). modified by ken@smj.to at May. 13, 2018.
+
 ;; (defun gtags-goto-tag (tagname flag)
 ;;   (let (save prefix buffer lines)
 ;;     (setq save (current-buffer))
