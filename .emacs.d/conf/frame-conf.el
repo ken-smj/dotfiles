@@ -5,8 +5,7 @@
 ;; フレームタイトルの設定
 (setq frame-title-format "%f")
 ;; windows psp
-(when (or (string= (upcase system-name) "SHIMOJOKENICHIR")
-	  (string= (upcase system-name) "GAZOU3G-PC"))
+(when (string= (upcase system-name) "GAZOU3G-PC")
   (setq default-frame-alist
 	(append (list '(alpha . 85)
 		      '(border-color . "gray")
@@ -18,7 +17,8 @@
 		      '(line-spacing . 0))
 		default-frame-alist)))
 ;; windows vostro
-(when (string= (upcase system-name) "VOSTRO")
+(when (or (string= (upcase system-name) "SHIMOJOKENICHIR")
+	  (string= (upcase system-name) "VOSTRO"))
   (setq default-frame-alist
 	(append (list '(alpha . 85)
 		      '(border-color . "gray")
