@@ -63,8 +63,8 @@
 (setq mew-use-node-folder t)         ; 末端のフォルダだけ選ぶ
 
 
-(setq mew-use-biff t)
-(setq mew-use-biff-bell t)
+(setq mew-use-biff nil)
+(setq mew-use-biff-bell nil)
 
 ;; 検索設定
 (setq mew-prog-grep "mg")
