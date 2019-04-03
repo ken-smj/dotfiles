@@ -110,6 +110,7 @@
   )
 
 (setq mew-prog-image/*-ext "display")
+(setq mew-prog-pdf '("acroread" ("-geometry" "+0+0") t))
 
 ;; Mewでシグネチャを対話的に選択する設定
 ;(add-hook 'mew-draft-mode-hook
