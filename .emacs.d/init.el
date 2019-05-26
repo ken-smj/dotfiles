@@ -260,6 +260,8 @@
 	  (lambda ()
 	    (org-mobile-push)
 	    ;; (org2opml)
+	    (bm-buffer-save-all)
+	    (bm-repository-save)
 	    ))
 ;; ------------------------------------------------------------------------
 ;;;

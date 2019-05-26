@@ -9,6 +9,7 @@ ac-comphist.dat
 .emacs.d/auto-save-list
 .emacs.d/url
 .emacs.d/bookmarks
+.emacs.d/bm-repository
 .emacs.d/.org-id-locations
 .emacs.d/server
 tmp
