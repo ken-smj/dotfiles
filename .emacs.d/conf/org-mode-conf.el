@@ -29,14 +29,14 @@
 	("l" "Log" entry (file+weektree (concat org-directory "daily-journal.org")) "* %?\n   %i\n  Entered on %U\n")
 	("m" "Memo" entry (file+headline nil "Memos") "** %?\n   %i\n  Entered on %U\n")
 	("M" "Memo(with file link)" entry (file+headline nil "Memos") "** %?\n   %i\n   %A\n  Entered on %U\n")
-	("o" "with obstruction tag" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	("o" "with obstruction tag" entry (file+headline (concat org-directory "daily-journal.org") "今週のタスク")
 	 "** TODO %? :%^{redmine?}:obstruction:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
-	("p" "project" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "今週のタスク")
 	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("r" "Rest Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
 	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
 	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n  DEADLINE: %^{Deadline?}T\n   %i\n  Entered on %U\n")
-	("v" "private task" entry (file+headline (concat org-directory "daily-journal.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
+	;; ("v" "private task" entry (file+headline (concat org-directory "daily-journal.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
 	))
 ;; TODO状態
