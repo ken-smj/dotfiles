@@ -34,7 +34,7 @@
 	("p" "project" entry (file+headline (concat org-directory "daily-journal.org") "今週のタスク")
 	 "** %? :%^{redmine?}:\n SCHEDULED: %^{Schedule?}T\n   %i\n  Entered on %U\n")
 	("r" "Rest Log Item" entry (clock (concat org-directory "daily-journal.org")) "** %? :rest:\n  Entered on %U\n" :clock-in t :clock-resume t)
-	("t" "todo task" entry (file+headline (concat org-directory "tasks.org") "Inbox")
+	("t" "todo task" entry (file+headline (concat org-directory "daily-journal.org") "今週のタスク")
 	 "** TODO %? %(format-time-string \":%%%Y%m%d%H%M:\")\n  DEADLINE: %^{Deadline?}T\n   %i\n  Entered on %U\n")
 	;; ("v" "private task" entry (file+headline (concat org-directory "daily-journal.org") "Private") "** TODO %?\n   %i\n  Entered on %U\n")
 	;; org-captureで予定を格納する。
