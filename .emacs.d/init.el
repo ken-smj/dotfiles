@@ -13,6 +13,11 @@
 ;; ------------------------------------------------------------------------
 ;; @ server start for emacs-client
 (require 'server)
+(when (and (>= emacs-major-version 23)
+           (equal window-system 'w32))
+  (defun server-ensure-safe-dir (dir) "Noop" t)) ; Suppress error "directory
+					; ~/.emacs.d/server is unsafe"
+					; on windows.
 (unless (server-running-p)
   (server-start))
 ;; ------------------------------------------------------------------------
@@ -103,7 +108,7 @@
 (load "minbuf-conf")
 ;; ------------------------------------------------------------------------
 ;; @ bookmarks
-(load "bookmark+-mode-conf")
+;; (load "bookmark+-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ line highlight and jump
 (load "bm-mode-conf")
@@ -250,7 +255,7 @@
 (setq initial-scratch-message nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
-	    (org-mobile-pull)			; 起動時に読み取り
+	    ;; (org-mobile-pull)			; 起動時に読み取り
 	    (pop-to-buffer "*scratch*")
 	    (delete-other-windows)
 	    (calendar)))
@@ -258,7 +263,7 @@
 ;; @ emacs終了時のhook
 (add-hook 'kill-emacs-hook
 	  (lambda ()
-	    (org-mobile-push)
+	    ;; (org-mobile-push)
 	    ;; (org2opml)
 	    (bm-buffer-save-all)
 	    (bm-repository-save)
