@@ -17,7 +17,7 @@
 		      '(line-spacing . 0))
 		default-frame-alist)))
 ;; windows vostro
-(when (or (string= (upcase system-name) "SHIMOJOKENICHIR")
+(when (or (string= (upcase system-name) "PN001380")
 	  (string= (upcase system-name) "VOSTRO"))
   (setq default-frame-alist
 	(append (list '(alpha . 85)

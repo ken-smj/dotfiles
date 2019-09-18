@@ -37,8 +37,8 @@
       (when (and dir (file-exists-p dir) (not (member dir exec-path)))
 	(setq exec-path (append (list dir) exec-path))
 	(setenv "PATH" (concat
-			(if (string= (substring dir 0 3) "c:/")
-			    (setf (substring dir 0 3) "/c/")
+			(if (string= (substring dir 0 3) "d:/")
+			    (setf (substring dir 0 3) "/d/")
 			  dir)
 			":" (getenv "PATH")))))))
 ;; ------------------------------------------------------------------------

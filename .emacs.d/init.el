@@ -272,33 +272,3 @@
 ;;;
 ;;; end of file
 ;;;
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ag-arguments (list "--smart-case" "--nogroup" "--column" "--"))
- '(ag-executable "pt")
- '(ag-highlight-search t)
- '(ag-ignore-list
-   (list "/Win32/.+" "/x64/.+" "/bin.*/.+" "GRTAGS$" "GPATH$" "GTAGS$" "\\.xls.*$" "\\.ilk$" "\\.ncb$" "\\.pch$" "\\.pdb$" "\\.aps$" "\\.map$"))
- '(ag-reuse-buffers (quote nil))
- '(ag-reuse-window (quote nil))
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(user-full-name (getenv "USER_FULL_NAME"))
- '(user-mail-address (getenv "USER_MAIL_ADDRESS"))
- '(vc-handled-backends nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "black" :foreground "light gray"))))
- '(cursor ((((class color) (background dark)) (:background "yellow")) (((class color) (background light)) (:background "yellow")) (t nil)))
- '(markdown-header-face-1 ((t (:inherit howm-mode-title-face markdown-header-face))))
- '(markdown-header-face-2 ((t (:inherit outline-2 markdown-header-face))))
- '(markdown-header-face-3 ((t (:inherit outline-3 markdown-header-face))))
- '(markdown-header-face-4 ((t (:inherit outline-4 markdown-header-face))))
- '(markdown-header-face-5 ((t (:inherit outline-5 markdown-header-face))))
- '(markdown-header-face-6 ((t (:inherit outline-6 markdown-header-face)))))
-(put 'upcase-region 'disabled nil)
