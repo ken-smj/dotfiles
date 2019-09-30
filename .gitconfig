@@ -39,3 +39,5 @@
     trustExitCode = true
 [winUpdater]
 	recentlySeenVersion = 2.15.1.windows.2
+[gc]
+	auto = 0

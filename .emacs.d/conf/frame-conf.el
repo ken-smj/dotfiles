@@ -24,8 +24,8 @@
 		      '(border-color . "gray")
 		      '(mouse-color . "white")
 		      '(width . 156)	; windows vostro
-		      '(height . 60)
-		      '(top . 10)
+		      '(height . 61)
+		      '(top . 0)
 		      '(left . 300)
 		      '(line-spacing . 0))
 		default-frame-alist)))
