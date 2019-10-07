@@ -41,12 +41,12 @@
 	))
 ;; TODO状態
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s!)" "WAIT(w@/!)" "PENDING(p@/!)"
-		  "|" "DONE(d!)" "DELEGATED(g@/!)" "ANSWERED(a@/!)" "CANCELED(c@/!)" "SOMEDAY(o!)")))
+      '((sequence "TODO(t)" "WAIT(w@/!)" "PENDING(p@/!)"
+		  "|" "DONE(d@/!)" "DELEGATED(g@/!)" "CANCELED(c@/!)")))
 ;; TODO表示色
 (setq org-todo-keyword-faces
-      '(("TODO" . "red") ("STARTED" . "green")
-	("WAIT" . "yellow") ("PENDING" . org-warning)
+      '(("TODO" . "firebrick")
+	("WAIT" . "dark khaki") ("PENDING" . org-warning)
 	("CANCELED" . (:foreground "cyan" :weight bold))))
 ;; TODOの進捗をすべての階層の結果で表示
 (setq org-hierarchical-todo-statistics nil)
