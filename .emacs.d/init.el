@@ -147,6 +147,12 @@
 ;; @ C# mode
 (load "csharp-mode-conf")
 ;; ------------------------------------------------------------------------
+;; @ lua mode
+(load "lua-mode-conf")
+;; ------------------------------------------------------------------------
+;; @ adoc mode
+(load "adoc-mode-conf")
+;; ------------------------------------------------------------------------
 ;; @ Calendar,ChengeLog memo and Howm. remark: Do NOT changed load order.
 ;; (load "changelog-memo-conf")
 (load "rd-mode-conf")

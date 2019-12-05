@@ -41,3 +41,6 @@
 	recentlySeenVersion = 2.15.1.windows.2
 [gc]
 	auto = 0
+[user]
+	name = k.shimojyo
+	email = k@smj.to

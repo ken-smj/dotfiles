@@ -386,7 +386,7 @@ First argument HOOK-VAR (a symbol) is the name of a hook, second
 	(setq quit t))
        ((memq func
 	      (or super-smart-find-self-insert-command-list
-		  (if (>= (string-to-int emacs-version) 19)
+		  (if (>= (floor (string-to-number emacs-version)) 19)
 		      (apropos-internal "self-insert-command" 'commandp)
 		    (let ((conf (current-window-configuration)))
 		      (prog1
@@ -395,7 +395,7 @@ First argument HOOK-VAR (a symbol) is the name of a hook, second
 			(set-window-configuration conf)
 			)))))
 	(setq fname
-	      (if (>= (string-to-int emacs-version) 19)
+	      (if (>= (floor (string-to-number emacs-version)) 19)
 		  (super-smart-find-read-file-name prompt key)
 		(read-file-name prompt (concat ddir key)))))
        ((commandp func)
