@@ -2,7 +2,7 @@
 # msys2 setup script.
 # auther ken@smj.to
 
-home="C:\\Users"
+home="D:\\home"
 modules="base base-devel mingw-w64-x86_64 mingw-w64-x86_64-toolchain development git subversion \
        mingw-w64-x86_64-imagemagick mingw-w64-x86_64-ruby lftp mingw-w64-x86_64-ag mingw-w64-x86_64-libxml2 mingw-w64-x86_64-librsvg \
        mingw-w64-x86_64-python2-setuptools mingw-w64-x86_64-python2-pip"
