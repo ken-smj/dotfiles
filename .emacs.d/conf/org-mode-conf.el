@@ -424,6 +424,10 @@
 
 
 ;; ------------------------------------------------------------------------
+;; AsciiDoc連携
+;; https://github.com/yashi/org-asciidoc
+(require 'ox-asciidoc)
+;; ------------------------------------------------------------------------
 ;; MobileOrg
 (setq org-mobile-directory "~/Dropbox/アプリ/MobileOrg/")
 (setq org-mobile-files

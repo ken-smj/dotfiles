@@ -150,8 +150,9 @@
 ;; @ lua mode
 (load "lua-mode-conf")
 ;; ------------------------------------------------------------------------
-;; @ adoc mode
-(load "adoc-mode-conf")
+;; @ ascii or adoc mode
+;; (load "adoc-mode-conf")
+(load "asciidoc-mode-conf")
 ;; ------------------------------------------------------------------------
 ;; @ Calendar,ChengeLog memo and Howm. remark: Do NOT changed load order.
 ;; (load "changelog-memo-conf")
